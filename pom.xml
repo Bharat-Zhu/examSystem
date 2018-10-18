@@ -122,6 +122,11 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>${srping.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${srping.version}</version>
+		</dependency>
 		<!-- spring framework end -->
 
 		<!-- shiro begin -->
@@ -272,7 +277,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>eaxmSystem</finalName>
+		<finalName>examSystem</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

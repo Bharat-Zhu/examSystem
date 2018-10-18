@@ -42,7 +42,7 @@
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
 	
 	<!-- 配置 HiddenHttpMethodFilter: 把POST请求转为 DELETE，PUT请求-->
     <filter>
@@ -67,7 +67,6 @@
 	<filter-mapping>
 		<filter-name>shiroFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
 	</filter-mapping>
 	
 	<!--druid 监控 -->
@@ -97,7 +96,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>DruidStatView</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 错误页面映射 -->

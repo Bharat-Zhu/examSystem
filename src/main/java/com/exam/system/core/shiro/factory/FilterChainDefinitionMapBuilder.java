@@ -9,10 +9,13 @@ public class FilterChainDefinitionMapBuilder {
 		
 		map.put("/static/**", "anon");
 		map.put("/upload/**", "anon");
+		map.put("/exam", "anon");
+		map.put("/index.jsp", "anon");
 		map.put("/logout", "logout");
 		
-		map.put("/**", "sysUser,onlineSession,user,perms,roles");
+		map.put("/druid/**", "roles[admin]");
 		
+		map.put("/**", "authc");
 		return map;
 	}
 }
