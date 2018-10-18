@@ -8,6 +8,6 @@ public class SimpleController {
 
 	@RequestMapping("/exam")
 	public String login() {
-		return "error/500";
+		return "home.action";
 	}
 }

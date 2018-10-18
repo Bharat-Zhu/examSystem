@@ -16,6 +16,19 @@
 	<!-- 配置静态资源 -->
 	<mvc:default-servlet-handler />
 	
+	<!-- 配置Tiles -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles.xml</value>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- 配置视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/" />
