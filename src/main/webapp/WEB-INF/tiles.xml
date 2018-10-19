@@ -3,7 +3,7 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="action.definition" template="/WEB-INF/pages/main_frame.jsp">
+	<definition name="page.definition" template="/WEB-INF/pages/main_frame.jsp">
         <put-attribute name="title" value="考试系统" />
         <put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp" />
@@ -12,19 +12,19 @@
         <put-attribute name="script" value="/WEB-INF/pages/static_resource.jsp" />
     </definition>
 
-    <definition name="*.action" extends="action.definition">
+    <definition name="*.page" extends="page.definition">
         <put-attribute name="body" value="/WEB-INF/pages/{1}.jsp" />
     </definition>
 
-    <definition name="*/*.action" extends="action.definition">
+    <definition name="*/*.page" extends="page.definition">
         <put-attribute name="body" value="/WEB-INF/pages/{1}/{2}.jsp" />
     </definition>
 
-    <definition name="*/*/*.action" extends="action.definition">
+    <definition name="*/*/*.page" extends="page.definition">
         <put-attribute name="body" value="/WEB-INF/pages/{1}/{2}/{3}.jsp" />
     </definition>
 
-    <definition name="*/*/*/*.action" extends="action.definition">
+    <definition name="*/*/*/*.page" extends="page.definition">
         <put-attribute name="body" value="/WEB-INF/pages/{1}/{2}/{3}/{4}.jsp" />
     </definition>
 </tiles-definitions>

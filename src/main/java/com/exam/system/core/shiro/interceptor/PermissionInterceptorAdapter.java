@@ -15,7 +15,7 @@ public class PermissionInterceptorAdapter extends HandlerInterceptorAdapter {
 			throws Exception {
 		
 		if (handler instanceof HandlerMethod) {
-			HandlerMethod handlerMethod = (HandlerMethod) handler;
+			//HandlerMethod handlerMethod = (HandlerMethod) handler;
 		}
 		
 		return true;

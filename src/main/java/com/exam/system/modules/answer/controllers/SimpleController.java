@@ -8,6 +8,6 @@ public class SimpleController {
 
 	@RequestMapping("/exam")
 	public String login() {
-		return "home.action";
+		return "home.page";
 	}
 }

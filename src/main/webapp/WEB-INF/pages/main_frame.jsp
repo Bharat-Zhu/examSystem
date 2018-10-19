@@ -5,41 +5,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/static/common/images/logo.ico" />
 <title><tiles:getAsString name="title" /></title>
 <tiles:insertAttribute name="script" />
 <style type="text/css">
-	div {
-		border: 1px solid red;
-	}
 </style>
 </head>
 <body>
-<!-- Header -->
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <tiles:insertAttribute name="header"/>
-</div>
-
-<!-- Main -->
-<div class="main-container" id="main-container">
-    <!-- Menu -->
-    <!-- <div id="sidebar" class="sidebar responsive" > -->
-    <div style="width:150px;height:200px;margin-top:500px;" >
-        <tiles:insertAttribute name="menu"/>
-    </div>
-    <!-- Right -->
-    <div class="main-content">
-        <!-- 面包屑导航 -->
-        <!-- 内容 -->
-        <div class="page-content" style="padding:0; background-color: white;">
+<div>
+	<div class="clearfix">
+		<div class="col-md-12 column">
+			<!-- Header -->
+		    <tiles:insertAttribute name="header"/>
+		</div>
+	</div>
+	<div class="clearfix" style="margin-top:50px; min-height: 696px;">
+		<div class="col-md-2 column" style="border-right: 1px solid #e6e6e6; min-height: 696px; padding-top: 5px; padding-left: 0; padding-right: 0;">
+			<!-- Menu -->
+	        <tiles:insertAttribute name="menu"/>
+	        <div style="height: 30px;padding: 14px 0; margin-top: 15px;">
+	        	<div style="height:1px; background-color: #e5e5e5;"></div>
+        		<div style=" text-align: center;background: transparent; margin-top: -13px;">
+        			<a href="#"><i class="fa fa-chevron-circle-left" style="font-size:24px"></i></a>
+        		</div>
+	        </div>
+		</div>
+		<div class="col-md-10 column" style="padding-top: 5px;">
+			<!-- 面包屑导航 -->
+	        <!-- 内容 -->
         	<tiles:insertAttribute name="body"/>
-        </div>
-    </div>
-    <!-- Footer -->
-    <div class="footer" style="padding-top: 40px;">
-        <tiles:insertAttribute name="footer"/>
-    </div>
-    <!-- 回顶部 -->
-    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+		</div>
+	</div>
+	<div id="footer" class="clearfix" style="background: #f8f8f8; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6;">
+		<div class="col-md-12 column">
+			<!-- Footer -->
+	        <tiles:insertAttribute name="footer"/>
+		</div>
+	</div>
+	<!-- 回顶部 -->
+    <a href="#" id="btn-scroll-up" class="btn btn-default" style="display: none;">
         <i class="fa fa-chevron-up"></i>
     </a>
 </div>
