@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- 配置自动扫描包 -->
+	<context:component-scan base-package="com.exam.system.core.controllers" />
 	<context:component-scan base-package="com.exam.system.modules.*.controllers" />
 	
 	<!-- 开启Spring MVC注解 -->
@@ -35,6 +36,9 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<!-- 配置SessionLocaleResolver -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+	
 	<!-- 拦截器 -->
 	<mvc:interceptors>
 		<!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->
@@ -53,12 +57,8 @@
 	
 	<!-- 配置国际化资源 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<list>
-				<value>i18n/message_</value>
-			</list>
-		</property>
-		<property name="useCodeAsDefaultMessage" value="false" />
+		<property name="basename" value="i18n/message" />
+		<!-- <property name="useCodeAsDefaultMessage" value="false" /> -->
 		<property name="defaultEncoding" value="UTF-8" />
 		<property name="cacheSeconds" value="60" />
 	</bean>

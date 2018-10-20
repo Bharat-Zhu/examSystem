@@ -11,6 +11,7 @@ public class FilterChainDefinitionMapBuilder {
 		map.put("/upload/**", "anon");
 		map.put("/exam", "anon");
 		map.put("/index.jsp", "anon");
+		map.put("/login", "anon");
 		map.put("/logout", "logout");
 		
 		map.put("/druid/**", "roles[admin]");
