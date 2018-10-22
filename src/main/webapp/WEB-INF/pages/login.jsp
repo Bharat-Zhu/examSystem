@@ -18,21 +18,21 @@
 <a href="?la=en_US"><spring:message code="language.en" /></a>
 <form class="form-horizontal" role="form" action="exam" method="post">
 	<div class="form-group">
-		<label for="loginId" class="col-sm-2 control-label"><spring:message code="login.id" /></label>
-		<div class="col-sm-10">
+		<label for="loginId" class="col-sm-4 control-label"><spring:message code="login.id" /></label>
+		<div class="col-sm-6">
 			<input type="text" class="form-control" id="loginId" 
 				   placeholder='<spring:message code="login.id.prompt.content" />'>
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="loginPassword" class="col-sm-2 control-label"><spring:message code="login.password" /></label>
-		<div class="col-sm-10">
+		<label for="loginPassword" class="col-sm-4 control-label"><spring:message code="login.password" /></label>
+		<div class="col-sm-6">
 			<input type="text" class="form-control" id="loginPassword" 
 				   placeholder='<spring:message code="login.password.prompt.content" />'>
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
+		<div class="col-sm-offset-4 col-sm-6">
 			<button type="submit" class="btn btn-default"><spring:message code="login.submit" /></button>
 		</div>
 	</div>

@@ -8,7 +8,7 @@
 			<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
 				class="icon-bar"></span><span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#"><b><i><spring:message code="examSystem.title" /> </i></b></a>
+		<span class="navbar-brand"><b><spring:message code="examSystem.title" /></b></span>
 	</div>
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
