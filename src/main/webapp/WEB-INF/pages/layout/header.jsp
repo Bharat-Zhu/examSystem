@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -7,7 +8,7 @@
 			<span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
 				class="icon-bar"></span><span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">ExamSystem</a>
+		<a class="navbar-brand" href="#"><b><i><spring:message code="examSystem.title" /> </i></b></a>
 	</div>
 
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
