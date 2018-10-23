@@ -4,11 +4,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.exam.system.core.entitys.User;
 
@@ -20,7 +23,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(HttpServletRequest request, User user) {
+	public ModelAndView login(HttpServletRequest request, User user) {
         HttpSession session = request.getSession();
         Object locale = session.getAttribute("org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE");
         session.setAttribute("LOCALE", locale);
@@ -35,12 +38,20 @@ public class LoginController {
         	
         	try {
                 currentUser.login(token);
-            } 
-            catch (Exception e) {
-            	throw e;
-            }
+            } catch(UnknownAccountException e) {
+				System.out.println("登录失败：");
+			} catch(AuthenticationException e) {
+				System.out.println("登录失败：");
+			} catch (Exception e) {
+				System.out.println("登录失败：");
+			}
         }
         
-        return "home.page";
+        return new ModelAndView("redirect:home");
+	}
+	
+	@RequestMapping("/home")
+	public String home() {
+		return "home.page";
 	}
 }

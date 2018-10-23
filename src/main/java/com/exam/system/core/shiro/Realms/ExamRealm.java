@@ -13,7 +13,6 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.exam.system.core.entitys.User;
-import com.exam.system.core.utils.LogUtils;
 import com.exam.system.modules.sys.services.EmployeeService;
 
 public class ExamRealm extends AuthorizingRealm {
@@ -46,7 +45,6 @@ public class ExamRealm extends AuthorizingRealm {
                         user.getPassword(),
                         ByteSource.Util.bytes(user.getSalt()),
                         getName());
-        LogUtils.log(this.getClass()).info("Login Success.");
 		return authenticationInfo;
 	}
 

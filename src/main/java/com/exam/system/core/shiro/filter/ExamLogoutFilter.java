@@ -1,13 +1,13 @@
 package com.exam.system.core.shiro.filter;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.SessionException;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.LogoutFilter;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
 
 public class ExamLogoutFilter extends LogoutFilter {
 
@@ -19,8 +19,10 @@ public class ExamLogoutFilter extends LogoutFilter {
         Object hs = session.getAttribute("LOCALE");
         HttpServletRequest hsr = (HttpServletRequest)request;
         try {
-            subject.logout();
-            hsr.getSession().setAttribute("org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE", hs);
+        	if (subject != null && subject.isAuthenticated()) {
+        		subject.logout();
+        		hsr.getSession().setAttribute("org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE", hs);
+        	}
         }catch (SessionException e){
             e.printStackTrace();
         }

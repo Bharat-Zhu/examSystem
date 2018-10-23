@@ -3,6 +3,7 @@ package com.exam.system.modules.sys.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exam.system.core.services.PasswordService;
 import com.exam.system.modules.sys.entitys.Employee;
 import com.exam.system.modules.sys.mappers.EmployeeMapper;
 import com.exam.system.modules.sys.services.EmployeeService;
@@ -18,6 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	public int addEmployee(Employee emp) {
+		PasswordService.encryptPassword(emp);
 		return employeeMapper.insetEmployee(emp);
 	}
 

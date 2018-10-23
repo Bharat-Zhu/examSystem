@@ -25,6 +25,13 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="registerName" class="col-sm-4 control-label"><spring:message code="register.name" /></label>
+		<div class="col-sm-6">
+			<input type="text" class="form-control" id="registerName" name="name"
+				   placeholder='<spring:message code="register.name.prompt.content" />'>
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="registerPassword" class="col-sm-4 control-label"><spring:message code="login.password" /></label>
 		<div class="col-sm-6">
 			<input type="text" class="form-control" id="registerPassword" name="password"
@@ -51,6 +58,6 @@
 		</div>
 	</div>
 </form>
-<a href="loign"><spring:message code="login.submit" /></a>
+<a href="loign"><spring:message code="login.title" /></a>
 </body>
 </html>

@@ -61,7 +61,7 @@
 		</property>
 		
 		<!-- 配置xml自动扫描 -->
-		<property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
+		<property name="mapperLocations" value="classpath:mappers/**/*.xml"></property>
 		
 		<!-- 配置别名包 -->
 		<property name="typeAliasesPackage" value="com.exam.system.modules.*.entitys"></property>
