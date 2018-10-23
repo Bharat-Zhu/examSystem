@@ -57,6 +57,8 @@
 	<bean id="handlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
 	</bean>
 
+	<bean class="com.exam.system.core.shiro.exception.ExceptionHandler" />
+	
 	<!-- 配置国际化资源 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">

@@ -9,8 +9,8 @@ public class FilterChainDefinitionMapBuilder {
 		
 		map.put("/static/**", "anon");
 		map.put("/upload/**", "anon");
-		map.put("/exam", "anon");
 		map.put("/index.jsp", "anon");
+		map.put("/register", "anon");
 		map.put("/login", "anon");
 		map.put("/logout", "logout");
 		
