@@ -16,7 +16,9 @@
 	
 	<!-- 配置静态资源 -->
 	<mvc:default-servlet-handler />
-	
+
+	<bean class="com.exam.system.core.utils.SpringContextUtils" />
+
 	<!-- 配置Tiles -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
@@ -56,13 +58,14 @@
 	<!-- 控制器异常处理 -->
 	<bean id="handlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver" />
 
-	<bean id="" class="com.exam.system.core.shiro.exception.ExceptionHandler" />
+	<bean id="exceptionHandler" class="com.exam.system.core.shiro.exception.ExceptionHandler" />
 	
 	<!-- 配置国际化资源 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
             <list>
                 <value>i18n/message</value>
+                <value>i18n/validationMessage</value>
             </list>
         </property>
         <property name="useCodeAsDefaultMessage" value="false" />

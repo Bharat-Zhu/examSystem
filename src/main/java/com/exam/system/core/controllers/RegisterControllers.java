@@ -23,6 +23,5 @@ public class RegisterControllers {
 	@RequestMapping(value = "register", method = RequestMethod.POST)
 	public void register(Employee emp) {
 		int result = employeeService.addEmployee(emp);
-		LogUtils.log(getClass()).info("ADD Employee -->" + result);
 	}
 }

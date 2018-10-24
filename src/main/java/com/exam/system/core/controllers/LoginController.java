@@ -1,8 +1,8 @@
 package com.exam.system.core.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import com.exam.system.core.entitys.User;
+import com.exam.system.core.utils.LogUtils;
+import com.exam.system.core.utils.MessageUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -13,45 +13,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.exam.system.core.entitys.User;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Locale;
+import java.util.Map;
 
 @Controller
-public class LoginController {
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login() {
+public class LoginController extends BaseController {
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
         return "loginPage";
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request, User user) {
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ModelAndView login(HttpServletRequest request, User user, Map<String, Object> map) {
         HttpSession session = request.getSession();
         Object locale = session.getAttribute("org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE");
         session.setAttribute("LOCALE", locale);
-        System.out.println(user.getId() + "<---->" + user.getPassword());
-        
+
         Subject currentUser = SecurityUtils.getSubject();
-        
+
         if (!currentUser.isAuthenticated()) {
-        	UsernamePasswordToken token = new UsernamePasswordToken(user.getId(), user.getPassword());
-        	
-        	token.setRememberMe(false);
-        	
-        	try {
+            UsernamePasswordToken token = new UsernamePasswordToken(user.getId(), user.getPassword());
+
+            token.setRememberMe(false);
+            map.put("user", user);
+            try {
                 currentUser.login(token);
-            } catch(UnknownAccountException e) {
-				System.out.println("登录失败：");
-			} catch(AuthenticationException e) {
-				System.out.println("登录失败：");
-			} catch (Exception e) {
-				System.out.println("登录失败：");
-			}
+            } catch (UnknownAccountException e) {
+                LogUtils.log(getClass()).info(MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
+                map.put("loginErr", MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
+                return new ModelAndView("loginPage");
+            } catch (AuthenticationException e) {
+                LogUtils.log(getClass()).info(MessageUtils.getMessage("validation.constrains.login.error.message"));
+                map.put("loginErr", MessageUtils.getMessage("validation.constrains.login.error.message"));
+                return new ModelAndView("loginPage");
+            }
         }
-        
+
         return new ModelAndView("redirect:home");
-	}
-	
-	@RequestMapping("/home")
-	public String home() {
-		return "home.page";
-	}
+    }
+
+    @RequestMapping("/home")
+    public String home() {
+        return "home.page";
+    }
 }

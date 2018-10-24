@@ -34,7 +34,7 @@
 	<div class="form-group">
 		<label for="registerPassword" class="col-sm-4 control-label"><spring:message code="login.password" /></label>
 		<div class="col-sm-6">
-			<input type="text" class="form-control" id="registerPassword" name="password"
+			<input type="password" class="form-control" id="registerPassword" name="password"
 				   placeholder='<spring:message code="login.password.prompt.content" />'>
 		</div>
 	</div>
