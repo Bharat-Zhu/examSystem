@@ -1,8 +1,10 @@
 package com.exam.system.core.controllers;
 
-import com.exam.system.core.entitys.User;
-import com.exam.system.core.utils.LogUtils;
-import com.exam.system.core.utils.MessageUtils;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -13,10 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Locale;
-import java.util.Map;
+import com.exam.system.core.entitys.User;
+import com.exam.system.core.utils.LogUtils;
+import com.exam.system.core.utils.MessageUtils;
 
 @Controller
 public class LoginController extends BaseController {

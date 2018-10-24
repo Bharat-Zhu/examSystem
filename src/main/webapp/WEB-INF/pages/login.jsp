@@ -10,7 +10,9 @@
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/static/common/images/logo.ico"/>
     <title><spring:message code="login.title"/></title>
     <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/bootstrap/css/bootstrap.css"/>
+          href="${pageContext.request.contextPath }/static/vendors/bootstrap/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/css/bootstrapvalidator.min.css"/>
     <link type="text/css" rel="stylesheet"
           href="${pageContext.request.contextPath }/static/vendors/font-awesome/css/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet"
@@ -22,12 +24,23 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/static/vendors/layer/layer.js"></script>
     <script type="text/javascript"
             src="${pageContext.request.contextPath }/static/vendors/toastr/toastr.min.js"></script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript">
         $(function () {
+        	$("#loginForm").bootstrapValidator();
             var error = "${loginErr}";
             if (error != "") {
                 showToast(error, "error");
             }
+            
+            $("#register").on("click", function() {
+            	layer.open({
+            		type: 2,
+            		content: 'register',
+            		area: ['500px', '600px'],
+            	});
+            });
         });
 
         function showToast(msg, shortCutFunction) {
@@ -79,7 +92,7 @@
         <div class="page-header" style="width: 95%;margin: 20px auto; "></div>
         <div class="form-group">
             <div class="col-sm-7 input-group text-right" style="margin: auto;">
-                <a href="register"><spring:message code="register.title"/></a>
+                <a id="register" href="javascript:void(0);"><spring:message code="register.title"/></a>
                 &nbsp;&nbsp;
                 <button class="btn btn-success">
                     <spring:message code="login.submit"/>
