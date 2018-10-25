@@ -12,7 +12,7 @@
     <link type="text/css" rel="stylesheet"
           href="${pageContext.request.contextPath }/static/vendors/bootstrap/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/css/bootstrapvalidator.min.css"/>
+          href="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/css/bootstrapValidator.min.css"/>
     <link type="text/css" rel="stylesheet"
           href="${pageContext.request.contextPath }/static/vendors/font-awesome/css/font-awesome.min.css"/>
     <link type="text/css" rel="stylesheet"
@@ -28,7 +28,32 @@
             src="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript">
         $(function () {
-        	$("#loginForm").bootstrapValidator();
+        	$("#loginForm").bootstrapValidator({
+                live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+                excluded: [':disabled', ':hidden', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
+                submitButtons: '#submit_btn',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
+                fields: {
+                    id: {
+                        validators: {
+                            notEmpty: {
+                                message: '<spring:message code="validation.constrains.notNull.message" />'
+                            },
+                        },
+                    },
+                    password: {
+                        validators: {
+                            notEmpty: {
+                                message: '<spring:message code="validation.constrains.notNull.message" />'
+                            },
+                        },
+                    }
+                }
+            });
+
+        	$("#submit_btn").on('click', function () {
+                $("#loginForm").bootstrapValidator('validate');
+            });
+
             var error = "${loginErr}";
             if (error != "") {
                 showToast(error, "error");
@@ -38,7 +63,8 @@
             	layer.open({
             		type: 2,
             		content: 'register',
-            		area: ['500px', '600px'],
+                    title: '<spring:message code="register.title" />',
+            		area: ['500px', '550px'],
             	});
             });
         });
@@ -63,11 +89,11 @@
         }
     </script>
 </head>
-<body>
+<body background="#f9f9f9">
 <div class="center-block" style="margin-top: 8%; border: 1px solid #d5d5d5; border-radius: 2%; width: 30%;">
     <div class="page-header" style="width: 95%;margin: 0 auto;">
         <h1>
-            <spring:message code="examSystem.title"/>
+            <spring:message code="login.title"/>
         </h1>
     </div>
     <div class="text-right" style="height: 35px;line-height: 35px; padding-right: 3%;">
@@ -75,17 +101,17 @@
         <a href="?la=en_US"><spring:message code="language.en"/></a>
     </div>
     <form id="loginForm" class="form-horizontal" action="login" method="post" role="form">
-        <div class="form-group">
-            <div class="col-sm-7 input-group" style="margin: auto;">
-                <span class="input-group-addon"><i class="fa fa-user" style="font-size:20px"></i></span>
+        <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user" style="font-size:18px"></i></span>
                 <input type="text" class="form-control" name="id" value="${user.id}"
                        placeholder='<spring:message code="login.id" />' required>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-sm-7 input-group" style="margin: auto;">
-                <label for="loginPassword" class="input-group-addon"><i class="fa fa-lock" style="font-size:20px"></i></label>
-                <input id="loginPassword" type="password" class="form-control" name="password"
+        <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock" style="font-size:20px"></i></span>
+                <input type="password" class="form-control" name="password"
                        placeholder='<spring:message code="login.password" />' required>
             </div>
         </div>
@@ -94,7 +120,7 @@
             <div class="col-sm-7 input-group text-right" style="margin: auto;">
                 <a id="register" href="javascript:void(0);"><spring:message code="register.title"/></a>
                 &nbsp;&nbsp;
-                <button class="btn btn-success">
+                <button type="submit" id="submit_btn" class="btn btn-success">
                     <spring:message code="login.submit"/>
                     <i class="fa fa-angle-double-right"></i>
                 </button>

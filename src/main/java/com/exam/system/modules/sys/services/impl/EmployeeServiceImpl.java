@@ -22,5 +22,4 @@ public class EmployeeServiceImpl implements EmployeeService {
 		PasswordService.encryptPassword(emp);
 		return employeeMapper.insetEmployee(emp);
 	}
-
 }
