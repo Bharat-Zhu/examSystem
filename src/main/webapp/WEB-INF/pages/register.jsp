@@ -22,6 +22,22 @@
             src="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript">
         $(function () {
+            var messageStatus = "${registerStatus}";
+
+            if (messageStatus != "") {
+                var message = "${registerMessage}";
+                layer.alert(message, {
+                    title: false,
+                    closeBtn: 0,
+                }, function (index) {
+                    if (messageStatus == "1") {
+                        closeIFrame();
+                    } else {
+                        layer.close(index);
+                    }
+                });
+            }
+
             $("#registerForm").bootstrapValidator({
                 live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
                 excluded: [':disabled', ':hidden', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
@@ -73,10 +89,14 @@
             });
 
             $("#close_btn").on('click', function () {
-                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(index);
+                closeIFrame();
             });
         });
+
+        function closeIFrame() {
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index);
+        }
     </script>
 </head>
 <body>
@@ -86,14 +106,14 @@
         <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user" style="font-size:18px"></i></span>
-                <input type="text" class="form-control" name="id" value="${user.id}"
+                <input type="text" class="form-control" name="id" value="${employee.id}"
                        placeholder='<spring:message code="login.id" />' required>
             </div>
         </div>
         <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
             <div class="input-group">
                 <span class="input-group-addon" style="font-size: 18px;"><b>N</b></span>
-                <input type="text" class="form-control" name="name"
+                <input type="text" class="form-control" name="name" value="${employee.name}"
                        placeholder='<spring:message code="register.name" />' required>
             </div>
         </div>
@@ -107,14 +127,14 @@
         <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-envelope" style="font-size:14px"></i></span>
-                <input type="email" class="form-control" name="email"
+                <input type="email" class="form-control" name="email" value="${employee.email}"
                        placeholder='<spring:message code="register.email" />' required>
             </div>
         </div>
         <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-phone" style="font-size:18px"></i></span>
-                <input type="tel" class="form-control" name="phone"
+                <input type="tel" class="form-control" name="phone" value="${employee.phone}"
                        placeholder='<spring:message code="register.phone" />' required>
             </div>
         </div>

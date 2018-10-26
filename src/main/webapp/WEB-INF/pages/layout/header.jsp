@@ -25,11 +25,16 @@
                 <ul class="dropdown-menu">
                     <li><a href="#">Action</a></li>
                     <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-key" style="font-size: 16px;"></i>
+                            <spring:message code="exam.system.update.password"/>
+                        </a>
+                    </li>
                     <li class="divider"></li>
                     <li>
                         <a href="logout">
-                            <i class="fa fa-sign-out" style="font-size: 20px;"></i>
+                            <i class="fa fa-sign-out" style="font-size: 16px;"></i>
                             <span style="line-height: 10px;"><spring:message code="exam.system.user.exit"/></span>
                         </a>
                     </li>

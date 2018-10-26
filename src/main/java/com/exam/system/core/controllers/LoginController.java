@@ -23,16 +23,15 @@ import com.exam.system.core.utils.MessageUtils;
 public class LoginController extends BaseController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
+    public String login(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Object locale = session.getAttribute("org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE");
+        session.setAttribute("LOCALE", locale);
         return "loginPage";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login(HttpServletRequest request, User user, Map<String, Object> map) {
-        HttpSession session = request.getSession();
-        Object locale = session.getAttribute("org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE");
-        session.setAttribute("LOCALE", locale);
-
+    public ModelAndView login( User user, Map<String, Object> map) {
         Subject currentUser = SecurityUtils.getSubject();
 
         if (!currentUser.isAuthenticated()) {

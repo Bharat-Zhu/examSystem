@@ -10,6 +10,7 @@ import com.exam.system.core.utils.LogUtils;
 import com.exam.system.modules.sys.entitys.Employee;
 import com.exam.system.modules.sys.services.EmployeeService;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
@@ -25,16 +26,18 @@ public class RegisterControllers {
 	}
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String register(Employee emp, Map<String, String> map) {
+	public ModelAndView register(Employee emp, Map<String, String> map) {
 	    try {
             int result = employeeService.addEmployee(emp);
             LogUtils.log(getClass()).info(MessageUtils.getMessage("validation.constrains.insert.success.message", result));
-            map.put("1", "success");
+            map.put("registerStatus", "1");
+            map.put("registerMessage", MessageUtils.getMessage("validation.constrains.register.success.message"));
 	    } catch (Exception e) {
-            LogUtils.log(getClass()).error(MessageUtils.getMessage("validation.constrains.insert.fail.message"));
-            map.put("0", "fail");
+            LogUtils.log(getClass()).error(MessageUtils.getMessage("validation.constrains.insert.fail.message") + "--->" + e.getMessage());
+            map.put("registerStatus", "0");
+            map.put("registerMessage", MessageUtils.getMessage("validation.constrains.register.fail.message"));
         }
 
-        return "register";
+        return new ModelAndView("register");
 	}
 }
