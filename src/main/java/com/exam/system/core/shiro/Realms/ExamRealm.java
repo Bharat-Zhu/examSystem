@@ -23,7 +23,9 @@ public class ExamRealm extends AuthorizingRealm {
 	
 	// 授权
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		// TODO Auto-generated method stub
+		// 从PrincipalCollection中获取用户登录的信息
+        Object principal = principals.getPrimaryPrincipal();
+
 		return null;
 	}
 
@@ -46,7 +48,6 @@ public class ExamRealm extends AuthorizingRealm {
                         user.getPassword(),
                         ByteSource.Util.bytes(user.getSalt()),
                         getName());
-        LogUtils.log(getClass()).info(user.getName() + "Authentication success.");
 		return authenticationInfo;
 	}
 
