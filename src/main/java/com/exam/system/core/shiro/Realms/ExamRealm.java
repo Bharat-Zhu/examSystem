@@ -1,5 +1,6 @@
 package com.exam.system.core.shiro.Realms;
 
+import com.exam.system.core.utils.LogUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -26,7 +27,7 @@ public class ExamRealm extends AuthorizingRealm {
 		return null;
 	}
 
-	// 认证
+    // 认证
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		// 把AuthenticationToken转为UsernamePasswordToken
 	    UsernamePasswordToken uptoken = (UsernamePasswordToken)token;
@@ -45,7 +46,35 @@ public class ExamRealm extends AuthorizingRealm {
                         user.getPassword(),
                         ByteSource.Util.bytes(user.getSalt()),
                         getName());
+        LogUtils.log(getClass()).info(user.getName() + "Authentication success.");
 		return authenticationInfo;
 	}
 
+    @Override
+    protected void clearCachedAuthorizationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthorizationInfo(principals);
+    }
+
+    @Override
+    protected void clearCachedAuthenticationInfo(PrincipalCollection principals) {
+        super.clearCachedAuthenticationInfo(principals);
+    }
+
+    @Override
+    protected void clearCache(PrincipalCollection principals) {
+        super.clearCache(principals);
+    }
+
+    public void clearAllCachedAuthorizationInfo() {
+        getAuthorizationCache().clear();
+    }
+
+    public void clearAllCachedAuthenticationInfo() {
+        getAuthenticationCache().clear();
+    }
+
+    public void clearAllCache() {
+        clearAllCachedAuthenticationInfo();
+        clearAllCachedAuthorizationInfo();
+    }
 }
