@@ -1,6 +1,5 @@
 package com.exam.system.core.shiro.Realms;
 
-import com.exam.system.core.utils.LogUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

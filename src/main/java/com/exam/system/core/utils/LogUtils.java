@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 
 public class LogUtils {
 
-    public static Logger log(Class<?> c) {
-        return LoggerFactory.getLogger(c);
+    public static Logger log(Object o) {
+        return LoggerFactory.getLogger(o.getClass());
     }
 
 }

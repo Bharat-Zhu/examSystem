@@ -13,6 +13,7 @@
 		
 	<!-- 自动扫描dao和service包(自动注入) -->
 	<context:component-scan base-package="com.exam.system.modules.*.mappers" />
+	<context:component-scan base-package="com.exam.system.*.services" />
 	<context:component-scan base-package="com.exam.system.modules.*.services" />
 
 	<aop:config proxy-target-class="true" />

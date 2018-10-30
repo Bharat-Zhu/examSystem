@@ -2,14 +2,28 @@ package com.exam.system.core.entitys;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+	
+	@NotEmpty
 	private String id;
+	
+	@NotEmpty
 	private String name;
+	
+	@Length(min = 6, max = 16)
 	private String password;
 	private String salt;
+	
+	@Email
 	private String email;
+	
 	private String phone;
 
 	/**

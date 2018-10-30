@@ -1,34 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cache-control" content="no-cache">
-    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/static/common/images/logo.ico"/>
+    <link rel="icon" type="image/x-icon" href="${staticCommonPath}/images/logo.ico"/>
     <title><spring:message code="login.title"/></title>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/bootstrap/css/bootstrap.min.css"/>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/css/bootstrapValidator.min.css"/>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/font-awesome/css/font-awesome.min.css"/>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/toastr/toastr.min.css"/>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath }/static/vendors/jquery/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath }/static/vendors/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/static/vendors/layer/layer.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath }/static/vendors/toastr/toastr.min.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrap/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrapvalidator/css/bootstrapValidator.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/font-awesome/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/vendors/toastr/toastr.min.css"/>
+    <script type="text/javascript" src="${staticVendorsPath}/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/vendors/layer/layer.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/toastr/toastr.min.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript">
         $(function () {
-        	$("#loginForm").bootstrapValidator({
+            $("#loginForm").bootstrapValidator({
                 live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
                 excluded: [':disabled', ':hidden', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
                 fields: {
@@ -53,14 +45,14 @@
             if (error != "") {
                 showToast(error, "error");
             }
-            
-            $("#register").on("click", function() {
-            	layer.open({
-            		type: 2,
-            		content: 'register',
+
+            $("#register").on("click", function () {
+                layer.open({
+                    type: 2,
+                    content: 'register',
                     title: '<spring:message code="register.title" />',
-            		area: ['500px', '550px'],
-            	});
+                    area: ['500px', '550px'],
+                });
             });
         });
 

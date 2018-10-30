@@ -31,7 +31,7 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ModelAndView login( User user, Map<String, Object> map) {
+    public ModelAndView login(User user, Map<String, Object> map) {
         Subject currentUser = SecurityUtils.getSubject();
 
         if (!currentUser.isAuthenticated()) {
@@ -41,13 +41,13 @@ public class LoginController extends BaseController {
             map.put("user", user);
             try {
                 currentUser.login(token);
-                LogUtils.log(getClass()).info(user.getName() + "Authentication success.");
+                LogUtils.log(this).info(user.getName() + "Authentication success.");
             } catch (UnknownAccountException e) {
-                LogUtils.log(getClass()).info(MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
+                LogUtils.log(this).info(MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
                 map.put("loginErr", MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
                 return new ModelAndView("loginPage");
             } catch (AuthenticationException e) {
-                LogUtils.log(getClass()).info(MessageUtils.getMessage("validation.constrains.login.error.message"));
+                LogUtils.log(this).info(MessageUtils.getMessage("validation.constrains.login.error.message"));
                 map.put("loginErr", MessageUtils.getMessage("validation.constrains.login.error.message"));
                 return new ModelAndView("loginPage");
             }

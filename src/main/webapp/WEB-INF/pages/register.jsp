@@ -1,25 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/static/common/images/logo.ico"/>
+    <link rel="icon" type="image/x-icon" href="${staticCommonPath}/images/logo.ico"/>
     <title><spring:message code="register.title"/></title>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/bootstrap/css/bootstrap.css"/>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/css/bootstrapValidator.min.css"/>
-    <link type="text/css" rel="stylesheet"
-          href="${pageContext.request.contextPath }/static/vendors/font-awesome/css/font-awesome.min.css"/>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath }/static/vendors/jquery/jquery.min.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath }/static/vendors/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath }/static/vendors/layer/layer.js"></script>
-    <script type="text/javascript"
-            src="${pageContext.request.contextPath }/static/vendors/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrap/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrapvalidator/css/bootstrapValidator.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/font-awesome/css/font-awesome.min.css"/>
+    <script type="text/javascript" src="${staticVendorsPath}/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/layer/layer.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript">
         $(function () {
             var messageStatus = "${registerStatus}";
@@ -138,9 +132,17 @@
                        placeholder='<spring:message code="register.phone" />' required>
             </div>
         </div>
+        <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-birthday-cake" style="font-size:14px"></i></span>
+                <input type="text" class="form-control" name="birth" value="${employee.birth}"
+                       placeholder='<spring:message code="register.birth" />'>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-sm-7 input-group text-right" style="margin: auto;">
-                <input id="close_btn" class="btn btn-default" style="width: 70px;" value='<spring:message code="examSystem.close"/>' />
+                <input id="close_btn" class="btn btn-default" style="width: 70px;"
+                       value='<spring:message code="examSystem.close"/>'/>
                 &nbsp;&nbsp;
                 <button type="submit" id="submit_btn" class="btn btn-success">
                     <spring:message code="register.submit"/>
