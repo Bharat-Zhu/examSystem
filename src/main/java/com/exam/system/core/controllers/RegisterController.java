@@ -18,7 +18,7 @@ import com.exam.system.modules.sys.entitys.Employee;
 import com.exam.system.modules.sys.services.EmployeeService;
 
 @Controller
-public class RegisterControllers {
+public class RegisterController {
 	
 	@Autowired
 	private EmployeeService employeeService;
