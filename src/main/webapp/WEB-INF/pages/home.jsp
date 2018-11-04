@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <div class="tabbable" id="tabs-640706">
 	<ul class="nav nav-tabs">
 		<li><a href="#panel-662885" data-toggle="tab">Section 1</a></li>

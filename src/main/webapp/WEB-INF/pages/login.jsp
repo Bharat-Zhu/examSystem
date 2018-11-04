@@ -12,10 +12,10 @@
     <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrap/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrapvalidator/css/bootstrapValidator.min.css"/>
     <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/font-awesome/css/font-awesome.min.css"/>
-    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/vendors/toastr/toastr.min.css"/>
+    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/toastr/toastr.min.css"/>
     <script type="text/javascript" src="${staticVendorsPath}/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="${staticVendorsPath}/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${staticVendorsPath}/vendors/layer/layer.js"></script>
+    <script type="text/javascript" src="${staticVendorsPath}/layer/layer.js"></script>
     <script type="text/javascript" src="${staticVendorsPath}/toastr/toastr.min.js"></script>
     <script type="text/javascript" src="${staticVendorsPath}/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
     <script type="text/javascript">

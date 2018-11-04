@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <div class="panel-group" id="panel-41197">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -6,7 +9,9 @@
                 Group Item #1</a>
         </div>
         <div id="panel-element-661221" class="panel-collapse collapse in">
-            <div class="panel-body">Anim pariatur cliche...</div>
+            <div class="panel-body">
+            	<a href="${appPath }/sys/system">System</a>
+            </div>
         </div>
     </div>
     <div class="panel panel-default">

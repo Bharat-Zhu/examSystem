@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header" style="border-right: 1px solid #e6e6e6;">
         <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -33,7 +33,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="logout">
+                        <a href="${appPath }/logout">
                             <i class="fa fa-sign-out" style="font-size: 16px;"></i>
                             <span style="line-height: 10px;"><spring:message code="exam.system.user.exit"/></span>
                         </a>

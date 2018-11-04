@@ -6,7 +6,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="${staticCommonPath}/images/logo.ico"/>
-    <title><spring:message code="register.title"/></title>
     <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrap/css/bootstrap.css"/>
     <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrapvalidator/css/bootstrapValidator.min.css"/>
     <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/font-awesome/css/font-awesome.min.css"/>
