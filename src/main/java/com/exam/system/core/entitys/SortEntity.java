@@ -1,42 +1,39 @@
 package com.exam.system.core.entitys;
 
 public class SortEntity {
-    private String sidx;
-    private String sord;
+	private String sidx;
+	private String order;
 
-    /**
-     * 获取sidx
-     *
-     * @return sidx sidx
-     */
-    public String getSidx() {
-        return sidx;
-    }
+	/**
+	 * 获取sidx
+	 *
+	 * @return sidx sidx
+	 */
+	public String getSidx() {
+		return sidx;
+	}
 
-    /**
-     * 设置sidx
-     *
-     * @param sidx sidx
-     */
-    public void setSidx(String sidx) {
-        this.sidx = sidx;
-    }
+	/**
+	 * 设置sidx
+	 *
+	 * @param sidx sidx
+	 */
+	public void setSidx(String sidx) {
+		this.sidx = sidx;
+	}
 
-    /**
-     * 获取sord
-     *
-     * @return sord sord
-     */
-    public String getSord() {
-        return sord;
-    }
+	/**
+	 * @return the order
+	 */
+	public String getOrder() {
+		return order;
+	}
 
-    /**
-     * 设置sord
-     *
-     * @param sord sord
-     */
-    public void setSord(String sord) {
-        this.sord = sord;
-    }
+	/**
+	 * @param order the order to set
+	 */
+	public void setOrder(String order) {
+		this.order = order;
+	}
+
 }

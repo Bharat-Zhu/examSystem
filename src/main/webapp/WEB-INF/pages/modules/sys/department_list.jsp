@@ -5,6 +5,7 @@
     $(function () {
         $("#dept_list").jqGrid({
             url: '${appPath}/sys/showDepts',
+            mtype: 'POST',
             datatype: "json",
             styleUI: 'Bootstrap',//设置jqgrid的全局样式为bootstrap样式
             colModel: [
@@ -20,7 +21,6 @@
                     }},
             ],
             sortable: true,
-            sortorder:'asc',
             viewrecords: false,
             height: 300,
             rowNum: 10,
