@@ -7,7 +7,7 @@
 	</select>
 	
 	<insert id="insetEmployee" parameterType="com.exam.system.modules.sys.entitys.Employee">
-		insert into tbl_employee(id, name, password, email, phone, salt)
+		insert into tbl_employee(id, name, password, email, tel, salt)
         values
         (#{emp.id}, #{emp.name}, #{emp.password}, #{emp.email}, #{emp.phone}, #{emp.salt})
 	</insert>

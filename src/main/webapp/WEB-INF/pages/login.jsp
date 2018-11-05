@@ -49,7 +49,7 @@
             $("#register").on("click", function () {
                 layer.open({
                     type: 2,
-                    content: 'register',
+                    content: '${appPath}/register',
                     title: '<spring:message code="register.title" />',
                     area: ['500px', '550px'],
                 });
@@ -87,7 +87,7 @@
         <a href="?la=zh_CN"><spring:message code="language.cn"/></a>
         <a href="?la=en_US"><spring:message code="language.en"/></a>
     </div>
-    <form id="loginForm" class="form-horizontal" action="login" method="post" role="form">
+    <form id="loginForm" class="form-horizontal" action="${appPath}/login" method="post" role="form">
         <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user" style="font-size:18px"></i></span>

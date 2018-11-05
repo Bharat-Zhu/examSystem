@@ -11,3 +11,20 @@
 	width: 100%;
 	text-align: center;
 }
+
+.panel-heading a:hover{
+    text-decoration: none;
+}
+
+.panel-body ul li a:hover{
+    text-decoration: none;
+}
+
+a.list-group-item:hover{
+    color: #5bc0de;
+}
+
+a.list-group-item{
+    color: #3276b1;
+    padding-left: 34px;
+}

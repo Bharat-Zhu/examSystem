@@ -41,7 +41,7 @@ public class LoginController extends BaseController {
             map.put("user", user);
             try {
                 currentUser.login(token);
-                LogUtils.log(this).info(user.getName() + "Authentication success.");
+                LogUtils.log(this).info(user.getId() + " Authentication success.");
             } catch (UnknownAccountException e) {
                 LogUtils.log(this).info(MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
                 map.put("loginErr", MessageUtils.getMessage("validation.constrains.login.ID.error.message"));

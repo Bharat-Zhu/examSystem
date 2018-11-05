@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exam.system.modules.sys.mappers.DepartmentMapper">
+
+    <resultMap id="MyDept" type="com.exam.system.modules.sys.entitys.Department">
+        <id column="department_id" property="departmentId" />
+        <result column="name" property="name" />
+        <result column="tel" property="tel" />
+        <result column="remark" property="remark" />
+        <result column="create_id" property="createId" />
+        <result column="update_id" property="updateId" />
+        <result column="create_datetime" property="createDatetime" />
+        <result column="update_datetime" property="updateDatetime" />
+        <result column="del_flag" property="delFlag" />
+        <result column="extend_first" property="extendFirst" />
+        <result column="extend_second" property="extendSecond" />
+    </resultMap>
+
+    <sql id="MyColumn">
+        department_id, name, tel, remark, create_id
+    </sql>
+    
+    <select id="selectAll" resultMap="MyDept">
+        SELECT <include refid="MyColumn" /> FROM tbl_department WHERE del_flag = '1'
+    </select>
+</mapper>

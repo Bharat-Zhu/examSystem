@@ -23,20 +23,25 @@
     </div>
     <div class="clearfix" style="margin-top:50px; min-height: 696px;">
         <div class="col-md-2 column"
-             style="border-right: 1px solid #e6e6e6; min-height: 696px; padding-top: 5px; padding-left: 0; padding-right: 0;">
+             style="border-right: 1px solid #e6e6e6; min-height: 696px; padding: 0 0;">
             <!-- Menu -->
             <tiles:insertAttribute name="menu"/>
-            <div style="height: 30px;padding: 14px 0; margin-top: 15px;">
+            <div style="height: 30px;padding: 14px 0; margin-top: 60px;">
                 <div style="height:1px; background-color: #e5e5e5;"></div>
                 <div style=" text-align: center;background: transparent; margin-top: -13px;">
                     <a href="#"><i class="fa fa-chevron-circle-left" style="font-size:24px"></i></a>
                 </div>
             </div>
         </div>
-        <div class="col-md-10 column" style="padding-top: 5px;">
-            <!-- 面包屑导航 -->
-            <!-- 内容 -->
-            <tiles:insertAttribute name="body"/>
+        <div class="col-md-10 column" >
+            <div style="border-bottom:1px solid #d5d5d5;height: 50px; line-height: 50px;">
+            <!-- 导航 -->
+            <tiles:insertAttribute name="navigate"/>
+            </div>
+            <div>
+                <!-- 内容 -->
+                <tiles:insertAttribute name="body"/>
+            </div>
         </div>
     </div>
     <div id="footer" class="clearfix"

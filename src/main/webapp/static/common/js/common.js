@@ -8,3 +8,8 @@ $(function() {
 		}
 	});
 });
+
+function clickMenu(obj, url) {
+    $("#navigate_title").text($(obj).text());
+    window.location.href = url;
+}
