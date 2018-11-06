@@ -31,15 +31,15 @@ function loadGirdData(selector, url, columnModel, pagerSelector) {
         multiselect: false,
         pager: pagerSelector,
         jsonReader: {
-            root: "dataList",
-            page: "currPage",
-            total: "totalpages",
-            records: "totalCount"
+            root: "rows",
+            page: "page",
+            total: "total",
+            records: "records",
+            repeatitems: true,
         },
         prmNames: {
             page: "page",
-            rows: "limit",
-            order: "order"
+            rows: "limit"
         },
         gridComplete: function () {
             //隐藏grid底部滚动条

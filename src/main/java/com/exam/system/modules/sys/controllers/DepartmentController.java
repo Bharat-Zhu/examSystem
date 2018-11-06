@@ -1,7 +1,8 @@
 package com.exam.system.modules.sys.controllers;
 
-import com.exam.system.modules.sys.entitys.Department;
-import com.exam.system.modules.sys.services.DepartmentService;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-import java.util.Map;
+import com.exam.system.core.entitys.FrontPage;
+import com.exam.system.core.utils.MessageUtils;
+import com.exam.system.modules.sys.entitys.Department;
+import com.exam.system.modules.sys.services.DepartmentService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/sys")
@@ -26,8 +31,10 @@ public class DepartmentController {
 
     @ResponseBody
     @RequestMapping("/showDepts")
-    public List<Department> getDeptJson(Department dept) {
-        return departmentService.getDepartmentByAll(dept);
+    public List<Department> getDeptJson(FrontPage<Department> page) {
+        List<Department> pageList = departmentService.getDepartmentByAll(page.getPagePlus());
+//        CustomPage<Department> CustomPage = new CustomPage<Department>(pageList);
+        return pageList;
     }
 
     @RequestMapping("/dept/info/{id}")
@@ -46,12 +53,19 @@ public class DepartmentController {
 
     @ResponseBody
     @RequestMapping("/dept/delete/{id}")
-    public String actionDeleteDeptById(@PathVariable("id") Integer id, Map<String, Object> map) {
+    public String actionDeleteDeptById(@PathVariable("id") Integer id, Map<String, Object> map) throws JsonProcessingException {
         Department dept = departmentService.getDepartmentById(id);
-        int result = departmentService.deleteDepartment(dept);
+        String message = "";
+        try {
+        	departmentService.deleteDepartment(dept);
+        	message = MessageUtils.getMessage("validation.constrains.delete.success.message");
+        } catch (Exception e) {
+        	message = MessageUtils.getMessage("validation.constrains.delete.fail.message");
+		}
         map.put("deptFlg", "dept_del");
-        map.put("result", result);
-        String resultString = "{\"result\":" + result + "}";
+        map.put("message", message);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String resultString = objectMapper.writeValueAsString(map);
         return resultString;
     }
 
@@ -64,13 +78,25 @@ public class DepartmentController {
     @RequestMapping("/dept/insertOrUpdate")
     public String actionInsertOrUpdate(Department dept, Map<String, Object> map) {
         int result = 0;
+        String message = "";
         if (dept.getDepartmentId() != null) {
             map.put("deptFlg", "dept_edit");
-            result = departmentService.updateDepartment(dept);
+            try {
+            	result = departmentService.updateDepartment(dept);
+            	message = MessageUtils.getMessage("validation.constrains.update.success.message", result);
+            } catch (Exception e) {
+            	message = MessageUtils.getMessage("validation.constrains.update.fail.message", result);
+			}
         } else {
             map.put("deptFlg", "dept_create");
-            result = departmentService.addDepartment(dept);
+            try {
+            	result = departmentService.addDepartment(dept);
+            	message = MessageUtils.getMessage("validation.constrains.insert.success.message", result);
+            } catch (Exception e) {
+            	message = MessageUtils.getMessage("validation.constrains.insert.fail.message", result);
+			}
         }
+        map.put("message", message);
         map.put("dept", dept);
         map.put("result", result);
         return "modules/sys/department_edit.action";

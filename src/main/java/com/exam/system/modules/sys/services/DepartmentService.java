@@ -1,11 +1,12 @@
 package com.exam.system.modules.sys.services;
 
-import com.exam.system.modules.sys.entitys.Department;
-
 import java.util.List;
 
+import com.baomidou.mybatisplus.plugins.Page;
+import com.exam.system.modules.sys.entitys.Department;
+
 public interface DepartmentService {
-    List<Department> getDepartmentByAll(Department dept);
+    List<Department> getDepartmentByAll(Page<Department> page);
 
     Department getDepartmentById(int id);
 

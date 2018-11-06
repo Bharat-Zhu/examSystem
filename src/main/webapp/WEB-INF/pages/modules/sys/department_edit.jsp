@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
+<style type="text/css">
+	div.content {
+	    width: 100%;
+	    height: auto;
+	    word-wrap:break-word;
+	    word-break:break-all;
+	    overflow: hidden;
+	}
+</style>
 <script type="text/javascript">
     $(function () {
         var result = "${result}";
 
         if (result != "") {
-            var message = "${result}";
+            var message = "${message}";
             layer.alert(message, {
                 title: false,
                 closeBtn: 0,
@@ -56,7 +65,7 @@
             <label class="col-sm-2 control-label"><spring:message code="exam.common.remark"/>:</label>
             <div class="col-sm-10">
                 <c:if test="${deptFlg == 'dept_info'}">
-                    ${dept.remark}
+                    <div class="content">${dept.remark}</div>
                 </c:if>
                 <c:if test="${deptFlg == 'dept_edit' || deptFlg == 'dept_create'}">
                     <textarea class="form-control" rows="5" name="remark"

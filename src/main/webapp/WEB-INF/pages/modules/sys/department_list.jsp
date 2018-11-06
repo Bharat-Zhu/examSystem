@@ -3,8 +3,10 @@
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <style>
     .ui-jqgrid tr.jqgrow td {
-        white-space: normal !important;
         height: auto;
+	    word-wrap:break-word;
+	    word-break:break-all;
+	    overflow: hidden;
     }
 </style>
 <script type="text/javascript">
@@ -82,15 +84,17 @@
     }
 
     function deleteDeptById(url) {
-        layer.confirm('是否删除当前这笔数据？', {
-            icon: 5, title: '提示'
+        layer.confirm('<spring:message code="validation.constrains.delete.message" />', {
+            icon: 5, title: '<spring:message code="exam.system.prompt.message" />'
         }, function (index) {
             ajaxRequest(url, function (data) {
-                layer.alert(data.result, {
-                    end: function () {
-                        jQuery("#dept_list").trigger("reloadGrid");
-                    }
-                });
+            	if (data.message != "") {
+            		layer.alert(data.message, {
+                        end: function () {
+                            jQuery("#dept_list").trigger("reloadGrid");
+                        }
+                    });
+            	}
             });
             layer.close(index);
         });

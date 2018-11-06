@@ -2,7 +2,7 @@ package com.exam.system.core.entitys;
 
 public class SortEntity {
 	private String sidx;
-	private String order;
+	private String sord;
 
 	/**
 	 * 获取sidx
@@ -23,17 +23,17 @@ public class SortEntity {
 	}
 
 	/**
-	 * @return the order
+	 * @return the sord
 	 */
-	public String getOrder() {
-		return order;
+	public String getSord() {
+		return sord;
 	}
 
 	/**
-	 * @param order the order to set
+	 * @param sord the sord to set
 	 */
-	public void setOrder(String order) {
-		this.order = order;
+	public void setSord(String sord) {
+		this.sord = sord;
 	}
 
 }

@@ -1,14 +1,14 @@
 package com.exam.system.core.shiro.exception;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class ExceptionHandler implements HandlerExceptionResolver {
 
@@ -29,7 +29,7 @@ public class ExceptionHandler implements HandlerExceptionResolver {
             mv.setViewName("login");
         } else {
             mv.addObject("exception", ex);
-            mv.setViewName("login");
+            mv.setViewName("error/error.action");
         }
         return mv;
     }

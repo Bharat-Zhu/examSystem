@@ -58,8 +58,8 @@
         <include refid="MyColumn"/>
         FROM tbl_department WHERE del_flag = '1' order by
         <choose>
-            <when test="sidx != '' and sidx != null and order != null">
-                ${sidx} ${order}
+            <when test="sidx != '' and sidx != null and sord != null">
+                ${sidx} ${sord}
             </when>
             <otherwise>
                 department_id ASC
