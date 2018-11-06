@@ -1,82 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="cache-control" content="no-cache">
-    <link rel="icon" type="image/x-icon" href="${staticCommonPath}/images/logo.ico"/>
-    <title><spring:message code="login.title"/></title>
-    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrap/css/bootstrap.min.css"/>
-    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrapvalidator/css/bootstrapValidator.min.css"/>
-    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/font-awesome/css/font-awesome.min.css"/>
-    <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/toastr/toastr.min.css"/>
-    <script type="text/javascript" src="${staticVendorsPath}/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="${staticVendorsPath}/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="${staticVendorsPath}/layer/layer.js"></script>
-    <script type="text/javascript" src="${staticVendorsPath}/toastr/toastr.min.js"></script>
-    <script type="text/javascript" src="${staticVendorsPath}/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#loginForm").bootstrapValidator({
-                live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
-                excluded: [':disabled', ':hidden', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
-                fields: {
-                    id: {
-                        validators: {
-                            notEmpty: {
-                                message: '<spring:message code="validation.constrains.notNull.message" />'
-                            },
+<script type="text/javascript">
+    $(function () {
+        $("#loginForm").bootstrapValidator({
+            live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+            excluded: [':disabled', ':hidden', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
+            fields: {
+                id: {
+                    validators: {
+                        notEmpty: {
+                            message: '<spring:message code="validation.constrains.notNull.message" />'
                         },
                     },
-                    password: {
-                        validators: {
-                            notEmpty: {
-                                message: '<spring:message code="validation.constrains.notNull.message" />'
-                            },
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: '<spring:message code="validation.constrains.notNull.message" />'
                         },
-                    }
+                    },
                 }
-            });
-
-            var error = "${loginErr}";
-            if (error != "") {
-                showToast(error, "error");
             }
-
-            $("#register").on("click", function () {
-                layer.open({
-                    type: 2,
-                    content: '${appPath}/register',
-                    title: '<spring:message code="register.title" />',
-                    area: ['500px', '550px'],
-                });
-            });
         });
 
-        function showToast(msg, shortCutFunction) {
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "progressBar": true,
-                "positionClass": "toast-top-center",
-                "onclick": null,
-                "showDuration": "400",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
-            toastr[shortCutFunction](msg);
+        var error = "${loginErr}";
+        if (error != "") {
+            showToast(error, "error");
         }
-    </script>
-</head>
-<body background="#f9f9f9">
+
+        $("#register").on("click", function () {
+            layer.open({
+                type: 2,
+                content: '${appPath}/register',
+                title: '<spring:message code="register.title" />',
+                area: ['500px', '550px'],
+            });
+        });
+    });
+
+    function showToast(msg, shortCutFunction) {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "progressBar": true,
+            "positionClass": "toast-top-center",
+            "onclick": null,
+            "showDuration": "400",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr[shortCutFunction](msg);
+    }
+</script>
 <div class="center-block" style="margin-top: 8%; border: 1px solid #d5d5d5; border-radius: 2%; width: 30%;">
     <div class="page-header" style="width: 95%;margin: 0 auto;">
         <h1>
@@ -115,5 +96,3 @@
         </div>
     </form>
 </div>
-</body>
-</html>

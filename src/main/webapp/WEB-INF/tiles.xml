@@ -3,10 +3,8 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="loginPage" template="/WEB-INF/pages/login.jsp" />
-	<definition name="register" template="/WEB-INF/pages/register.jsp" />
-    
-	<definition name="page.definition" template="/WEB-INF/pages/main_frame.jsp">
+
+    <definition name="page.definition" template="/WEB-INF/pages/main_frame.jsp">
         <put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp" />
         <put-attribute name="navigate" value="/WEB-INF/pages/layout/navigate.jsp" />
@@ -30,5 +28,25 @@
     <definition name="*/*/*/*.page" extends="page.definition">
         <put-attribute name="body" value="/WEB-INF/pages/{1}/{2}/{3}/{4}.jsp" />
     </definition>
-    
+
+    <definition name="action.definition" template="/WEB-INF/pages/main.jsp">
+        <put-attribute name="script" value="/WEB-INF/pages/static_resource.jsp" />
+        <put-attribute name="body" value="" />
+    </definition>
+
+    <definition name="*.action" extends="action.definition">
+        <put-attribute name="body" value="/WEB-INF/pages/{1}.jsp" />
+    </definition>
+
+    <definition name="*/*.action" extends="action.definition">
+        <put-attribute name="body" value="/WEB-INF/pages/{1}/{2}.jsp" />
+    </definition>
+
+    <definition name="*/*/*.action" extends="action.definition">
+        <put-attribute name="body" value="/WEB-INF/pages/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <definition name="*/*/*/*.action" extends="action.definition">
+        <put-attribute name="body" value="/WEB-INF/pages/{1}/{2}/{3}/{4}.jsp" />
+    </definition>
 </tiles-definitions>

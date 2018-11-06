@@ -10,8 +10,6 @@
     <link rel="icon" type="image/x-icon" href="${staticCommonPath}/images/logo.ico"/>
     <title><spring:message code="examSystem.title"/></title>
     <tiles:insertAttribute name="script"/>
-    <style type="text/css">
-    </style>
 </head>
 <body>
 <div>

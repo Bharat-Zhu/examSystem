@@ -1,9 +1,9 @@
 package com.exam.system.core.controllers;
 
-import java.util.Map;
-
-import javax.validation.Valid;
-
+import com.exam.system.core.utils.LogUtils;
+import com.exam.system.core.utils.MessageUtils;
+import com.exam.system.modules.sys.entitys.Employee;
+import com.exam.system.modules.sys.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.exam.system.core.utils.LogUtils;
-import com.exam.system.core.utils.MessageUtils;
-import com.exam.system.modules.sys.entitys.Employee;
-import com.exam.system.modules.sys.services.EmployeeService;
+import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 public class RegisterController {
@@ -25,7 +23,7 @@ public class RegisterController {
 	
 	@RequestMapping(value = "register", method = RequestMethod.GET)
 	public String register() {
-		return "register";
+		return "register.action";
 	}
 
 	@RequestMapping(value = "register", method = RequestMethod.POST)
@@ -36,7 +34,7 @@ public class RegisterController {
 	    		for (FieldError error : bindingResult.getFieldErrors()) {
 	    			LogUtils.log(this).info(error.getField() + ": " + error.getDefaultMessage());
 				}
-	    		return new ModelAndView("register");
+	    		return new ModelAndView("register.action");
 	    	}
 	    	
             int result = employeeService.addEmployee(emp);
@@ -49,6 +47,6 @@ public class RegisterController {
             map.put("registerMessage", MessageUtils.getMessage("validation.constrains.register.fail.message"));
         }
 
-        return new ModelAndView("register");
+        return new ModelAndView("register.action");
 	}
 }

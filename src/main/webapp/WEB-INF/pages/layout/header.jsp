@@ -13,20 +13,18 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a href="#">Link</a></li>
+            <li></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                <a class="dropdown-toggle" data-toggle="dropdown"
                    style="padding-top: 10px;padding-bottom: 10px; margin-right: 10px;">
                     <img src="${pageContext.request.contextPath}/static/common/images/default_user.jpg"
                          style="width: 30px;height:30px;" class="img-circle"><strong class="caret"></strong>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
                     <li>
-                        <a href="#">
+                        <a href="${appPath }/logout">
                             <i class="fa fa-key" style="font-size: 16px;"></i>
                             <spring:message code="exam.system.update.password"/>
                         </a>

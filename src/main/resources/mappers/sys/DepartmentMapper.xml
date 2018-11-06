@@ -3,32 +3,73 @@
 <mapper namespace="com.exam.system.modules.sys.mappers.DepartmentMapper">
 
     <resultMap id="MyDept" type="com.exam.system.modules.sys.entitys.Department">
-        <id column="department_id" property="departmentId" />
-        <result column="name" property="name" />
-        <result column="tel" property="tel" />
-        <result column="remark" property="remark" />
-        <result column="create_id" property="createId" />
-        <result column="update_id" property="updateId" />
-        <result column="create_datetime" property="createDatetime" />
-        <result column="update_datetime" property="updateDatetime" />
-        <result column="del_flag" property="delFlag" />
-        <result column="extend_first" property="extendFirst" />
-        <result column="extend_second" property="extendSecond" />
+        <id column="department_id" property="departmentId"/>
+        <result column="name" property="name"/>
+        <result column="tel" property="tel"/>
+        <result column="remark" property="remark"/>
+        <result column="create_id" property="createId"/>
+        <result column="update_id" property="updateId"/>
+        <result column="create_datetime" property="createDatetime"/>
+        <result column="update_datetime" property="updateDatetime"/>
+        <result column="del_flag" property="delFlag"/>
+        <result column="extend_first" property="extendFirst"/>
+        <result column="extend_second" property="extendSecond"/>
     </resultMap>
 
     <sql id="MyColumn">
         department_id, name, tel, remark, create_id
     </sql>
-    
+
+    <insert id="insertDepartment" parameterType="com.exam.system.modules.sys.entitys.Department">
+        insert into tbl_department(name, tel, remark, create_id, create_datetime, update_datetime)
+        values (#{name}, #{tel}, #{remark}, 'A00000', NOW(), NOW())
+    </insert>
+
+    <update id="updateDepartment" parameterType="com.exam.system.modules.sys.entitys.Department">
+        UPDATE tbl_department
+        <set>
+            <if test="name != null and name.trim() != ''">
+                name = #{name},
+            </if>
+            <if test="tel != null and tel.trim() != ''">
+                tel = #{tel},
+            </if>
+            <if test="remark != null and remark.trim() != ''">
+                remark = #{remark},
+            </if>
+            <if test="delFlag != null and delFlag.trim() != ''">
+                del_flag = #{delFlag},
+            </if>
+        </set>
+        <where>
+            department_id = #{departmentId}
+        </where>
+    </update>
+
+    <delete id="deleteDepartment" parameterType="com.exam.system.modules.sys.entitys.Department">
+        DELETE FROM tbl_department
+        <where>
+            department_id = #{departmentId}
+        </where>
+    </delete>
+
     <select id="selectAll" resultMap="MyDept">
-        SELECT <include refid="MyColumn" /> FROM tbl_department WHERE del_flag = '1' order by 
+        SELECT
+        <include refid="MyColumn"/>
+        FROM tbl_department WHERE del_flag = '1' order by
         <choose>
-        	<when test="sidx != '' and order != null">
-        		${sidx} ${order}
-        	</when>
-        	<otherwise>
-        		department_id ASC
-        	</otherwise>
-        </choose> 
+            <when test="sidx != '' and sidx != null and order != null">
+                ${sidx} ${order}
+            </when>
+            <otherwise>
+                department_id ASC
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="selectById" resultMap="MyDept">
+        SELECT
+        <include refid="MyColumn"/>
+        FROM tbl_department WHERE del_flag = '1' AND  department_id = #{id}
     </select>
 </mapper>

@@ -28,7 +28,7 @@
                     <i class="fa fa-puzzle-piece" style="font-size: 20px"></i>
                     部门管理
                 </a>
-                <a class="list-group-item" href="javascript:void(0);" onclick="clickMenu(this, '#')">
+                <a class="list-group-item" href="javascript:void(0);" onclick="clickMenu(this, '${appPath }/sys/user')">
                     <i class="fa fa-amazon" style="font-size: 18px;"></i>
                     角色管理
                 </a>

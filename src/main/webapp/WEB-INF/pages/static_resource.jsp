@@ -12,4 +12,10 @@
 <script type="text/javascript" src="${staticVendorsPath}/toastr/toastr.min.js"></script>
 <script type="text/javascript" src="${staticVendorsPath}/jqgrid/js/jquery.jqGrid.min.js"></script>
 <script type="text/javascript" src="${staticVendorsPath}/jqgrid/js/i18n/grid.locale-en.js"></script>
+<script type="text/javascript" src="${staticVendorsPath}/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript">
+    var requestFailedNotFoundMessage = '<spring:message code="request.failed.not.found.message" />';
+    var requestFailedErrorMessage = '<spring:message code="request.failed.error.message" />';
+    var requestFailedConnectTimeoutMessage = '<spring:message code="request.failed.connect.timeout.message" />';
+</script>
 <script type="text/javascript" src="${staticCommonPath}/js/common.js"></script>
