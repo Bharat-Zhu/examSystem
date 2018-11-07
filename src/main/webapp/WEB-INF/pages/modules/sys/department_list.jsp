@@ -3,10 +3,9 @@
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <style>
     .ui-jqgrid tr.jqgrow td {
-        height: auto;
-	    word-wrap:break-word;
-	    word-break:break-all;
-	    overflow: hidden;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 </style>
 <script type="text/javascript">
@@ -24,9 +23,9 @@
                     var infoUrl = "${appPath}/sys/dept/info/" + value;
                     var editUrl = "${appPath}/sys/dept/edit/" + value;
                     var deleteUrl = "${appPath}/sys/dept/delete/" + value;
-                    return '<div class="label label-info" style="display: inline-grid; width: 30px;"><a href="javascript:void(0);" onclick="infoDeptById(\'' + infoUrl + '\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
-                        + '<div class="label label-primary" style="display: inline-grid; width: 30px;"><a href="javascript:void(0);" onclick="editDeptById(\'' + editUrl + '\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
-                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;"><a href="javascript:void(0);" onclick="deleteDeptById(\'' + deleteUrl + '\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
+                    return '<div class="label label-info" style="display: inline-grid; width: 30px;" title="详情"><a href="javascript:void(0);" onclick="infoDeptById(\'' + infoUrl + '\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
+                        + '<div class="label label-primary" style="display: inline-grid; width: 30px;" title="编辑"><a href="javascript:void(0);" onclick="editDeptById(\'' + editUrl + '\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
+                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="deleteDeptById(\'' + deleteUrl + '\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
                 }
             }
         ];

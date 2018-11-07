@@ -1,8 +1,11 @@
 package com.exam.system.modules.sys.controllers;
 
-import java.util.List;
-import java.util.Map;
-
+import com.exam.system.core.entitys.FrontPage;
+import com.exam.system.core.utils.MessageUtils;
+import com.exam.system.modules.sys.entitys.Department;
+import com.exam.system.modules.sys.services.DepartmentService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,12 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.exam.system.core.entitys.FrontPage;
-import com.exam.system.core.utils.MessageUtils;
-import com.exam.system.modules.sys.entitys.Department;
-import com.exam.system.modules.sys.services.DepartmentService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/sys")
@@ -31,22 +30,19 @@ public class DepartmentController {
 
     @ResponseBody
     @RequestMapping("/showDepts")
-    public List<Department> getDeptJson(FrontPage<Department> page) {
-        List<Department> pageList = departmentService.getDepartmentByAll(page.getPagePlus());
+    public List<Department> getDeptJson(FrontPage<Department> page, Department dept) {
+        List<Department> pageList = departmentService.getDepartmentByAll(page.getPagePlus(), dept);
 //        CustomPage<Department> CustomPage = new CustomPage<Department>(pageList);
         return pageList;
     }
 
-    @RequestMapping("/dept/info/{id}")
-    public String actionShowDeptById(@PathVariable("id") Integer id, Map<String, Object> map) {
-        map.put("deptFlg", "dept_info");
-        map.put("dept", departmentService.getDepartmentById(id));
-        return "modules/sys/department_edit.action";
-    }
-
-    @RequestMapping("/dept/edit/{id}")
-    public String actionEditDeptById(@PathVariable("id") Integer id, Map<String, Object> map) {
-        map.put("deptFlg", "dept_edit");
+    @RequestMapping("/dept/{operate}/{id}")
+    public String actionShowDeptById(@PathVariable("operate") String operate, @PathVariable("id") Integer id, Map<String, Object> map) {
+        if ("info".equals(operate)) {
+            map.put("deptFlg", "dept_info");
+        } else if ("edit".equals(operate)){
+            map.put("deptFlg", "dept_edit");
+        }
         map.put("dept", departmentService.getDepartmentById(id));
         return "modules/sys/department_edit.action";
     }

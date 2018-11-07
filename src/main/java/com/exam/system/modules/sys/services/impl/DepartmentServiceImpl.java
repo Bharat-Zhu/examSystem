@@ -16,8 +16,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Autowired
     private DepartmentMapper departmentMapper;
 
-    public List<Department> getDepartmentByAll(Page<Department> page) {
-        return departmentMapper.selectAll(page);
+    public List<Department> getDepartmentByAll(Page<Department> page, Department dept) {
+        return departmentMapper.selectAll(page, dept);
     }
 
     @Override
