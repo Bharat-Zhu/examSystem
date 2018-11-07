@@ -7,7 +7,7 @@ import com.exam.system.modules.sys.entitys.Department;
 import java.util.List;
 
 public interface DepartmentMapper extends BaseMapper<Department> {
-    List<Department> selectAll(Page<Department> page, Department dept);
+    List<Department> selectAll(Page<Department> page, Integer state);
 
     //List<Department> selectByName(String dept_name);
 

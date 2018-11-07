@@ -1,8 +1,8 @@
-package com.exam.system.modules.sys.mappers;
+package com.exam.system.modules.staff.mappers;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.exam.system.modules.sys.entitys.Employee;
+import com.exam.system.modules.staff.entitys.Employee;
 
 public interface EmployeeMapper {
 	

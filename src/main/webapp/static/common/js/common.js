@@ -30,17 +30,6 @@ function loadGirdData(selector, url, columnModel, pagerSelector) {
         autowidth: true,
         multiselect: false,
         pager: pagerSelector,
-        jsonReader: {
-            root: "rows",
-            page: "page",
-            total: "total",
-            records: "records",
-            repeatitems: true,
-        },
-        prmNames: {
-            page: "page",
-            rows: "limit"
-        },
         gridComplete: function () {
             //隐藏grid底部滚动条
             $(selector).closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});

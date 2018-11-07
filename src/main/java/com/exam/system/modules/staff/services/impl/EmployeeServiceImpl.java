@@ -1,12 +1,12 @@
-package com.exam.system.modules.sys.services.impl;
+package com.exam.system.modules.staff.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exam.system.core.services.PasswordService;
-import com.exam.system.modules.sys.entitys.Employee;
-import com.exam.system.modules.sys.mappers.EmployeeMapper;
-import com.exam.system.modules.sys.services.EmployeeService;
+import com.exam.system.modules.staff.entitys.Employee;
+import com.exam.system.modules.staff.mappers.EmployeeMapper;
+import com.exam.system.modules.staff.services.EmployeeService;
 
 @Service("employeeService")
 public class EmployeeServiceImpl implements EmployeeService {

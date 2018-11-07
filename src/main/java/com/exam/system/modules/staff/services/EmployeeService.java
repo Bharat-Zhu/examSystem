@@ -1,6 +1,6 @@
-package com.exam.system.modules.sys.services;
+package com.exam.system.modules.staff.services;
 
-import com.exam.system.modules.sys.entitys.Employee;
+import com.exam.system.modules.staff.entitys.Employee;
 
 public interface EmployeeService {
 	

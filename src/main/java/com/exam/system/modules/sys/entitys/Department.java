@@ -1,11 +1,13 @@
 package com.exam.system.modules.sys.entitys;
 
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import com.exam.system.core.entitys.SortEntity;
-
-public class Department extends SortEntity implements Serializable {
+@TableName("tbl_department")
+public class Department extends Model<Department> implements Serializable {
 
 	/**
 	 * 
@@ -219,5 +221,10 @@ public class Department extends SortEntity implements Serializable {
 	 */
 	public void setExtendSecond(String extendSecond) {
 		this.extendSecond = extendSecond;
+	}
+
+	@Override
+	protected Serializable pkVal() {
+		return this.departmentId;
 	}
 }

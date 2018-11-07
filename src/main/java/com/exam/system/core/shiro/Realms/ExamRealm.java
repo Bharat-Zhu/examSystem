@@ -13,7 +13,7 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.exam.system.core.entitys.User;
-import com.exam.system.modules.sys.services.EmployeeService;
+import com.exam.system.modules.staff.services.EmployeeService;
 
 public class ExamRealm extends AuthorizingRealm {
 

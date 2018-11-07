@@ -1,13 +1,11 @@
-package com.exam.system.modules.sys.entitys;
-
-import java.io.Serializable;
-import java.util.Date;
-
-import javax.validation.constraints.Past;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package com.exam.system.modules.staff.entitys;
 
 import com.exam.system.core.entitys.User;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.Past;
+import java.io.Serializable;
+import java.util.Date;
 
 public class Employee extends User implements Serializable {
 

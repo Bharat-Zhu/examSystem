@@ -2,8 +2,8 @@ package com.exam.system.core.controllers;
 
 import com.exam.system.core.utils.LogUtils;
 import com.exam.system.core.utils.MessageUtils;
-import com.exam.system.modules.sys.entitys.Employee;
-import com.exam.system.modules.sys.services.EmployeeService;
+import com.exam.system.modules.staff.entitys.Employee;
+import com.exam.system.modules.staff.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

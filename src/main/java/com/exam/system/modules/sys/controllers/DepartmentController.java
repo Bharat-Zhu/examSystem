@@ -1,11 +1,14 @@
 package com.exam.system.modules.sys.controllers;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.exam.system.core.entitys.FrontPage;
 import com.exam.system.core.utils.MessageUtils;
 import com.exam.system.modules.sys.entitys.Department;
 import com.exam.system.modules.sys.services.DepartmentService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,11 +32,16 @@ public class DepartmentController {
     }
 
     @ResponseBody
-    @RequestMapping("/showDepts")
-    public List<Department> getDeptJson(FrontPage<Department> page, Department dept) {
-        List<Department> pageList = departmentService.getDepartmentByAll(page.getPagePlus(), dept);
-//        CustomPage<Department> CustomPage = new CustomPage<Department>(pageList);
-        return pageList;
+    @RequestMapping(value = "/showDepts")
+    public List<Department> getDeptJson(FrontPage<Department> page) {
+        Wrapper<Department> wrapper = new EntityWrapper<Department>();
+        //wrapper.eq("del_flag", "1");
+        int total = departmentService.selectCount(wrapper);
+        //Page<Department> pageList = departmentService.selectPage(page.getPagePlus(), wrapper);
+        //CustomPage<Department> customPage = new CustomPage<Department>(pageList, total);
+        //return JSON.toJSONString(customPage);
+        Page<Department> pageList = departmentService.getDepartmentByAll(page.getPagePlus(), total);
+        return pageList.getRecords();
     }
 
     @RequestMapping("/dept/{operate}/{id}")
@@ -60,9 +68,7 @@ public class DepartmentController {
 		}
         map.put("deptFlg", "dept_del");
         map.put("message", message);
-        ObjectMapper objectMapper = new ObjectMapper();
-        String resultString = objectMapper.writeValueAsString(map);
-        return resultString;
+        return JSON.toJSONString(map);
     }
 
     @RequestMapping("/dept/create")

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.exam.system.modules.sys.mappers.EmployeeMapper">
+<mapper namespace="com.exam.system.modules.staff.mappers.EmployeeMapper">
 
-	<select id="selectEmployeeById" resultType="com.exam.system.modules.sys.entitys.Employee">
+	<select id="selectEmployeeById" resultType="com.exam.system.modules.staff.entitys.Employee">
 		select * from tbl_employee where id = #{id}
 	</select>
 	
-	<insert id="insetEmployee" parameterType="com.exam.system.modules.sys.entitys.Employee">
+	<insert id="insetEmployee" parameterType="com.exam.system.modules.staff.entitys.Employee">
 		insert into tbl_employee(id, name, password, email, tel, salt)
         values
         (#{emp.id}, #{emp.name}, #{emp.password}, #{emp.email}, #{emp.phone}, #{emp.salt})

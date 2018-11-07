@@ -1,24 +1,24 @@
 package com.exam.system.core.entitys;
 
-import java.util.List;
-
 import com.baomidou.mybatisplus.plugins.Page;
+
+import java.util.List;
 
 public class CustomPage<T> {
 	// 当前页数
-	private int page;
+	private long page;
 
 	// 每页显示数量
-	private int pagesize;
+	private long pageSize;
 
 	// 总条数
-	private int records;
+	private long records;
 
 	// 数据列表
 	private List<T> rows;
 
 	// 总页数
-	private int total;
+	private long total;
 
 	// 排序字段
 	private String orderByField;
@@ -29,42 +29,46 @@ public class CustomPage<T> {
 	/**
 	 * @return the page
 	 */
-	public int getPage() {
+	public long getPage() {
 		return page;
 	}
 
 	/**
 	 * @param page the page to set
 	 */
-	public void setPage(int page) {
+	public void setPage(long page) {
 		this.page = page;
 	}
 
 	/**
-	 * @return the pagesize
+	 * 获取pageSize
+	 *
+	 * @return pageSize pageSize
 	 */
-	public int getPagesize() {
-		return pagesize;
+	public long getPageSize() {
+		return pageSize;
 	}
 
 	/**
-	 * @param pagesize the pagesize to set
+	 * 设置pageSize
+	 *
+	 * @param pageSize pageSize
 	 */
-	public void setPagesize(int pagesize) {
-		this.pagesize = pagesize;
+	public void setPageSize(long pageSize) {
+		this.pageSize = pageSize;
 	}
 
 	/**
 	 * @return the records
 	 */
-	public int getRecords() {
+	public long getRecords() {
 		return records;
 	}
 
 	/**
 	 * @param records the records to set
 	 */
-	public void setRecords(int records) {
+	public void setRecords(long records) {
 		this.records = records;
 	}
 
@@ -85,14 +89,14 @@ public class CustomPage<T> {
 	/**
 	 * @return the total
 	 */
-	public int getTotal() {
+	public long getTotal() {
 		return total;
 	}
 
 	/**
 	 * @param total the total to set
 	 */
-	public void setTotal(int total) {
+	public void setTotal(long total) {
 		this.total = total;
 	}
 
@@ -124,9 +128,10 @@ public class CustomPage<T> {
 		this.isAsc = isAsc;
 	}
 
-	public CustomPage(Page<T> page) {
+	public CustomPage(Page<T> page, long count) {
+		page.setTotal(count);
 		this.page = page.getCurrent();
-		this.pagesize = page.getSize();
+		this.pageSize = page.getSize();
 		this.records = page.getTotal();
 		this.rows = page.getRecords();
 		this.total = page.getPages();

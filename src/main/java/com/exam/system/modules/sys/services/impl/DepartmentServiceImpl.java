@@ -1,42 +1,32 @@
 package com.exam.system.modules.sys.services.impl;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.baomidou.mybatisplus.plugins.Page;
+import com.exam.system.core.services.BaseServiceImpl;
 import com.exam.system.modules.sys.entitys.Department;
 import com.exam.system.modules.sys.mappers.DepartmentMapper;
 import com.exam.system.modules.sys.services.DepartmentService;
+import org.springframework.stereotype.Service;
 
 @Service("departmentService")
-public class DepartmentServiceImpl implements DepartmentService {
+public class DepartmentServiceImpl extends BaseServiceImpl<DepartmentMapper, Department> implements DepartmentService {
 
-    @Autowired
-    private DepartmentMapper departmentMapper;
-
-    public List<Department> getDepartmentByAll(Page<Department> page, Department dept) {
-        return departmentMapper.selectAll(page, dept);
+    public Page<Department> getDepartmentByAll(Page<Department> page, Integer state) {
+        return page.setRecords(baseMapper.selectAll(page, state));
     }
 
-    @Override
     public Department getDepartmentById(int id) {
-        return departmentMapper.selectById(id);
+        return baseMapper.selectById(id);
     }
 
-    @Override
     public int addDepartment(Department dept) {
-        return departmentMapper.insertDepartment(dept);
+        return baseMapper.insertDepartment(dept);
     }
 
-    @Override
     public int deleteDepartment(Department dept) {
-        return departmentMapper.deleteDepartment(dept);
+        return baseMapper.deleteDepartment(dept);
     }
 
-    @Override
     public int updateDepartment(Department dept) {
-        return departmentMapper.updateDepartment(dept);
+        return baseMapper.updateDepartment(dept);
     }
 }
