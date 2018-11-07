@@ -1,8 +1,8 @@
 package com.exam.system.core.entitys;
 
-import com.baomidou.mybatisplus.plugins.Page;
-
 import java.util.List;
+
+import com.baomidou.mybatisplus.plugins.Page;
 
 public class CustomPage<T> {
 	// 当前页数
@@ -128,8 +128,7 @@ public class CustomPage<T> {
 		this.isAsc = isAsc;
 	}
 
-	public CustomPage(Page<T> page, long count) {
-		page.setTotal(count);
+	public CustomPage(Page<T> page) {
 		this.page = page.getCurrent();
 		this.pageSize = page.getSize();
 		this.records = page.getTotal();

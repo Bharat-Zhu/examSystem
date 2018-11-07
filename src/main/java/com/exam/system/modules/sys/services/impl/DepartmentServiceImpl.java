@@ -1,17 +1,19 @@
 package com.exam.system.modules.sys.services.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.baomidou.mybatisplus.plugins.Page;
 import com.exam.system.core.services.BaseServiceImpl;
 import com.exam.system.modules.sys.entitys.Department;
 import com.exam.system.modules.sys.mappers.DepartmentMapper;
 import com.exam.system.modules.sys.services.DepartmentService;
-import org.springframework.stereotype.Service;
 
 @Service("departmentService")
 public class DepartmentServiceImpl extends BaseServiceImpl<DepartmentMapper, Department> implements DepartmentService {
 
-    public Page<Department> getDepartmentByAll(Page<Department> page, Integer state) {
-        return page.setRecords(baseMapper.selectAll(page, state));
+    public Page<Department> getDepartmentByAll(Page<Department> page) {
+        page.setRecords(baseMapper.selectAll(page));
+        return page;
     }
 
     public Department getDepartmentById(int id) {

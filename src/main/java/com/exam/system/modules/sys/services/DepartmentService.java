@@ -5,7 +5,7 @@ import com.exam.system.core.services.IBaseService;
 import com.exam.system.modules.sys.entitys.Department;
 
 public interface DepartmentService extends IBaseService<Department> {
-    Page<Department> getDepartmentByAll(Page<Department> page, Integer state);
+    Page<Department> getDepartmentByAll(Page<Department> page);
 
     Department getDepartmentById(int id);
 

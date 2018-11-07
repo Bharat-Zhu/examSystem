@@ -56,7 +56,7 @@
     <select id="selectAll" resultMap="MyDept">
         SELECT
         <include refid="MyColumn"/>
-        FROM tbl_department WHERE state=#{state}
+        FROM tbl_department WHERE ${ew.sqlSegment}
     </select>
 
     <select id="selectById" resultMap="MyDept">

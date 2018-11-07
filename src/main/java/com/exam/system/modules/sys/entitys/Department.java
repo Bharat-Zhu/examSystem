@@ -1,10 +1,10 @@
 package com.exam.system.modules.sys.entitys;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
 
 @TableName("tbl_department")
 public class Department extends Model<Department> implements Serializable {
@@ -24,7 +24,7 @@ public class Department extends Model<Department> implements Serializable {
 	private String delFlag;
 	private String extendFirst;
 	private String extendSecond;
-
+	
 	/**
 	 * 获取departmentId
 	 *
