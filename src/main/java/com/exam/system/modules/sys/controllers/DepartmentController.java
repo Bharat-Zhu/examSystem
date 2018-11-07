@@ -1,14 +1,7 @@
 package com.exam.system.modules.sys.controllers;
 
-import com.alibaba.fastjson.JSON;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.baomidou.mybatisplus.plugins.Page;
-import com.exam.system.core.entitys.FrontPage;
-import com.exam.system.core.utils.MessageUtils;
-import com.exam.system.modules.sys.entitys.Department;
-import com.exam.system.modules.sys.services.DepartmentService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-import java.util.Map;
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.exam.system.core.entitys.CustomPage;
+import com.exam.system.core.entitys.FrontPage;
+import com.exam.system.core.utils.MessageUtils;
+import com.exam.system.modules.sys.entitys.Department;
+import com.exam.system.modules.sys.services.DepartmentService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @Controller
 @RequestMapping("/sys")
@@ -33,15 +34,12 @@ public class DepartmentController {
 
     @ResponseBody
     @RequestMapping(value = "/showDepts")
-    public List<Department> getDeptJson(FrontPage<Department> page) {
+    public String getDeptJson(FrontPage<Department> page) {
         Wrapper<Department> wrapper = new EntityWrapper<Department>();
-        //wrapper.eq("del_flag", "1");
-        int total = departmentService.selectCount(wrapper);
-        //Page<Department> pageList = departmentService.selectPage(page.getPagePlus(), wrapper);
-        //CustomPage<Department> customPage = new CustomPage<Department>(pageList, total);
-        //return JSON.toJSONString(customPage);
-        Page<Department> pageList = departmentService.getDepartmentByAll(page.getPagePlus(), total);
-        return pageList.getRecords();
+        wrapper.eq("del_flag", "1");
+        Page<Department> pageList = departmentService.selectPage(page.getPagePlus(), wrapper);
+        CustomPage<Department> customPage = new CustomPage<Department>(pageList);
+        return JSON.toJSONString(customPage);
     }
 
     @RequestMapping("/dept/{operate}/{id}")
