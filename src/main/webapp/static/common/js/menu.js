@@ -6,10 +6,12 @@ $(function () {
 
     $("#side-menu").find("a").click(function () {
         var index = $("#side-menu").find("a").index(this);
-        // alert($(this).parent().attr("class"));
-        $.cookie("current_menu", index, {path: '/'});
-        $("#side-menu").find("a").removeClass("active");
-        $(this).addClass('active');
+        var main_menu = $(this).parent().attr("class");
+        if (main_menu != 'mm-active') {
+        	$.cookie("current_menu", index, {path: '/'});
+        	$("#side-menu").find("a").removeClass("active");
+        	$(this).addClass('active');
+        }
     });
 
     $("#side-menu").find("li").click(function () {
@@ -17,11 +19,11 @@ $(function () {
         var index = $("#side-menu").find("li").index(this);
         $("#side-menu").find("li").removeClass("mm-active");
         $("#side-menu li").find("ul").removeClass("mm-show");
-        if (li_active == "mm-active") {
+//        if (li_active == "mm-active") { //需要一个开关事件
             $.cookie("current_main_menu", index, {path: '/'});
             $(this).addClass('mm-active');
             $(this).children("ul").addClass('mm-show');
-        }
+//        }
     });
 
     if ($.cookie("current_main_menu") != null) {
@@ -40,4 +42,18 @@ $(function () {
         $("#side-menu").find("a").removeClass("active");
         $("#side-menu").find("a").eq(0).addClass("active");
     }
+    
+    if ($.cookie("navigate_title") != null) {
+    	var nav_title = $.cookie("navigate_title");
+    	if (nav_title == 0 || nav_title == "") {
+    		$("#navigate_title").text("首页");
+    	} else {
+    		$("#navigate_title").text($.cookie("navigate_title"));
+    	}
+    }
 });
+
+function clickMenu(obj, url) {
+	$.cookie("navigate_title", $(obj).text(), {path: '/'})
+    window.location.href = url;
+}

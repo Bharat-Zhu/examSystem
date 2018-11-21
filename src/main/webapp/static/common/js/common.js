@@ -9,11 +9,6 @@ $(function () {
     });
 });
 
-function clickMenu(obj, url) {
-    $("#navigate_title").text($(obj).text());
-    window.location.href = url;
-}
-
 function loadGirdData(selector, url, columnModel, pagerSelector) {
     $(selector).jqGrid({
         url: url,

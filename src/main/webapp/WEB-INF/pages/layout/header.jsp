@@ -15,7 +15,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown"
-                   style="padding-top: 10px;padding-bottom: 10px; margin-right: 10px;">
+                   style="padding-top: 10px;padding-bottom: 10px; margin-right: 10px; cursor: pointer;">
                     <img src="${pageContext.request.contextPath}/static/common/images/default_user.jpg"
                          style="width: 30px;height:30px;" class="img-circle"> <b><shiro:principal property="name" /></b> <strong class="caret"></strong>
                 </a>
