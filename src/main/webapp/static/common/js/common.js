@@ -22,7 +22,7 @@ function loadGirdData(selector, url, columnModel, pagerSelector) {
         colModel: columnModel,
         sortable: true,
         viewrecords: false,
-        height: 300,
+        height: 445,
         rowNum: 10,
         rowList: [10, 30, 50, 100],
         rownumbers: false,
@@ -77,4 +77,15 @@ function ajaxRequest(url, success, data, dataType, type, async, error) {
 function closeIFrame() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
+}
+
+//清除所有cookie函数
+function clearAllCookie(){
+    var date=new Date();
+    date.setTime(date.getTime()-10000);
+    var keys=document.cookie.match(/[^ =;]+(?=\=)/g);
+    if (keys) {
+        for (var i =  keys.length; i--;)
+            document.cookie=keys[i] + "=0; expire="+date.toGMTString()+"; path=/";
+    }
 }

@@ -3,6 +3,8 @@
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <script type="text/javascript">
     $(function () {
+        clearAllCookie();
+
         $("#loginForm").bootstrapValidator({
             live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
             excluded: [':disabled', ':hidden', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的

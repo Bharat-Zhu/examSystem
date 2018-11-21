@@ -1,14 +1,5 @@
 package com.exam.system.modules.sys.controllers;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -18,7 +9,15 @@ import com.exam.system.core.entitys.FrontPage;
 import com.exam.system.core.utils.MessageUtils;
 import com.exam.system.modules.sys.entitys.Department;
 import com.exam.system.modules.sys.services.DepartmentService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Map;
 
 @Controller
 @RequestMapping("/sys")
@@ -33,7 +32,7 @@ public class DepartmentController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/showDepts")
+    @RequestMapping(value = "/showDepts", method = RequestMethod.GET)
     public String getDeptJson(FrontPage<Department> page) {
         Wrapper<Department> wrapper = new EntityWrapper<Department>();
         wrapper.eq("del_flag", "1");
@@ -55,7 +54,7 @@ public class DepartmentController {
 
     @ResponseBody
     @RequestMapping("/dept/delete/{id}")
-    public String actionDeleteDeptById(@PathVariable("id") Integer id, Map<String, Object> map) throws JsonProcessingException {
+    public String actionDeleteDeptById(@PathVariable("id") Integer id, Map<String, Object> map) {
         Department dept = departmentService.getDepartmentById(id);
         String message = "";
         try {
@@ -79,6 +78,7 @@ public class DepartmentController {
     public String actionInsertOrUpdate(Department dept, Map<String, Object> map) {
         int result = 0;
         String message = "";
+
         if (dept.getDepartmentId() != null) {
             map.put("deptFlg", "dept_edit");
             try {

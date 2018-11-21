@@ -1,19 +1,14 @@
 package com.exam.system.core.shiro.cache;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import net.sf.ehcache.Ehcache;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.util.CollectionUtils;
 import org.springframework.cache.support.SimpleValueWrapper;
 
-import net.sf.ehcache.Ehcache;
+import java.util.*;
+
 
 @SuppressWarnings({"rawtypes","unchecked"})
 public class SpringCacheManagerWrapper implements CacheManager {
@@ -78,7 +73,7 @@ public class SpringCacheManagerWrapper implements CacheManager {
 			throw new UnsupportedOperationException("invoke spring cache abstract size method not supported");
 		}
 
-		
+
 		@Override
 		public Set keys() {
 			if (springCache.getNativeCache() instanceof Ehcache) {
