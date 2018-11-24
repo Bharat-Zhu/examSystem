@@ -22,3 +22,13 @@
 .nav-third-level li a {
     padding-left: 58px;
 }
+
+.breadcrumb:before {
+    padding: 10px 15px;
+}
+
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "> ";
+    padding: 0 5px;
+}

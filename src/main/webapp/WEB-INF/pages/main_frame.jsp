@@ -31,12 +31,12 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10 column" style="border-left: 1px solid #e6e6e6; margin-left: -1px;">
-            <div style="border-bottom:1px solid #d5d5d5;height: 50px; line-height: 50px;">
-            <!-- 导航 -->
-            <tiles:insertAttribute name="navigate"/>
+        <div class="col-md-10 column" style="border-left: 1px solid #e6e6e6; margin-left: -1px; padding: 0 0;">
+            <div>
+                <!-- 导航 -->
+                <tiles:insertAttribute name="navigate"/>
             </div>
-            <div style="margin-bottom: 30px;">
+            <div style="margin-bottom: 30px; padding-left: 15px; padding-right: 15px;">
                 <!-- 内容 -->
                 <tiles:insertAttribute name="body"/>
             </div>

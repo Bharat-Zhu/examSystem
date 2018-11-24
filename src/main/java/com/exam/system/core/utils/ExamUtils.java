@@ -1,5 +1,7 @@
 package com.exam.system.core.utils;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -24,6 +26,12 @@ public class ExamUtils {
      * @return HttpSession
      */
     public static HttpSession getSession() {
+        try{
+            Subject subject = SecurityUtils.getSubject();
+            return (HttpSession) subject.getSession();
+        } catch (Exception e) {
+
+        }
         return ExamUtils.getRequest().getSession();
     }
 

@@ -1,77 +1,77 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pages/common/taglibs.jspf"%>
-<link rel="stylesheet" type="text/css"
-	href="${staticCommonPath}/css/menu.css" />
+         pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
+<link rel="stylesheet" type="text/css" href="${staticCommonPath}/css/menu.css"/>
 <script type="text/javascript" src="${staticCommonPath}/js/menu.js"></script>
 <nav class="navbar navbar-default navbar-static-top">
-	<div class="navbar-default sidebar" role="navigation">
-		<div class="sidebar-nav navbar-collapse">
-			<ul class="nav" id="side-menu">
-				<li><a href="javascript:void(0);"
-					onclick="clickMenu(this, '${appPath}/home')"><i
-						class="fa fa-dashboard fa-fw"></i> 首页</a></li>
-				<li><a href="javascript:void(0);"> <i class="fa fa-cog"
-						style="font-size: 18px;"></i> 系统设置 <span class="fa arrow"></span>
-				</a>
-					<ul class="nav nav-second-level">
-						<li><a href="javascript:void(0);"
-							onclick="clickMenu(this, '${appPath }/sys/user')"> <i
-								class="fa fa-group"></i> 用户管理
-						</a></li>
-						<li><a href="javascript:void(0);"
-							onclick="clickMenu(this, '${appPath }/sys/showDepartments')">
-								<i class="fa fa-puzzle-piece"></i> 部门管理
-						</a></li>
-						<li><a href="javascript:void(0);"
-							onclick="clickMenu(this, '${appPath }/sys/user')"> <i
-								class="fa fa-amazon"></i> 角色管理
-						</a></li>
-					</ul></li>
-				<li><a href="javascript:void(0);"><i
-						class="fa fa-table fa-fw"></i> Tables</a></li>
-				<li><a href="javascript:void(0);"><i
-						class="fa fa-edit fa-fw"></i> Forms</a></li>
-				<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI
-						Elements<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="">Panels and Wells</a></li>
-						<li><a href="">Buttons</a></li>
-						<li><a href="">Notifications</a></li>
-						<li><a href="">Typography</a></li>
-						<li><a href=""> Icons</a></li>
-						<li><a href="">Grid</a></li>
-					</ul></li>
-				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
-						Multi-Level Dropdown<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#">Second Level Item</a></li>
-						<li><a href="#">Second Level Item</a></li>
-						<li><a href="#"><i class="fa fa-wrench fa-fw"></i>Third
-								Level <span class="fa arrow"></span></a>
-							<ul class="nav nav-third-level">
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-								<li><a href="#">Third Level Item</a></li>
-							</ul></li>
-					</ul></li>
-				<li><a href="#"><i class="fa fa-files-o fa-fw"></i> Sample
-						Pages<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#">Blank Page</a></li>
-						<li><a href="#">Login Page</a></li>
-					</ul></li>
-			</ul>
-		</div>
-	</div>
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
+                <c:forEach items="${menuList}" var="menu">
+                    <li>
+                        <a href="javascript:void(0);"
+                           <c:if test="${!empty menu.url}">onclick="clickMenu(this, '${appPath}/${menu.url}')"</c:if>>
+                            <i class="fa
+                                <c:choose>
+                                    <c:when test="${empty menu.menuIcon}">
+                                         fa-angle-right
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${menu.menuIcon}
+                                    </c:otherwise>
+                                </c:choose>
+                            fa-fw" style="font-size: 18px;"></i> ${menu.name}
+                            <c:if test="${fn:length(menu.childrenMenu) > 0}"><span class="fa arrow"></span></c:if>
+                        </a>
+                        <c:if test="${fn:length(menu.childrenMenu) > 0}">
+                            <ul class="nav nav-second-level">
+                                <c:forEach items="${menu.childrenMenu}" var="childMenu">
+                                    <c:if test="${childMenu.parentId == menu.id}">
+                                        <li>
+                                            <a href="javascript:void(0);"
+                                               <c:if test="${!empty childMenu.url}">onclick="clickMenu(this, '${appPath}/${childMenu.url}')"</c:if>>
+                                                <i class="fa
+                                                    <c:choose>
+                                                        <c:when test="${empty childMenu.menuIcon}">
+                                                            fa-angle-right
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                             ${childMenu.menuIcon}
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                fa-fw" style="font-size: 16px;"></i> ${childMenu.name}
+                                                <c:if test="${fn:length(childMenu.childrenMenu) > 0}"><span
+                                                        class="fa arrow"></span></c:if>
+                                            </a>
+                                            <c:if test="${fn:length(childMenu.childrenMenu) > 0}">
+                                                <ul class="nav nav-third-level">
+                                                    <c:forEach items="${childMenu.childrenMenu}" var="thirdChildMenu">
+                                                        <li>
+                                                            <a href="javascript:void(0);"
+                                                               <c:if test="${!empty thirdChildMenu.url}">onclick="clickMenu(this, '${appPath}/${thirdChildMenu.url}')"</c:if>>
+                                                                <i class="fa
+                                                                    <c:choose>
+                                                                        <c:when test="${empty thirdChildMenu.menuIcon}">
+                                                                            fa-angle-right
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                             ${thirdChildMenu.menuIcon}
+                                                                        </c:otherwise>
+                                                                    </c:choose>
+                                                                 fa-fw" style="font-size: 18px;"></i> ${thirdChildMenu.name}
+                                                            </a>
+                                                        </li>
+                                                    </c:forEach>
+                                                </ul>
+                                            </c:if>
+                                        </li>
+                                    </c:if>
+                                </c:forEach>
+                            </ul>
+                        </c:if>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </div>
 </nav>
