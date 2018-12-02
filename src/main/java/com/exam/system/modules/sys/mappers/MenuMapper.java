@@ -1,10 +1,11 @@
 package com.exam.system.modules.sys.mappers;
 
-import com.exam.system.modules.sys.entitys.Menu;
-
 import java.util.List;
 
-public interface MenuMapper {
+import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.exam.system.modules.sys.entitys.Menu;
+
+public interface MenuMapper extends BaseMapper<Menu> {
 
     List<Menu> selectAll();
 }

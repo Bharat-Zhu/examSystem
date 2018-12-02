@@ -14,7 +14,7 @@ public class FilterChainDefinitionMapBuilder {
 		map.put("/login", "anon");
 		map.put("/logout", "logout");
 		
-		map.put("/druid/**", "roles[admin]");
+		//map.put("/druid/**", "roles[admin]");
 		
 		map.put("/**", "authc");
 		return map;

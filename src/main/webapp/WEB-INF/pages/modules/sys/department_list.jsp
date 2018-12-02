@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
-<style>
-    .ui-jqgrid tr.jqgrow td {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-</style>
 <script type="text/javascript">
     $(function () {
         var columnModel = [
@@ -105,7 +98,7 @@
     <div style="height: 50px;line-height: 50px;">
         <button id="createDept" class="btn btn-success">
             <i class="fa fa-plus"></i>
-            <spring:message code="exam.common.create"/><spring:message code="department.info"/>
+            <spring:message code="exam.common.create"/>
         </button>
     </div>
     <table id="dept_list"></table>

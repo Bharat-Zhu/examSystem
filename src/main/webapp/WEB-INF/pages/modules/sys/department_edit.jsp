@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
-<style type="text/css">
-	div.content {
-	    width: 100%;
-	    height: auto;
-	    word-wrap:break-word;
-	    word-break:break-all;
-	    overflow: hidden;
-	}
-</style>
 <script type="text/javascript">
     $(function () {
         var result = "${result}";
@@ -27,14 +18,9 @@
                 }
             });
         }
-
-        $("#close_btn").on('click', function () {
-            closeIFrame();
-        });
     });
 </script>
-<div class="center-block"
-     style="margin-top: 8%; border: 1px solid #d5d5d5; border-radius: 2%; width: 85%; padding-top: 20px;">
+<div class="center-block popupContent">
     <form id="deptForm" class="form-horizontal" role="form" action="${appPath}/sys/dept/insertOrUpdate" method="post">
         <input type="hidden" name="departmentId" value="${dept.departmentId}">
         <div class="form-group" style="width: 62%; margin-left: auto; margin-right: auto; margin-bottom: 15px;">
@@ -65,7 +51,7 @@
             <label class="col-sm-2 control-label"><spring:message code="exam.common.remark"/>:</label>
             <div class="col-sm-10">
                 <c:if test="${deptFlg == 'dept_info'}">
-                    <div class="content">${dept.remark}</div>
+                    <div class="textContent">${dept.remark}</div>
                 </c:if>
                 <c:if test="${deptFlg == 'dept_edit' || deptFlg == 'dept_create'}">
                     <textarea class="form-control" rows="5" name="remark"
@@ -75,11 +61,11 @@
         </div>
         <div class="form-group">
             <div class="col-sm-7 input-group text-right" style="margin: auto;">
-                <input type="button" id="close_btn" class="btn btn-default"
+                <input type="button" class="btn btn-default" onclick="closeIFrame();"
                        value='<spring:message code="examSystem.close"/>'/>
                 &nbsp;&nbsp;
                 <c:if test="${deptFlg != 'dept_info'}">
-                    <input type="submit" class="btn btn-success" value='<spring:message code="exam.common.submit"/>' />
+                    <input type="submit" class="btn btn-primary" value='<spring:message code="exam.common.submit"/>' />
                 </c:if>
             </div>
         </div>

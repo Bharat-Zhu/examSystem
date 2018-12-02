@@ -9,7 +9,7 @@ $(function () {
     });
 });
 
-function loadGirdData(selector, url, columnModel, pagerSelector) {
+function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOverflowNotShow = true) {
     $(selector).jqGrid({
         url: url,
         datatype: "json",
@@ -26,8 +26,10 @@ function loadGirdData(selector, url, columnModel, pagerSelector) {
         multiselect: false,
         pager: pagerSelector,
         gridComplete: function () {
-            //隐藏grid底部滚动条
-            $(selector).closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
+        	if (isHorizontalOverflowNotShow) {
+        		//隐藏grid底部滚动条
+                $(selector).closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
+        	}
         }
     });
 }
@@ -62,7 +64,7 @@ function ajaxRequest(url, success, data, dataType, type, async, error) {
         error: error,
         beforeSend: function() {
             layer.load(0, {
-                time: 1500,
+                time: 1000,
                 shade: 0.01
             });
         }

@@ -77,38 +77,43 @@ INSERT INTO `tbl_employee` VALUES ('test8', 'test8', '336a426dff65cb766c4a88245f
 -- ----------------------------
 DROP TABLE IF EXISTS `tbl_menu`;
 CREATE TABLE `tbl_menu` (
-  `id` varchar(32) NOT NULL COMMENT '菜单ID',
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
+  `message_code` varchar(255) NOT NULL COMMENT '国际化MessageCode',
   `name` varchar(255) NOT NULL COMMENT '菜单名称',
   `type` varchar(255) DEFAULT NULL COMMENT '菜单属性',
   `url` varchar(255) NOT NULL COMMENT '菜单URL',
   `parent_id` varchar(32) DEFAULT NULL COMMENT '父菜单ID',
   `permission` varchar(255) DEFAULT NULL COMMENT '权限',
+  `is_show` char(1) NOT NULL DEFAULT '1' COMMENT '是否显示',
   `rank` int(11) DEFAULT NULL COMMENT '序列',
-  `menu_icon` varchar(255) DEFAULT NULL COMMENT '图标',
-  `remarks` varchar(1024) DEFAULT NULL COMMENT '备注',
+  `icon` varchar(255) DEFAULT NULL COMMENT '图标',
+  `remark` varchar(1024) DEFAULT NULL COMMENT '备注',
   `del_flag` char(1) NOT NULL DEFAULT '0' COMMENT '删除flag',
   `creator_id` varchar(255) NOT NULL COMMENT '创建者ID',
   `create_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updater_id` varchar(255) DEFAULT NULL COMMENT '更新者ID',
   `update_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_menu
 -- ----------------------------
-INSERT INTO `tbl_menu` VALUES ('1', '首页', null, 'home', null, null, '1', 'fa-home', null, '0', 'A00000', '2018-11-21 17:08:33', 'A00000', '2018-11-21 17:08:33');
-INSERT INTO `tbl_menu` VALUES ('10', 'Buttons', null, '', '8', null, '5', null, null, '0', 'A00000', '2018-11-21 17:15:37', 'A00000', '2018-11-21 17:15:37');
-INSERT INTO `tbl_menu` VALUES ('11', 'Notifications', null, '', '8', null, '5', null, null, '0', 'A00000', '2018-11-21 17:15:43', 'A00000', '2018-11-21 17:15:43');
-INSERT INTO `tbl_menu` VALUES ('12', 'Typography', null, '', '8', null, '5', null, null, '0', 'A00000', '2018-11-21 17:15:49', 'A00000', '2018-11-21 17:15:49');
-INSERT INTO `tbl_menu` VALUES ('13', 'Icons', null, '', '8', null, '5', null, null, '0', 'A00000', '2018-11-21 17:15:55', 'A00000', '2018-11-21 17:15:55');
-INSERT INTO `tbl_menu` VALUES ('14', 'Grid', null, '', '8', null, '5', null, null, '0', 'A00000', '2018-11-21 17:15:59', 'A00000', '2018-11-21 17:15:59');
-INSERT INTO `tbl_menu` VALUES ('15', 'Grid1', null, '', '14', null, '6', null, null, '0', '', '2018-11-18 17:25:33', null, '2018-11-18 17:25:33');
-INSERT INTO `tbl_menu` VALUES ('2', '系统设置', null, '', null, null, '2', 'fa-cog', null, '0', 'A00000', '2018-11-21 17:09:16', 'A00000', '2018-11-21 17:09:16');
-INSERT INTO `tbl_menu` VALUES ('3', '用户管理', null, 'sys/user', '2', null, '2', 'fa-group', null, '0', 'A00000', '2018-11-21 17:10:54', 'A00000', '2018-11-21 17:10:54');
-INSERT INTO `tbl_menu` VALUES ('4', '部门管理', null, 'sys/showDepartments', '2', null, '2', 'fa-puzzle-piece', null, '0', 'A00000', '2018-11-21 17:11:56', 'A00000', '2018-11-21 17:11:56');
-INSERT INTO `tbl_menu` VALUES ('5', '角色管理', null, 'sys/user', '2', null, '2', 'fa-amazon', null, '0', 'A00000', '2018-11-21 17:13:13', 'A00000', '2018-11-21 17:13:09');
-INSERT INTO `tbl_menu` VALUES ('6', 'Tables', null, '', null, null, '3', 'fa-table', null, '0', 'A00000', '2018-11-21 17:13:58', 'A00000', '2018-11-21 17:13:58');
-INSERT INTO `tbl_menu` VALUES ('7', 'Forms', null, '', null, null, '4', 'fa-edit', null, '0', 'A00000', '2018-11-21 17:14:11', 'A00000', '2018-11-21 17:14:11');
-INSERT INTO `tbl_menu` VALUES ('8', 'UI Elements', null, '', null, null, '5', 'fa-wrench', null, '0', 'A00000', '2018-11-21 17:14:29', 'A00000', '2018-11-21 17:14:29');
-INSERT INTO `tbl_menu` VALUES ('9', 'Panels and Wells', null, '', '8', null, '5', null, null, '0', 'A00000', '2018-11-21 17:15:31', 'A00000', '2018-11-21 17:15:31');
+INSERT INTO `tbl_menu` VALUES ('1', 'exam.system.home', '首页', null, 'home', null, null, '1', '1', 'fa-home', null, '0', 'A00000', '2018-11-21 17:08:33', 'A00000', '2018-11-21 17:08:33');
+INSERT INTO `tbl_menu` VALUES ('2', 'exam.system.setting', '系统设置', null, '', null, null, '1', '2', 'fa-cog', null, '0', 'A00000', '2018-11-21 17:09:16', 'A00000', '2018-11-21 17:09:16');
+INSERT INTO `tbl_menu` VALUES ('3', 'exam.system.user', '用户管理', null, 'sys/user', '2', null, '1', '3', 'fa-group', null, '0', 'A00000', '2018-11-21 17:10:54', 'A00000', '2018-11-21 17:10:54');
+INSERT INTO `tbl_menu` VALUES ('4', 'exam.system.department', '部门管理', null, 'sys/showDepartments', '2', null, '1', '7', 'fa-sitemap', null, '0', 'A00000', '2018-11-21 17:11:56', 'A00000', '2018-11-21 17:11:56');
+INSERT INTO `tbl_menu` VALUES ('5', 'exam.system.role', '角色管理', null, 'sys/user', '2', null, '1', '5', 'fa-amazon', null, '0', 'A00000', '2018-11-21 17:13:13', 'A00000', '2018-11-21 17:13:09');
+INSERT INTO `tbl_menu` VALUES ('6', '', 'Tables', null, '', null, null, '1', '8', 'fa-table', null, '0', 'A00000', '2018-11-21 17:13:58', 'A00000', '2018-11-21 17:13:58');
+INSERT INTO `tbl_menu` VALUES ('7', '', 'Forms', null, '', null, null, '1', '9', 'fa-edit', null, '0', 'A00000', '2018-11-21 17:14:11', 'A00000', '2018-11-21 17:14:11');
+INSERT INTO `tbl_menu` VALUES ('8', '', 'UI Elements', null, '', null, null, '1', '10', 'fa-wrench', null, '0', 'A00000', '2018-11-21 17:14:29', 'A00000', '2018-11-21 17:14:29');
+INSERT INTO `tbl_menu` VALUES ('9', '', 'Panels and Wells', null, '', '8', null, '1', '11', null, null, '0', 'A00000', '2018-11-21 17:15:31', 'A00000', '2018-11-21 17:15:31');
+INSERT INTO `tbl_menu` VALUES ('10', '', 'Buttons', null, '', '8', null, '1', '12', null, null, '0', 'A00000', '2018-11-21 17:15:37', 'A00000', '2018-11-21 17:15:37');
+INSERT INTO `tbl_menu` VALUES ('11', '', 'Notifications', null, '', '8', null, '1', '13', null, null, '0', 'A00000', '2018-11-21 17:15:43', 'A00000', '2018-11-21 17:15:43');
+INSERT INTO `tbl_menu` VALUES ('12', '', 'Typography', null, '', '8', null, '1', '14', null, null, '0', 'A00000', '2018-11-21 17:15:49', 'A00000', '2018-11-21 17:15:49');
+INSERT INTO `tbl_menu` VALUES ('13', '', 'Icons', null, '', '8', null, '1', '15', null, null, '0', 'A00000', '2018-11-21 17:15:55', 'A00000', '2018-11-21 17:15:55');
+INSERT INTO `tbl_menu` VALUES ('14', '', 'Grid', null, '', '8', null, '1', '16', null, null, '0', 'A00000', '2018-11-21 17:15:59', 'A00000', '2018-11-21 17:15:59');
+INSERT INTO `tbl_menu` VALUES ('15', '', 'Grid1', null, '', '14', null, '1', '17', null, null, '0', 'A00000', '2018-11-18 17:25:33', 'A00000', '2018-11-18 17:25:33');
+INSERT INTO `tbl_menu` VALUES ('16', 'exam.system.permission', '权限管理', null, 'sys/user', '2', null, '1', '4', 'fa-expeditedssl', null, '0', 'A00000', '2018-12-01 13:46:23', 'A00000', '2018-12-01 13:46:23');
+INSERT INTO `tbl_menu` VALUES ('17', 'exam.system.menu', '菜单管理', null, 'sys/menu/showMenu', '2', null, '1', '6', 'fa-navicon', null, '0', 'A00000', '2018-12-01 13:49:46', 'A00000', '2018-12-01 13:49:46');
+INSERT INTO `tbl_menu` VALUES ('18', '', '数据库监控', null, 'druid', '2', null, '1', '18', 'fa-database', null, '0', 'A00000', '2018-12-02 17:39:00', 'A00000', '2018-12-02 17:39:00');
