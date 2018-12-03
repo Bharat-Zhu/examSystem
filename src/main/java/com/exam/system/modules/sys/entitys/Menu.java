@@ -1,17 +1,17 @@
 package com.exam.system.modules.sys.entitys;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 @TableName("tbl_menu")
 @SuppressWarnings("serial")
 public class Menu extends Model<Menu> {
-	private String id;
+	private int id;
 	private String messageCode;
 	private String name;
 	private String type;
@@ -36,7 +36,7 @@ public class Menu extends Model<Menu> {
 	 *
 	 * @return id id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -45,7 +45,7 @@ public class Menu extends Model<Menu> {
 	 *
 	 * @param id id
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

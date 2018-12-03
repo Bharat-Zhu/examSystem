@@ -54,19 +54,29 @@ public class UserUtils {
     }
 
     /**
-     * 获取Menu菜单
+     * 从cache中获取菜单树
      *
      * @return 菜单树
      */
-    public static List<Menu> getMenuList() {
-        List<Menu> rootMenu = (List<Menu>) getCache(MENU_LIST_CACHE);
-        List<Menu> menuList = new ArrayList<Menu>();
+    public static List<Menu> getTreeMenusByCache() {
+        List<Menu> treeMenuList = (List<Menu>) getCache(MENU_LIST_CACHE);
 
-        if (rootMenu == null) {
-            rootMenu = menuService.getMenuAll();
-        } else {
-            return rootMenu;
+        if (treeMenuList == null) {
+            treeMenuList = getTreeMenus();
+            putCache(MENU_LIST_CACHE, treeMenuList);
         }
+
+        return treeMenuList;
+    }
+
+    /**
+     * 获取Menu菜单树
+     *
+     * @return 菜单树
+     */
+    public static List<Menu> getTreeMenus() {
+        List<Menu> rootMenu = menuService.getMenuAll();
+        List<Menu> menuList = new ArrayList<Menu>();
 
         // 设置一级菜单
         for (Menu menu : rootMenu) {
@@ -77,15 +87,13 @@ public class UserUtils {
 
         // 添加子菜单
         for (Menu childMenu : menuList) {
-            childMenu.setChildrenMenu(getChild(childMenu.getId(), rootMenu));
+            childMenu.setChildrenMenu(getChildMenus(childMenu.getId().toString(), rootMenu));
         }
-
-        putCache(MENU_LIST_CACHE, menuList);
 
         return menuList;
     }
 
-    private static List<Menu> getChild(String menuId, List<Menu> rootMenu) {
+    private static List<Menu> getChildMenus(String menuId, List<Menu> rootMenu) {
         List<Menu> childMenu = new ArrayList<Menu>();
         for (Menu menu : rootMenu) {
             if (StringUtils.isNotBlank(menu.getParentId())) {
@@ -98,7 +106,7 @@ public class UserUtils {
         for (Menu child : childMenu) {
             if (StringUtils.isBlank(child.getUrl())) {
                 // 递归
-                child.setChildrenMenu(getChild(child.getId(), rootMenu));
+                child.setChildrenMenu(getChildMenus(child.getId().toString(), rootMenu));
             }
         }
 

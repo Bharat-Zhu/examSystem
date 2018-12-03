@@ -4,7 +4,6 @@ import com.exam.system.core.entitys.User;
 import com.exam.system.core.utils.LogUtils;
 import com.exam.system.core.utils.MessageUtils;
 import com.exam.system.core.utils.UserUtils;
-import com.exam.system.modules.sys.entitys.Menu;
 import com.exam.system.modules.sys.services.MenuService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -67,8 +65,7 @@ public class LoginController extends BaseController {
 
     @RequestMapping("/home")
     public ModelAndView home() {
-        List<Menu> menuList = menuService.getMenuAll();
-        UserUtils.getMenuList();
+        UserUtils.getTreeMenusByCache();
         return new ModelAndView("home.page");
     }
 }

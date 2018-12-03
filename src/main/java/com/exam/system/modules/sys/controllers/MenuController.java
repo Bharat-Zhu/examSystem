@@ -1,21 +1,23 @@
 package com.exam.system.modules.sys.controllers;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.exam.system.core.entitys.CustomPage;
 import com.exam.system.core.entitys.FrontPage;
+import com.exam.system.core.entitys.TreeEntity;
+import com.exam.system.core.utils.TreeUtils;
 import com.exam.system.modules.sys.entitys.Menu;
 import com.exam.system.modules.sys.services.MenuService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/sys/menu")
@@ -40,8 +42,23 @@ public class MenuController {
 		return JSON.toJSONString(customMenuPage);
 	}
 	
-	@RequestMapping("/add")
+	@RequestMapping("/addPage")
 	public ModelAndView actionCreateMenu(Map<String, Object> map) {
 		return new ModelAndView("modules/sys/menu_edit.action");
 	}
+
+	@RequestMapping("/searchMenus")
+	public ModelAndView actionSearchMenuList(Map<String, Object> map) {
+        List<Menu> menuList =  menuService.getMenuAll();
+        List<TreeEntity> menuTreeList = TreeUtils.menuConvertTree(menuList);
+        map.put("menuTree", JSON.toJSONString(menuTreeList));
+	    return new ModelAndView("modules/sys/menu_tree.action");
+    }
+
+    @RequestMapping("/insert")
+    public ModelAndView actionInsert(Menu menu, Map<String, Object> map) {
+        boolean isSuccess = menuService.insertMenu(menu);
+        map.put("isSuccess", isSuccess);
+        return new ModelAndView("modules/sys/menu_edit.action");
+    }
 }

@@ -20,29 +20,49 @@
 </style>
 <script>
 	$(function() {
-		$("#clearParentMenu").click(function() {
-			$("#parentMenu").val("")
+		$("#clearParentName").click(function() {
+			$("#parentId").val("");
+			$("#parentName").val("");
 		});
+		
+		$("#searchParentName").click(function () {
+		    layer.open({
+                type: 2,
+                title: "Menu Tree",
+                content: "${appPath}/sys/menu/searchMenus",
+                area: ['30%', '100%'],
+            });
+        });
+
+		var isSuccess = "${isSuccess}";
+		if (isSuccess != "") {
+            if (isSuccess == "true") {
+                closeIFrame();
+            } else {
+                layer.msg("添加失败！");
+            }
+        }
 	});
 </script>
 <div class="center-block popupContent">
-	<form id="deptForm" class="form-horizontal" role="form" action="" method="post">
+	<form id="deptForm" class="form-horizontal" role="form" action="${appPath}/sys/menu/insert" method="post">
 		<table>
 			<tr>
 				<th>上级菜单：</th>
 				<td>
-					<input type="hidden" name="parent_id" />
+					<input type="hidden" id="parentId" name="parentId" />
 					<div class="input-group">
-	                    <input type="text" id="parentMenu" value="无" class="form-control" disabled>
+	                    <input type="text" id="parentName" class="form-control" disabled>
 	                    <span class="input-group-btn">
-	                    	<button id="searchParentMenu" class="btn btn-default" type="button" style="border: 1px solid #5bc0de; background-color: #5bc0de;">
-	                    		<i class="fa fa-search" style="font-size:18px; color: white;"></i>
-	                    	</button>
-	                        <button id="clearParentMenu" class="btn btn-default" type="button">
+	                        <button id="clearParentName" class="btn btn-default" type="button">
 	                        	<i class="fa fa-remove" style="font-size:18px;"></i>
 	                        </button>
+	                    	<button id="searchParentName" class="btn btn-info" type="button">
+	                    		<i class="fa fa-search" style="font-size:18px; color: white;"></i>
+	                    	</button>
 	                    </span>
 	                </div>
+                    <i class="fa fa-info-circle"></i><span style="font-size:10px;">&nbsp;没有内容时，默认为上级菜单</span>
 				</td>
 				<th>菜单名称：</th>
 				<td>
@@ -53,7 +73,7 @@
 				<th>链接：</th>
 				<td>
 					<input type="text" class="form-control" name="url" value="" placeholder='URL' >
-					<i class="fa fa-info-circle"></i><span style="font-size:10px;">点击菜单时跳转页面的URL</span>
+					<i class="fa fa-info-circle"></i><span style="font-size:10px;">&nbsp;点击菜单时跳转页面的URL</span>
 				</td>
 				<th>权限标识：</th>
 				<td>
@@ -65,9 +85,9 @@
 				<td>
 					<input type="text" class="form-control" name="icon" value="" placeholder='icon' >
 				</td>
-				<th>排序：</th>
+				<th>属性：</th>
 				<td>
-					<input type="text" class="form-control" name="rank" value="" placeholder='排序' >
+					<input type="text" class="form-control" name="type" value="" placeholder='属性' >
 				</td>
 			</tr>
 			<tr>
@@ -100,7 +120,7 @@
 	        		<input type="button" class="btn btn-default" onclick="closeIFrame();" 
 	        			value='<spring:message code="examSystem.close"/>'/>
 		        	&nbsp;&nbsp;
-		           <input type="submit" class="btn btn-primary" value='<spring:message code="exam.common.submit"/>' />
+		           <input type="submit" class="btn btn-info" value='<spring:message code="exam.common.submit"/>' />
 				</td>
 			</tr>
 		</table>

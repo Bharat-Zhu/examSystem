@@ -30,7 +30,7 @@
                 type: 2,
                 title: '<spring:message code="exam.common.create" /><spring:message code="department.info" />',
                 content: '${appPath}/sys/dept/create',
-                area: ['500px', '550px'],
+                area: ['30%', '60%'],
                 end: function () {
                     jQuery("#dept_list").trigger("reloadGrid");
                 }
@@ -59,7 +59,7 @@
             type: 2,
             title: '<spring:message code="department.info" /><spring:message code="exam.common.edit" />',
             content: url,
-            area: ['500px', '550px'],
+            area: ['30%', '60%'],
             end: function () {
                 jQuery("#dept_list").trigger("reloadGrid");
             }
@@ -71,7 +71,7 @@
             type: 2,
             title: '<spring:message code="department.info" /><spring:message code="exam.common.info" />',
             content: url,
-            area: ['500px', '550px'],
+            area: ['30%', '60%'],
         });
     }
 

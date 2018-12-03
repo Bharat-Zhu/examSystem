@@ -5,10 +5,19 @@
 	<sql id="menu_column">
 		id, message_code, name, type, url, parent_id, permission,is_show, rank, icon, remark
 	</sql>
-	
+
+    <insert id="insertMenu" parameterType="com.exam.system.modules.sys.entitys.Menu">
+        INSERT INTO tbl_menu(message_code, name, type, url, parent_id, permission, is_show, rank, icon, creator_id, create_datetime, updater_id, update_datetime)
+        VALUES (#{messageCode}, #{name}, #{type}, #{url}, #{parentId}, #{permission}, #{isShow}, #{rank}, #{icon}, #{creatorId}, NOW(), #{updaterId}, NOW())
+    </insert>
+
     <select id="selectAll" resultType="com.exam.system.modules.sys.entitys.Menu">
         SELECT 
     	<include refid="menu_column" />
     	FROM  tbl_menu WHERE del_flag = '0' ORDER BY rank ASC
+    </select>
+    
+    <select id="selectMaxRank" resultType="com.exam.system.modules.sys.entitys.Menu">
+        SELECT max(rank) as rank FROM tbl_menu
     </select>
 </mapper>

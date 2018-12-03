@@ -77,7 +77,7 @@
                                                                              ${thirdChildMenu.icon}
                                                                         </c:otherwise>
                                                                     </c:choose>
-                                                                 fa-fw" style="font-size: 18px;"></i> ${thirdChildMenu.name}
+                                                                 fa-fw" style="font-size: 18px;"></i>
                                                                  <c:choose>
 									                                <c:when test="${!empty thirdChildMenu.messageCode}">
 									                                	<spring:message code="${thirdChildMenu.messageCode}" />

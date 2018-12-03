@@ -9,7 +9,8 @@ $(function () {
     });
 });
 
-function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOverflowNotShow = true) {
+function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOverflowNotShow) {
+    isHorizontalOverflowNotShow = (isHorizontalOverflowNotShow == null || isHorizontalOverflowNotShow == "" || typeof(isHorizontalOverflowNotShow) == "undefined") ? "true" : isHorizontalOverflowNotShow;
     $(selector).jqGrid({
         url: url,
         datatype: "json",
