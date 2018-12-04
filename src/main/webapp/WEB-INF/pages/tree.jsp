@@ -26,7 +26,7 @@
     var treeNodeName = "";
 
     $(function () {
-        var menuTrees = $.fn.zTree.init($("#menu_tree"), setting, ${menuTree});
+        var menuTrees = $.fn.zTree.init($("#tree"), setting, ${tree});
         menuTrees.expandAll(true);
 
         $("#confirmMenu").click(function () {
@@ -48,7 +48,7 @@
 </style>
 <div class="content_wrap">
     <div class="bg left">
-        <ul id="menu_tree" class="ztree"></ul>
+        <ul id="tree" class="ztree"></ul>
     </div>
     <div style="text-align: right; padding-right: 15px; margin-top: 10px;">
         <input id="confirmMenu" type="button" class="btn btn-info" value='<spring:message code="exam.common.submit"/>' />

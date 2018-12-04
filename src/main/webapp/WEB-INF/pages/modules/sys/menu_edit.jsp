@@ -37,9 +37,10 @@
 		var isSuccess = "${isSuccess}";
 		if (isSuccess != "") {
             if (isSuccess == "true") {
+                layer.msg('添加成功', {icon: 1, time: 1200});
                 closeIFrame();
             } else {
-                layer.msg("添加失败！");
+                layer.msg('添加失败', {icon: 2});
             }
         }
 	});

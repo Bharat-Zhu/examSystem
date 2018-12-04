@@ -42,7 +42,7 @@
                 content: '${appPath}/sys/menu/addPage',
                 area: ['70%', '77%'],
                 end: function () {
-                    jQuery("#dept_list").trigger("reloadGrid");
+                    jQuery("#menu_list").trigger("reloadGrid");
                 }
             });
         });

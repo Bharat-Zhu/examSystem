@@ -12,6 +12,7 @@ import com.exam.system.modules.sys.entitys.Menu;
 import com.exam.system.modules.sys.services.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,8 +52,8 @@ public class MenuController {
 	public ModelAndView actionSearchMenuList(Map<String, Object> map) {
         List<Menu> menuList =  menuService.getMenuAll();
         List<TreeEntity> menuTreeList = TreeUtils.menuConvertTree(menuList);
-        map.put("menuTree", JSON.toJSONString(menuTreeList));
-	    return new ModelAndView("modules/sys/menu_tree.action");
+        map.put("tree", JSON.toJSONString(menuTreeList));
+	    return new ModelAndView("tree.action");
     }
 
     @RequestMapping("/insert")
@@ -61,4 +62,13 @@ public class MenuController {
         map.put("isSuccess", isSuccess);
         return new ModelAndView("modules/sys/menu_edit.action");
     }
+
+	@RequestMapping("/delete/{id}")
+    public ModelAndView actionDelete(@PathVariable("id") Integer id, Map<String, Object> map) {
+        Wrapper<Menu> deleteWrapper = new EntityWrapper<Menu>();
+        deleteWrapper.eq("id", id);
+        boolean isSuccess = menuService.delete(deleteWrapper);
+        map.put("isSuccess", isSuccess);
+		return new ModelAndView("modules/sys/menu_list.page");
+	}
 }
