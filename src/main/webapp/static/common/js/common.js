@@ -35,7 +35,7 @@ function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOve
     });
 }
 
-function ajaxRequest(url, success, data, dataType, type, async, error) {
+function ajaxRequest(url, success, data, type, dataType, async, error) {
     async = (async == null || async == "" || typeof(async) == "undefined") ? "true" : async;
     type = (type == null || type == "" || typeof(type) == "undefined") ? "post" : type;
     dataType = (dataType == null || dataType == "" || typeof(dataType) == "undefined") ? "json" : dataType;

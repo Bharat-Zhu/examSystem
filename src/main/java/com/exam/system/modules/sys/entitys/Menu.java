@@ -1,12 +1,12 @@
 package com.exam.system.modules.sys.entitys;
 
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableName;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableName;
 
 @TableName("tbl_menu")
 @SuppressWarnings("serial")
@@ -18,7 +18,7 @@ public class Menu extends Model<Menu> {
 	private String url;
 	private String parentId;
 	private String permission;
-	private int rank;
+	private Integer rank;
 	private String icon;
 	private String remark;
 	private String delFlag;
@@ -30,6 +30,9 @@ public class Menu extends Model<Menu> {
 
 	@TableField(exist = false)
 	private List<Menu> childrenMenu;
+
+	@TableField(exist = false)
+	private String parentName;
 
 	/**
 	 * 获取id
@@ -158,7 +161,7 @@ public class Menu extends Model<Menu> {
 	 *
 	 * @return rank rank
 	 */
-	public int getRank() {
+	public Integer getRank() {
 		return rank;
 	}
 
@@ -167,7 +170,7 @@ public class Menu extends Model<Menu> {
 	 *
 	 * @param rank rank
 	 */
-	public void setRank(int rank) {
+	public void setRank(Integer rank) {
 		this.rank = rank;
 	}
 
@@ -327,6 +330,20 @@ public class Menu extends Model<Menu> {
 	 */
 	public void setIsShow(String isShow) {
 		this.isShow = isShow;
+	}
+
+	/**
+	 * @return the parentName
+	 */
+	public String getParentName() {
+		return parentName;
+	}
+
+	/**
+	 * @param parentName the parentName to set
+	 */
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
 	}
 
 	@Override

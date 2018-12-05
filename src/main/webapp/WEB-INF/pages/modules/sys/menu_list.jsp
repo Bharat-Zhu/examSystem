@@ -23,12 +23,10 @@
                 width: 45,
                 sortable: false,
                 formatter: function (value, options, row) {
-                    var infoUrl = "${appPath}/sys/menu/info/" + value;
-                    var editUrl = "${appPath}/sys/menu/edit/" + value;
-                    var deleteUrl = "${appPath}/sys/menu/delete/" + value;
-                    return '<div class="label label-info" style="display: inline-grid; width: 30px;" title="详情"><a href="javascript:void(0);" onclick="infoMenuById(\'' + infoUrl + '\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
-                        + '<div class="label label-primary" style="display: inline-grid; width: 30px;" title="编辑"><a href="javascript:void(0);" onclick="editMenuById(\'' + editUrl + '\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
-                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="deleteMenuById(\'' + deleteUrl + '\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
+                    var url = "${appPath}/sys/menu/" + value;
+                    return '<div class="label label-info" style="display: inline-grid; width: 30px;" title="详情"><a href="javascript:void(0);" onclick="infoMenuById(\'' + url + '\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
+                        + '<div class="label label-primary" style="display: inline-grid; width: 30px;" title="编辑"><a href="javascript:void(0);" onclick="editMenuById(\'' + url + '\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
+                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="deleteMenuById(\'' + url + '\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
                 }
             }
         ];
@@ -40,38 +38,46 @@
                 type: 2,
                 title: '<spring:message code="exam.common.create" />',
                 content: '${appPath}/sys/menu/addPage',
-                area: ['70%', '77%'],
+                area: ['70%', '90%'],
                 end: function () {
                     jQuery("#menu_list").trigger("reloadGrid");
                 }
             });
         });
-
-        var result = "${result}";
-
-        if (result != "") {
-            var message = "${result}";
-            layer.alert(message, {
-                title: false,
-                closeBtn: 0,
-            }, function (index) {
-                if (result > 0) {
-                    closeIFrame();
-                } else {
-                    layer.close(index);
-                }
-            });
-        }
     });
 
     function editMenuById(url) {
+    	layer.open({
+            type: 2,
+            title: '<spring:message code="exam.common.edit" />',
+            content: url,
+            area: ['70%', '90%'],
+            end: function () {
+                jQuery("#menu_list").trigger("reloadGrid");
+            }
+        });
     }
 
     function infoMenuById(url) {
     }
 
     function deleteMenuById(url) {
-
+    	layer.confirm('<spring:message code="validation.constrains.delete.message" />', {
+            icon: 5, title: '<spring:message code="exam.system.prompt.message" />'
+        }, function (index) {
+            ajaxRequest(url, function (data) {
+            	if (data.isSuccess) {
+            		layer.alert('<spring:message code="validation.constrains.delete.success.message" />', {
+                        end: function () {
+                            jQuery("#menu_list").trigger("reloadGrid");
+                        }
+                    });
+            	} else {
+            		layer.alert('<spring:message code="validation.constrains.delete.fail.message" />');
+            	}
+            }, "", "DELETE");
+            layer.close(index);
+        });
     }
 </script>
 

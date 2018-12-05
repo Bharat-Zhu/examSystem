@@ -46,7 +46,7 @@
         font-size: 16px;
     }
 </style>
-<div class="content_wrap">
+<div class="content_wrap" style="margin: 0 15px 15px 15px;">
     <div class="bg left">
         <ul id="tree" class="ztree"></ul>
     </div>
