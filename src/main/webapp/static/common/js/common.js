@@ -17,14 +17,15 @@ function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOve
         styleUI: 'Bootstrap',
         colModel: columnModel,
         sortable: true,
-        viewrecords: false,
+        viewrecords: true,
         height: 445,
         rowNum: 10,
-        rowList: [10, 30, 50, 100],
+        rowList: [10, 20, 30, 50, 100],
         rownumbers: false,
         rownumWidth: 25,
         autowidth: true,
         multiselect: false,
+        multiboxonly: true,
         pager: pagerSelector,
         gridComplete: function () {
         	if (isHorizontalOverflowNotShow) {
