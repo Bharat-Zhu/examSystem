@@ -4,13 +4,16 @@
 <script>
     $(function () {
         $(".close-subject-tag").click(function() {
+            var parentDiv = $(this).parent("div");
             layer.confirm("确定要清除这道大题？", {icon: 3, title:'提示'}, function(index){
+                parentDiv.remove();
                 layer.close(index);
+                totalScore();
             });
         });
     });
     
-    function totalScore(score) {
+    function totalScore() {
         var total = 0;
         $(".subject-tag-scores").each(function () {
             var aloneScore = $(this).children("input").val();
@@ -31,38 +34,38 @@
     <span class="close close-subject-tag"><i class="fa fa-close"></i></span>
     <div style="text-align: right; margin-top: 10px;">
         <span class="subject-tag-questions">总共 <input name="select_question_total" class="form-control score" value="0" readonly> 题，</span>
-        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore(this.value)" readonly> 分</span>
+        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore()" readonly> 分</span>
     </div>
 </div>
 <div class="subject-tag" data-tag="select">
-    <span style="font-size: 18px; font-weight: bold;">选择题</span>
+    <span style="font-size: 18px; font-weight: bold;">选择题1</span>
     <span class="close close-subject-tag"><i class="fa fa-close"></i></span>
     <div style="text-align: right; margin-top: 10px;">
         <span class="subject-tag-questions">总共 <input name="select_question_total" class="form-control score" value="0" readonly> 题，</span>
-        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore(this.value)" readonly> 分</span>
+        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore()" readonly> 分</span>
     </div>
 </div>
 <div class="subject-tag" data-tag="select">
-    <span style="font-size: 18px; font-weight: bold;">选择题</span>
+    <span style="font-size: 18px; font-weight: bold;">选择题2</span>
     <span class="close close-subject-tag"><i class="fa fa-close"></i></span>
     <div style="text-align: right; margin-top: 10px;">
         <span class="subject-tag-questions">总共 <input name="select_question_total" class="form-control score" value="0" readonly> 题，</span>
-        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore(this.value)" readonly> 分</span>
+        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore()" readonly> 分</span>
     </div>
 </div>
 <div class="subject-tag" data-tag="select">
-    <span style="font-size: 18px; font-weight: bold;">选择题</span>
+    <span style="font-size: 18px; font-weight: bold;">选择题3</span>
     <span class="close close-subject-tag"><i class="fa fa-close"></i></span>
     <div style="text-align: right; margin-top: 10px;">
         <span class="subject-tag-questions">总共 <input name="select_question_total" class="form-control score" value="0" readonly> 题，</span>
-        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore(this.value)" readonly> 分</span>
+        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore()" readonly> 分</span>
     </div>
 </div>
 <div class="subject-tag" data-tag="select">
-    <span style="font-size: 18px; font-weight: bold;">选择题</span>
+    <span style="font-size: 18px; font-weight: bold;">选择题4</span>
     <span class="close close-subject-tag"><i class="fa fa-close"></i></span>
     <div style="text-align: right; margin-top: 10px;">
         <span class="subject-tag-questions">总共 <input name="select_question_total" class="form-control score" value="0" readonly> 题，</span>
-        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore(this.value)" readonly> 分</span>
+        <span class="subject-tag-scores">合计 <input name="select_score_total" class="form-control score" value="20" onchange="totalScore()" readonly> 分</span>
     </div>
 </div>

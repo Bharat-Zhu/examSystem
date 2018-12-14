@@ -71,17 +71,16 @@
                         finish: '完成 <i class="fa fa-check"></i>'
                     },
                     onBeforeShow: function (step) {
-                        if (step.index == 1) {
-                            $(".close-subject-tag").show();
-                        } else {
-                            $(".close-subject-tag").hide();
-                        }
-                    },
-                    onAfterShow: function(step) {
                         if (step.index == 1 || step.index == 2) {
                             $(".amount-content").show("fast");
                         } else {
                             $(".amount-content").hide("fast");
+                        }
+
+                        if (step.index == 1) {
+                            $(".close-subject-tag").show();
+                        } else {
+                            $(".close-subject-tag").hide();
                         }
                     },
                     onFinish: function() {

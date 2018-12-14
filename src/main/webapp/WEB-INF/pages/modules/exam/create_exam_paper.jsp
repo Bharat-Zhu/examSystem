@@ -4,11 +4,11 @@
 <script>
     function examPaperChangeType(value) {
         if (value != 1) {
-            $("#new_exam_paper").css('display', 'block');
-            $("#prior_exam_paper").css('display', 'none');
+            $("#new_exam_paper").show();
+            $("#prior_exam_paper").hide();
         } else {
-            $("#new_exam_paper").css('display', 'none');
-            $("#prior_exam_paper").css('display', 'block');
+            $("#new_exam_paper").hide();
+            $("#prior_exam_paper").show();
         }
     }
 </script>
