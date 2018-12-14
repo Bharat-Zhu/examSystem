@@ -48,7 +48,7 @@
 
                 amountDistanceTop = wizardDistanceTop - amountDistanceTop;
                 $(".amount-content").css("margin-top", amountDistanceTop + "px");
-                $(".amount-content").css('display', 'none');
+                $(".amount-content").hide();
 
                 $(document).scroll(function () {
                     var scroll = $(this).scrollTop();
@@ -70,11 +70,18 @@
                         back: '<i class="fa fa-hand-o-left"></i> 上一步',
                         finish: '完成 <i class="fa fa-check"></i>'
                     },
+                    onBeforeShow: function (step) {
+                        if (step.index == 1) {
+                            $(".close-subject-tag").show();
+                        } else {
+                            $(".close-subject-tag").hide();
+                        }
+                    },
                     onAfterShow: function(step) {
                         if (step.index == 1 || step.index == 2) {
-                            $(".amount-content").css('display', 'block');
+                            $(".amount-content").show("fast");
                         } else {
-                            $(".amount-content").css('display', 'none');
+                            $(".amount-content").hide("fast");
                         }
                     },
                     onFinish: function() {
