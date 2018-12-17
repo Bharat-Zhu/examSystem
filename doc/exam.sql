@@ -15,7 +15,7 @@ CREATE TABLE `tbl_department` (
   `extend_first` varchar(255) DEFAULT NULL COMMENT '扩展栏位01',
   `extend_second` varchar(255) DEFAULT NULL COMMENT '扩展栏位02',
   PRIMARY KEY (`department_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_department
@@ -25,22 +25,12 @@ INSERT INTO `tbl_department` VALUES ('2', '开发二部', '029-111234', '所有�
 INSERT INTO `tbl_department` VALUES ('3', '开发三部', '029-1113', '所有开发部门', '', null, null, null, '1', null, null);
 INSERT INTO `tbl_department` VALUES ('4', '研发部', '029-1234', '就分开就是丢成为I为科技部skin啊看是否能加上部分开始的女空间是吧啊速度发谁的风格如火如荼和他以后我让他爱上擦法师发誓法师方式分为樊梨花叫我覅把你肉巨擘I好吧', 'A00000', null, '2018-11-06 19:06:53', '2018-11-07 09:39:55', '1', null, null);
 INSERT INTO `tbl_department` VALUES ('5', '研发一部', '029-123456', '哦in哦我发挥技术的风景开发商的健康的说法会计师是啥色', 'A00000', null, '2018-11-06 19:08:29', '2018-11-07 18:09:20', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('13', '管理部', '029-1234568', '管理公司所有事务', 'A00000', null, '2018-11-07 09:07:29', '2018-11-07 09:08:02', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('15', 'ssss', 'sss', 'ssssssssssssssssssssssssssssssssssssssssssssss', 'A00000', null, '2018-11-07 13:20:25', '2018-11-20 15:28:00', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('18', 'ccccc', 'cccccccccccccccc', 'ccccccccccccccccc', 'A00000', null, '2018-11-07 13:20:52', '2018-11-07 13:20:52', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('19', 'vvvvvvvvvvvvvvvvvv', 'vvvvvvvvvvvvvvvvvvvvv', 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvxxxx', 'A00000', null, '2018-11-07 13:20:59', '2018-11-08 08:41:16', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('20', 'qwe', 'qwe', 'qweqw', 'A00000', null, '2018-11-07 13:37:05', '2018-11-07 13:37:05', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('21', 'zzz', 'zz', 'zzzzzzzzzzzzzzz', 'A00000', null, '2018-11-08 08:39:40', '2018-11-08 08:39:40', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('22', 'xxxxxxx', 'xxxxxxxxxxxxxx', 'xxxxxxxxxxxxxxxxxxxxxxx', 'A00000', null, '2018-11-08 08:39:48', '2018-11-08 08:39:48', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('23', 'xxxxxx', 'xxxxxxxxxxxxxx', 'xxxxxxxxxxxxxxxxxxx', 'A00000', null, '2018-11-08 08:39:54', '2018-11-08 08:39:54', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('24', 'cccccccccccc', 'cccccccccccccccc', 'ccccc', 'A00000', null, '2018-11-08 08:39:59', '2018-11-08 08:39:59', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('25', '1', '111111111111', '1111111111111111111', 'A00000', null, '2018-11-08 08:40:08', '2018-11-08 08:40:08', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('26', '2222', '222222222222', '2222222222222222', 'A00000', null, '2018-11-08 08:40:13', '2018-11-08 08:40:13', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('27', '33', '33333333333', '333333333333333', 'A00000', null, '2018-11-08 08:40:18', '2018-11-08 08:40:18', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('28', '4444444444', '44444444444444', '4444444444444444444', 'A00000', null, '2018-11-08 08:40:23', '2018-11-08 08:40:23', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('29', '5', '5555555555', '55555555555', 'A00000', null, '2018-11-08 08:40:30', '2018-11-08 08:40:30', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('30', '777777', '777777777777', '77777777777777777', 'A00000', null, '2018-11-08 08:40:36', '2018-11-08 08:40:36', '1', null, null);
-INSERT INTO `tbl_department` VALUES ('31', '1qaz2wsx', '123123', '1231111133333333333333333333333333333333333333333', 'A00000', null, '2018-11-08 08:41:30', '2018-11-08 08:41:30', '1', null, null);
+INSERT INTO `tbl_department` VALUES ('6', '管理部', '029-1234568', '管理公司所有事务', 'A00000', null, '2018-11-07 09:07:29', '2018-11-07 09:08:02', '1', null, null);
+INSERT INTO `tbl_department` VALUES ('7', 'ssss', 'sss', 'ssssssssssssssssssssssssssssssssssssssssssssss', 'A00000', null, '2018-11-07 13:20:25', '2018-11-20 15:28:00', '1', null, null);
+INSERT INTO `tbl_department` VALUES ('8', 'ccccc', 'cccccccccccccccc', 'ccccccccccccccccc', 'A00000', null, '2018-11-07 13:20:52', '2018-11-07 13:20:52', '1', null, null);
+INSERT INTO `tbl_department` VALUES ('9', 'vvvvvvvvvvvvvvvvvv', 'vvvvvvvvvvvvvvvvvvvvv', 'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvxxxx', 'A00000', null, '2018-11-07 13:20:59', '2018-11-08 08:41:16', '1', null, null);
+INSERT INTO `tbl_department` VALUES ('10', 'qwe', 'qwe', 'qweqw', 'A00000', null, '2018-11-07 13:37:05', '2018-11-07 13:37:05', '1', null, null);
+INSERT INTO `tbl_department` VALUES ('11', 'zzz', 'zz', 'zzzzzzzzzzzzzzz', 'A00000', null, '2018-11-08 08:39:40', '2018-11-08 08:39:40', '1', null, null);
 
 -- ----------------------------
 -- Table structure for tbl_employee
@@ -94,7 +84,7 @@ CREATE TABLE `tbl_menu` (
   `updater_id` varchar(255) DEFAULT NULL COMMENT '更新者ID',
   `update_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tbl_menu
@@ -102,18 +92,123 @@ CREATE TABLE `tbl_menu` (
 INSERT INTO `tbl_menu` VALUES ('1', 'exam.system.home', '首页', null, 'home', null, null, '1', '1', 'fa-home', null, '0', 'A00000', '2018-11-21 17:08:33', 'A00000', '2018-11-21 17:08:33');
 INSERT INTO `tbl_menu` VALUES ('2', 'exam.system.setting', '系统设置', null, '', null, null, '1', '2', 'fa-cog', null, '0', 'A00000', '2018-11-21 17:09:16', 'A00000', '2018-11-21 17:09:16');
 INSERT INTO `tbl_menu` VALUES ('3', 'exam.system.user', '用户管理', null, 'sys/user', '2', null, '1', '3', 'fa-group', null, '0', 'A00000', '2018-11-21 17:10:54', 'A00000', '2018-11-21 17:10:54');
-INSERT INTO `tbl_menu` VALUES ('4', 'exam.system.department', '部门管理', null, 'sys/showDepartments', '2', null, '1', '7', 'fa-sitemap', null, '0', 'A00000', '2018-11-21 17:11:56', 'A00000', '2018-11-21 17:11:56');
+INSERT INTO `tbl_menu` VALUES ('4', 'exam.system.department', '部门管理', null, 'sys/showDepartments', '4', null, '1', '7', 'fa-sitemap', null, '0', 'A00000', '2018-11-21 17:11:56', 'A00000', '2018-11-21 17:11:56');
 INSERT INTO `tbl_menu` VALUES ('5', 'exam.system.role', '角色管理', null, 'sys/user', '2', null, '1', '5', 'fa-amazon', null, '0', 'A00000', '2018-11-21 17:13:13', 'A00000', '2018-11-21 17:13:09');
-INSERT INTO `tbl_menu` VALUES ('6', '', 'Tables', null, '', null, null, '1', '8', 'fa-table', null, '0', 'A00000', '2018-11-21 17:13:58', 'A00000', '2018-11-21 17:13:58');
-INSERT INTO `tbl_menu` VALUES ('7', '', 'Forms', null, '', null, null, '1', '9', 'fa-edit', null, '0', 'A00000', '2018-11-21 17:14:11', 'A00000', '2018-11-21 17:14:11');
-INSERT INTO `tbl_menu` VALUES ('8', '', 'UI Elements', null, '', null, null, '1', '10', 'fa-wrench', null, '0', 'A00000', '2018-11-21 17:14:29', 'A00000', '2018-11-21 17:14:29');
-INSERT INTO `tbl_menu` VALUES ('9', '', 'Panels and Wells', null, '', '8', null, '1', '11', null, null, '0', 'A00000', '2018-11-21 17:15:31', 'A00000', '2018-11-21 17:15:31');
-INSERT INTO `tbl_menu` VALUES ('10', '', 'Buttons', null, '', '8', null, '1', '12', null, null, '0', 'A00000', '2018-11-21 17:15:37', 'A00000', '2018-11-21 17:15:37');
-INSERT INTO `tbl_menu` VALUES ('11', '', 'Notifications', null, '', '8', null, '1', '13', null, null, '0', 'A00000', '2018-11-21 17:15:43', 'A00000', '2018-11-21 17:15:43');
-INSERT INTO `tbl_menu` VALUES ('12', '', 'Typography', null, '', '8', null, '1', '14', null, null, '0', 'A00000', '2018-11-21 17:15:49', 'A00000', '2018-11-21 17:15:49');
-INSERT INTO `tbl_menu` VALUES ('13', '', 'Icons', null, '', '8', null, '1', '15', null, null, '0', 'A00000', '2018-11-21 17:15:55', 'A00000', '2018-11-21 17:15:55');
-INSERT INTO `tbl_menu` VALUES ('14', '', 'Grid', null, '', '8', null, '1', '16', null, null, '0', 'A00000', '2018-11-21 17:15:59', 'A00000', '2018-11-21 17:15:59');
-INSERT INTO `tbl_menu` VALUES ('15', '', 'Grid1', null, '', '14', null, '1', '17', null, null, '0', 'A00000', '2018-11-18 17:25:33', 'A00000', '2018-11-18 17:25:33');
-INSERT INTO `tbl_menu` VALUES ('16', 'exam.system.permission', '权限管理', null, 'sys/user', '2', null, '1', '4', 'fa-expeditedssl', null, '0', 'A00000', '2018-12-01 13:46:23', 'A00000', '2018-12-01 13:46:23');
-INSERT INTO `tbl_menu` VALUES ('17', 'exam.system.menu', '菜单管理', null, 'sys/menu/showMenu', '2', null, '1', '6', 'fa-navicon', null, '0', 'A00000', '2018-12-01 13:49:46', 'A00000', '2018-12-01 13:49:46');
-INSERT INTO `tbl_menu` VALUES ('18', '', '数据库监控', null, 'druid', '2', null, '1', '18', 'fa-database', null, '0', 'A00000', '2018-12-02 17:39:00', 'A00000', '2018-12-02 17:39:00');
+INSERT INTO `tbl_menu` VALUES ('6', 'exam.system.menu', '菜单管理', null, 'sys/menu/showMenu', '2', null, '1', '6', 'fa-navicon', null, '0', 'A00000', '2018-12-01 13:49:46', 'A00000', '2018-12-01 13:49:46');
+INSERT INTO `tbl_menu` VALUES ('7', '', '数据库监控', null, 'druid', '2', null, '1', '7', 'fa-database', null, '0', 'A00000', '2018-12-02 17:39:00', 'A00000', '2018-12-02 17:39:00');
+INSERT INTO `tbl_menu` VALUES ('8', '', '考试', '', '', '', '', '1', '8', 'fa-wpforms', '', '0', 'A00000', '2018-11-21 17:13:58', 'A00000', '2018-11-21 17:13:58');
+INSERT INTO `tbl_menu` VALUES ('9', '', '试卷作成', '', 'exam/createExamPaper', '6', '', '1', '9', 'fa-file-text', '', '0', 'A00000', '2018-12-12 17:12:06', 'A00000', '2018-12-12 17:12:06');
+
+-- ----------------------------
+-- Table structure for tbl_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_permission`;
+CREATE TABLE `tbl_permission` (
+  `id` int(11) NOT NULL COMMENT '编号',
+  `name` varchar(255) NOT NULL COMMENT '权限名称',
+  `code` varchar(255) DEFAULT NULL COMMENT '英文名称',
+  `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
+  `is_sys` char(1) DEFAULT '1' COMMENT '是不是系统数据',
+  `usable` char(1) DEFAULT '1' COMMENT '是否可用',
+  `del_flag` char(1) NOT NULL DEFAULT '0' COMMENT '删除标记',
+  `creator_id` varchar(100) NOT NULL COMMENT '创建者ID',
+  `create_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建日期',
+  `updater_id` varchar(100) DEFAULT NULL COMMENT '更新者ID',
+  `updatedatetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_permission
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for tbl_role
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_role`;
+CREATE TABLE `tbl_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `name` varchar(255) NOT NULL COMMENT '角色名称',
+  `code` varchar(255) DEFAULT NULL COMMENT '英文名称',
+  `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
+  `is_sys` char(1) NOT NULL DEFAULT '1' COMMENT '是不是系统数据',
+  `usable` char(1) NOT NULL DEFAULT '1' COMMENT '是否可用',
+  `del_flag` char(1) NOT NULL DEFAULT '0' COMMENT '删除标记',
+  `creator_id` varchar(100) NOT NULL COMMENT '创建者ID',
+  `create_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建日期',
+  `updater_id` varchar(100) DEFAULT NULL COMMENT '更新者ID',
+  `update_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_role
+-- ----------------------------
+INSERT INTO `tbl_role` VALUES ('1', '系统管理员', 'admin', '超级管理员', '1', '1', '0', 'A00000', '2018-12-17 19:24:22', 'A00000', '2018-12-17 19:24:22');
+INSERT INTO `tbl_role` VALUES ('2', '普通用户', 'normal', '使用者', '1', '1', '0', 'A00000', '2018-12-17 19:25:25', 'A00000', '2018-12-17 19:25:25');
+INSERT INTO `tbl_role` VALUES ('3', '用户管理员', 'userManager', '用户组', '1', '1', '0', 'A00000', '2018-12-17 19:26:16', 'A00000', '2018-12-17 19:26:16');
+INSERT INTO `tbl_role` VALUES ('4', '测试管理员', 'testManager', '测试组', '1', '1', '0', 'A00000', '2018-12-17 19:26:46', 'A00000', '2018-12-17 19:26:46');
+
+-- ----------------------------
+-- Table structure for tbl_role_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_role_menu`;
+CREATE TABLE `tbl_role_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  `menu_id` int(11) NOT NULL COMMENT '菜单ID',
+  PRIMARY KEY (`id`),
+  KEY `menu_role_fk` (`role_id`),
+  KEY `menu_menu_fk` (`menu_id`),
+  CONSTRAINT `menu_menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `tbl_menu` (`id`),
+  CONSTRAINT `menu_role_fk` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_role_menu
+-- ----------------------------
+INSERT INTO `tbl_role_menu` VALUES ('1', '1', '1');
+INSERT INTO `tbl_role_menu` VALUES ('2', '1', '2');
+INSERT INTO `tbl_role_menu` VALUES ('3', '1', '3');
+INSERT INTO `tbl_role_menu` VALUES ('4', '1', '4');
+INSERT INTO `tbl_role_menu` VALUES ('5', '1', '5');
+INSERT INTO `tbl_role_menu` VALUES ('6', '1', '6');
+INSERT INTO `tbl_role_menu` VALUES ('7', '1', '7');
+
+-- ----------------------------
+-- Table structure for tbl_role_permission
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_role_permission`;
+CREATE TABLE `tbl_role_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  `permission_id` int(11) NOT NULL COMMENT '权限ID',
+  PRIMARY KEY (`id`),
+  KEY `role_permission_fk` (`permission_id`),
+  KEY `role_role_fk` (`role_id`),
+  CONSTRAINT `role_permission_fk` FOREIGN KEY (`permission_id`) REFERENCES `tbl_permission` (`id`),
+  CONSTRAINT `role_role_fk` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_role_permission
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for tbl_user_role
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_user_role`;
+CREATE TABLE `tbl_user_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `user_id` varchar(6) NOT NULL COMMENT '用户ID',
+  `role_id` int(11) NOT NULL COMMENT '角色ID',
+  PRIMARY KEY (`id`),
+  KEY `user_user_fk` (`user_id`),
+  KEY `user_role` (`role_id`),
+  CONSTRAINT `user_role` FOREIGN KEY (`role_id`) REFERENCES `tbl_role` (`id`),
+  CONSTRAINT `user_user_fk` FOREIGN KEY (`user_id`) REFERENCES `tbl_employee` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tbl_user_role
+-- ----------------------------
