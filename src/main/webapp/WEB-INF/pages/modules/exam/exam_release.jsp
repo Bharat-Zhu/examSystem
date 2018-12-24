@@ -44,13 +44,13 @@
                 var wizardDistanceTop = $(".wizard-content").offset().top;
                 var amountDistanceTop = $(".amount-content").offset().top;
                 var amountHeight = $(".amount-content").outerHeight();
-                var footerDistanceTop = $("#footer").offset().top;
-
                 amountDistanceTop = wizardDistanceTop - amountDistanceTop;
+
                 $(".amount-content").css("margin-top", amountDistanceTop + "px");
                 $(".amount-content").hide();
 
                 $(document).scroll(function () {
+                    var footerDistanceTop = $("#footer").offset().top;
                     var scroll = $(this).scrollTop();
                     if(footerDistanceTop <= scroll + amountHeight) {
                         $(".amount-content").css("margin-top", (footerDistanceTop - amountHeight - $("#footer").outerHeight() - 15) + "px");
