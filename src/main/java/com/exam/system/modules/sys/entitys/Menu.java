@@ -1,31 +1,24 @@
 package com.exam.system.modules.sys.entitys;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
-
-import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.exam.system.core.entitys.CommonModel;
+
+import java.io.Serializable;
+import java.util.List;
 
 @TableName("tbl_menu")
 @SuppressWarnings("serial")
-public class Menu extends Model<Menu> {
+public class Menu extends CommonModel {
 	private int id;
 	private String messageCode;
 	private String name;
 	private String type;
 	private String url;
 	private String parentId;
-	private String permission;
 	private Integer rank;
 	private String icon;
 	private String remark;
-	private String delFlag;
-	private String creatorId;
-	private Date createDatetime;
-	private String updaterId;
-	private Date updateDatetime;
 	private String isShow;
 
 	@TableField(exist = false)
@@ -139,24 +132,6 @@ public class Menu extends Model<Menu> {
 	}
 
 	/**
-	 * 获取permission
-	 *
-	 * @return permission permission
-	 */
-	public String getPermission() {
-		return permission;
-	}
-
-	/**
-	 * 设置permission
-	 *
-	 * @param permission permission
-	 */
-	public void setPermission(String permission) {
-		this.permission = permission;
-	}
-
-	/**
 	 * 获取rank
 	 *
 	 * @return rank rank
@@ -208,96 +183,6 @@ public class Menu extends Model<Menu> {
 	 */
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-
-	/**
-	 * 获取delFlag
-	 *
-	 * @return delFlag delFlag
-	 */
-	public String getDelFlag() {
-		return delFlag;
-	}
-
-	/**
-	 * 设置delFlag
-	 *
-	 * @param delFlag delFlag
-	 */
-	public void setDelFlag(String delFlag) {
-		this.delFlag = delFlag;
-	}
-
-	/**
-	 * 获取creatorId
-	 *
-	 * @return creatorId creatorId
-	 */
-	public String getCreatorId() {
-		return creatorId;
-	}
-
-	/**
-	 * 设置creatorId
-	 *
-	 * @param creatorId creatorId
-	 */
-	public void setCreatorId(String creatorId) {
-		this.creatorId = creatorId;
-	}
-
-	/**
-	 * 获取createDatetime
-	 *
-	 * @return createDatetime createDatetime
-	 */
-	public Date getCreateDatetime() {
-		return createDatetime;
-	}
-
-	/**
-	 * 设置createDatetime
-	 *
-	 * @param createDatetime createDatetime
-	 */
-	public void setCreateDatetime(Date createDatetime) {
-		this.createDatetime = createDatetime;
-	}
-
-	/**
-	 * 获取updaterId
-	 *
-	 * @return updaterId updaterId
-	 */
-	public String getUpdaterId() {
-		return updaterId;
-	}
-
-	/**
-	 * 设置updaterId
-	 *
-	 * @param updaterId updaterId
-	 */
-	public void setUpdaterId(String updaterId) {
-		this.updaterId = updaterId;
-	}
-
-	/**
-	 * 获取updateDatetime
-	 *
-	 * @return updateDatetime updateDatetime
-	 */
-	public Date getUpdateDatetime() {
-		return updateDatetime;
-	}
-
-	/**
-	 * 设置updateDatetime
-	 *
-	 * @param updateDatetime updateDatetime
-	 */
-	public void setUpdateDatetime(Date updateDatetime) {
-		this.updateDatetime = updateDatetime;
 	}
 
 	/**

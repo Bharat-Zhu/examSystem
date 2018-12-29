@@ -1,27 +1,18 @@
 package com.exam.system.modules.sys.entitys;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.exam.system.core.entitys.CommonModel;
+
+import java.io.Serializable;
 
 @TableName("tbl_department")
-public class Department extends Model<Department> implements Serializable {
+public class Department extends CommonModel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Integer departmentId;
 	private String name;
 	private String tel;
 	private String remark;
-	private String createId;
-	private String updateId;
-	private Date createDatetime;
-	private Date updateDatetime;
-	private String delFlag;
 	private String extendFirst;
 	private String extendSecond;
 	
@@ -95,96 +86,6 @@ public class Department extends Model<Department> implements Serializable {
 	 */
 	public void setRemark(String remark) {
 		this.remark = remark;
-	}
-
-	/**
-	 * 获取createId
-	 *
-	 * @return createId createId
-	 */
-	public String getCreateId() {
-		return createId;
-	}
-
-	/**
-	 * 设置createId
-	 *
-	 * @param createId createId
-	 */
-	public void setCreateId(String createId) {
-		this.createId = createId;
-	}
-
-	/**
-	 * 获取updateId
-	 *
-	 * @return updateId updateId
-	 */
-	public String getUpdateId() {
-		return updateId;
-	}
-
-	/**
-	 * 设置updateId
-	 *
-	 * @param updateId updateId
-	 */
-	public void setUpdateId(String updateId) {
-		this.updateId = updateId;
-	}
-
-	/**
-	 * 获取createDatetime
-	 *
-	 * @return createDatetime createDatetime
-	 */
-	public Date getCreateDatetime() {
-		return createDatetime;
-	}
-
-	/**
-	 * 设置createDatetime
-	 *
-	 * @param createDatetime createDatetime
-	 */
-	public void setCreateDatetime(Date createDatetime) {
-		this.createDatetime = createDatetime;
-	}
-
-	/**
-	 * 获取updateDatetime
-	 *
-	 * @return updateDatetime updateDatetime
-	 */
-	public Date getUpdateDatetime() {
-		return updateDatetime;
-	}
-
-	/**
-	 * 设置updateDatetime
-	 *
-	 * @param updateDatetime updateDatetime
-	 */
-	public void setUpdateDatetime(Date updateDatetime) {
-		this.updateDatetime = updateDatetime;
-	}
-
-	/**
-	 * 获取delFlag
-	 *
-	 * @return delFlag delFlag
-	 */
-	public String getDelFlag() {
-		return delFlag;
-	}
-
-	/**
-	 * 设置delFlag
-	 *
-	 * @param delFlag delFlag
-	 */
-	public void setDelFlag(String delFlag) {
-		this.delFlag = delFlag;
 	}
 
 	/**

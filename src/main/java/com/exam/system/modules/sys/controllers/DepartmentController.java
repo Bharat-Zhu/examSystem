@@ -35,7 +35,7 @@ public class DepartmentController {
     @RequestMapping(value = "/showDepts", method = RequestMethod.GET)
     public String getDeptJson(FrontPage<Department> page) {
         Wrapper<Department> wrapper = new EntityWrapper<Department>();
-        wrapper.eq("del_flag", "1");
+        wrapper.eq("del_flag", "0");
         Page<Department> pageList = departmentService.selectPage(page.getPagePlus(), wrapper);
         CustomPage<Department> customPage = new CustomPage<Department>(pageList);
         return JSON.toJSONString(customPage);
@@ -53,18 +53,10 @@ public class DepartmentController {
     }
 
     @ResponseBody
-    @RequestMapping("/dept/delete/{id}")
-    public String actionDeleteDeptById(@PathVariable("id") Integer id, Map<String, Object> map) {
-        Department dept = departmentService.getDepartmentById(id);
-        String message = "";
-        try {
-        	departmentService.deleteDepartment(dept);
-        	message = MessageUtils.getMessage("validation.constrains.delete.success.message");
-        } catch (Exception e) {
-        	message = MessageUtils.getMessage("validation.constrains.delete.fail.message");
-		}
-        map.put("deptFlg", "dept_del");
-        map.put("message", message);
+    @RequestMapping(value = "/dept/{id}", method = RequestMethod.DELETE)
+    public String actionDeleteById(@PathVariable("id") Integer id, Map<String, Object> map) {
+        boolean isSuccess = departmentService.deleteDeptById(id);
+        map.put("isSuccess", isSuccess);
         return JSON.toJSONString(map);
     }
 

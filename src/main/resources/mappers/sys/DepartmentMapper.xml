@@ -7,8 +7,8 @@
         <result column="name" property="name"/>
         <result column="tel" property="tel"/>
         <result column="remark" property="remark"/>
-        <result column="create_id" property="createId"/>
-        <result column="update_id" property="updateId"/>
+        <result column="creator_id" property="creatorId"/>
+        <result column="updater_id" property="updaterId"/>
         <result column="create_datetime" property="createDatetime"/>
         <result column="update_datetime" property="updateDatetime"/>
         <result column="del_flag" property="delFlag"/>
@@ -17,12 +17,12 @@
     </resultMap>
 
     <sql id="MyColumn">
-        department_id, name, tel, remark, create_id
+        department_id, name, tel, remark, creator_id
     </sql>
 
     <insert id="insertDepartment" parameterType="com.exam.system.modules.sys.entitys.Department">
-        insert into tbl_department(name, tel, remark, create_id, create_datetime, update_datetime)
-        values (#{name}, #{tel}, #{remark}, 'A00000', NOW(), NOW())
+        insert into tbl_department(name, tel, remark, creator_id, create_datetime, updater_id, update_datetime)
+        values (#{name}, #{tel}, #{remark}, #{creatorId}, NOW(), #{updaterId}, NOW())
     </insert>
 
     <update id="updateDepartment" parameterType="com.exam.system.modules.sys.entitys.Department">
@@ -62,6 +62,6 @@
     <select id="selectById" resultMap="MyDept">
         SELECT
         <include refid="MyColumn"/>
-        FROM tbl_department WHERE del_flag = '1' AND  department_id = #{id}
+        FROM tbl_department WHERE del_flag = '0' AND  department_id = #{id}
     </select>
 </mapper>

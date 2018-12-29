@@ -9,8 +9,15 @@ $(function () {
     });
 });
 
+const PAGE_TYPE_ENUM = {
+    EDIT: "edit",
+    INFO: "info",
+    CREATE: "create",
+    DELETE: "delete"
+};
+
 function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOverflowNotShow) {
-    isHorizontalOverflowNotShow = (isHorizontalOverflowNotShow == null || isHorizontalOverflowNotShow == "" || typeof(isHorizontalOverflowNotShow) == "undefined") ? "true" : isHorizontalOverflowNotShow;
+    isHorizontalOverflowNotShow = (isHorizontalOverflowNotShow == null || isHorizontalOverflowNotShow === "" || typeof(isHorizontalOverflowNotShow) === undefined) ? true : isHorizontalOverflowNotShow;
     $(selector).jqGrid({
         url: url,
         datatype: "json",
@@ -37,10 +44,10 @@ function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOve
 }
 
 function ajaxRequest(url, success, data, type, dataType, async, error) {
-    async = (async == null || async == "" || typeof(async) == "undefined") ? "true" : async;
-    type = (type == null || type == "" || typeof(type) == "undefined") ? "post" : type;
-    dataType = (dataType == null || dataType == "" || typeof(dataType) == "undefined") ? "json" : dataType;
-    data = (data == null || data == "" || typeof(data) == "undefined") ? {} : data;
+    async = (async == null || async === "" || typeof(async) === undefined) ? "true" : async;
+    type = (type == null || type === "" || typeof(type) === undefined) ? "post" : type;
+    dataType = (dataType == null || dataType === "" || typeof(dataType) === undefined) ? "json" : dataType;
+    data = (data == null || data === "" || typeof(data) === undefined) ? {} : data;
 
     error = error || function (data) {
         layer.closeAll('loading');
@@ -53,7 +60,7 @@ function ajaxRequest(url, success, data, type, dataType, async, error) {
                 layer.msg(requestFailedConnectTimeoutMessage);
             }
             ajaxStatus = true;
-        },500);
+        }, 500);
     };
 
     $.ajax({

@@ -15,12 +15,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.exam.system.core.entitys.User;
 import com.exam.system.modules.staff.services.EmployeeService;
 
+/**
+ * 框架Realm
+ *
+ * @author Zhu.Bert
+ * @version 1.0
+ */
 public class ExamRealm extends AuthorizingRealm {
 
 	@Autowired
 	private EmployeeService employeeService;
-	
-	// 授权
+
+    /**
+     * 授权
+     *
+     * @param principals 用户登录的信息
+     * @return 授权信息
+     */
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// 从PrincipalCollection中获取用户登录的信息
         Object principal = principals.getPrimaryPrincipal();
@@ -28,7 +39,13 @@ public class ExamRealm extends AuthorizingRealm {
 		return null;
 	}
 
-    // 认证
+    /**
+     * 认证
+     *
+     * @param token 登录认证
+     * @return 认证信息
+     * @throws AuthenticationException 认证失败异常
+     */
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		// 把AuthenticationToken转为UsernamePasswordToken
 	    UsernamePasswordToken uptoken = (UsernamePasswordToken)token;

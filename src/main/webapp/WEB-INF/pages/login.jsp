@@ -88,8 +88,8 @@
         <div class="page-header" style="width: 95%;margin: 20px auto; "></div>
         <div class="form-group">
             <div class="col-sm-7 input-group text-right" style="margin: auto;">
-                <a id="register" href="javascript:void(0);"><spring:message code="register.title"/></a>
-                &nbsp;&nbsp;
+               <%-- <a id="register" href="javascript:void(0);"><spring:message code="register.title"/></a>
+                &nbsp;&nbsp;--%>
                 <button type="submit" id="submit_btn" class="btn btn-success">
                     <spring:message code="login.submit"/>
                     <i class="fa fa-angle-double-right"></i>

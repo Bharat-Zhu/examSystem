@@ -26,3 +26,4 @@
     var requestFailedConnectTimeoutMessage = '<spring:message code="request.failed.connect.timeout.message" />';
 </script>
 <script type="text/javascript" src="${staticCommonPath}/js/common.js"></script>
+<%@include file="js.jsp" %>

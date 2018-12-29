@@ -2,6 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <script type="text/javascript">
+    var frameSize = ['30%', '60%'];
     $(function () {
         var columnModel = [
             {label: '部门名称', name: 'name', width: 45},
@@ -15,10 +16,10 @@
                 formatter: function (value, options, row) {
                     var infoUrl = "${appPath}/sys/dept/info/" + value;
                     var editUrl = "${appPath}/sys/dept/edit/" + value;
-                    var deleteUrl = "${appPath}/sys/dept/delete/" + value;
-                    return '<div class="label label-info" style="display: inline-grid; width: 30px;" title="详情"><a href="javascript:void(0);" onclick="infoDeptById(\'' + infoUrl + '\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
-                        + '<div class="label label-primary" style="display: inline-grid; width: 30px;" title="编辑"><a href="javascript:void(0);" onclick="editDeptById(\'' + editUrl + '\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
-                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="deleteDeptById(\'' + deleteUrl + '\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
+                    var deleteUrl = "${appPath}/sys/dept/" + value;
+                    return '<div class="label label-info" style="display: inline-grid; width: 30px;" title="详情"><a href="javascript:void(0);" onclick="openIFrame(PAGE_TYPE_ENUM.INFO, \'' + infoUrl + '\', frameSize, \'#dept_list\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
+                        + '<div class="label label-primary" style="display: inline-grid; width: 30px;" title="编辑"><a href="javascript:void(0);" onclick="openIFrame(PAGE_TYPE_ENUM.EDIT, \'' + editUrl + '\', frameSize, \'#dept_list\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
+                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="deleteSelectOfData(\'' + deleteUrl + '\', \'#dept_list\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
                 }
             }
         ];
@@ -26,15 +27,8 @@
         loadGirdData("#dept_list", "${appPath}/sys/showDepts", columnModel, "#dept_list_pager");
 
         $("#createDept").on('click', function () {
-            layer.open({
-                type: 2,
-                title: '<spring:message code="exam.common.create" /><spring:message code="department.info" />',
-                content: '${appPath}/sys/dept/create',
-                area: ['30%', '60%'],
-                end: function () {
-                    jQuery("#dept_list").trigger("reloadGrid");
-                }
-            });
+            var url = '${appPath}/sys/dept/create';
+            openIFrame(PAGE_TYPE_ENUM.CREATE, url, frameSize, "#dept_list");
         });
 
         var result = "${result}";
@@ -53,45 +47,6 @@
             });
         }
     });
-
-    function editDeptById(url) {
-        layer.open({
-            type: 2,
-            title: '<spring:message code="department.info" /><spring:message code="exam.common.edit" />',
-            content: url,
-            area: ['30%', '60%'],
-            end: function () {
-                jQuery("#dept_list").trigger("reloadGrid");
-            }
-        });
-    }
-
-    function infoDeptById(url) {
-        layer.open({
-            type: 2,
-            title: '<spring:message code="department.info" /><spring:message code="exam.common.info" />',
-            content: url,
-            area: ['30%', '60%'],
-        });
-    }
-
-    function deleteDeptById(url) {
-        layer.confirm('<spring:message code="validation.constrains.delete.message" />', {
-            icon: 5, title: '<spring:message code="exam.system.prompt.message" />'
-        }, function (index) {
-            ajaxRequest(url, function (data) {
-            	if (data.message != "") {
-            		layer.alert(data.message, {
-                        end: function () {
-                            jQuery("#dept_list").trigger("reloadGrid");
-                        }
-                    });
-            	}
-            });
-            layer.close(index);
-        });
-
-    }
 </script>
 
 <div style="margin-top: 30px;">

@@ -6,7 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class User extends CommonModel {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,7 +22,8 @@ public class User implements Serializable {
 	
 	@Email
 	private String email;
-	
+
+	@Length(max = 11)
 	private String phone;
 
 	/**
@@ -109,4 +110,8 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
+	@Override
+	protected Serializable pkVal() {
+		return this.id;
+	}
 }
