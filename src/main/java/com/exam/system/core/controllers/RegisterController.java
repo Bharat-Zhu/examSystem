@@ -37,12 +37,10 @@ public class RegisterController {
 	    		return new ModelAndView("register.action");
 	    	}
 	    	
-            int result = employeeService.addEmployee(emp);
-            LogUtils.log(this).info(MessageUtils.getMessage("validation.constrains.insert.success.message", result));
+            employeeService.addEmployee(emp);
             map.put("registerStatus", "1");
             map.put("registerMessage", MessageUtils.getMessage("validation.constrains.register.success.message"));
 	    } catch (Exception e) {
-            LogUtils.log(this).error(MessageUtils.getMessage("validation.constrains.insert.fail.message") + "--->" + e.getMessage());
             map.put("registerStatus", "0");
             map.put("registerMessage", MessageUtils.getMessage("validation.constrains.register.fail.message"));
         }

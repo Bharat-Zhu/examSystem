@@ -39,12 +39,12 @@
     }
 
     /**
-     * 删除当前选择数据的Ajax请求
+     * 删除当前选择数据的Ajax请求(DELETE请求)
      *
      * @param url 访问地址
      * @param list_id_selector 列表的Id值，传入时需要带#， 例如： '#emp_list'
      */
-    function deleteSelectOfData(url, list_id_selector) {
+    function ajaxDelete(url, list_id_selector) {
         var title = '<spring:message code="exam.system.prompt.message" />';
         var message = '<spring:message code="validation.constrains.delete.message" />';
         var successMessage = '<spring:message code="validation.constrains.delete.success.message" />';

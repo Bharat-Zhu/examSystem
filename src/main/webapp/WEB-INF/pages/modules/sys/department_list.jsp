@@ -19,7 +19,7 @@
                     var deleteUrl = "${appPath}/sys/dept/" + value;
                     return '<div class="label label-info" style="display: inline-grid; width: 30px;" title="详情"><a href="javascript:void(0);" onclick="openIFrame(PAGE_TYPE_ENUM.INFO, \'' + infoUrl + '\', frameSize, \'#dept_list\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
                         + '<div class="label label-primary" style="display: inline-grid; width: 30px;" title="编辑"><a href="javascript:void(0);" onclick="openIFrame(PAGE_TYPE_ENUM.EDIT, \'' + editUrl + '\', frameSize, \'#dept_list\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
-                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="deleteSelectOfData(\'' + deleteUrl + '\', \'#dept_list\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
+                        + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="ajaxDelete(\'' + deleteUrl + '\', \'#dept_list\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
                 }
             }
         ];
@@ -30,22 +30,6 @@
             var url = '${appPath}/sys/dept/create';
             openIFrame(PAGE_TYPE_ENUM.CREATE, url, frameSize, "#dept_list");
         });
-
-        var result = "${result}";
-
-        if (result != "") {
-            var message = "${result}";
-            layer.alert(message, {
-                title: false,
-                closeBtn: 0,
-            }, function (index) {
-                if (result > 0) {
-                    closeIFrame();
-                } else {
-                    layer.close(index);
-                }
-            });
-        }
     });
 </script>
 

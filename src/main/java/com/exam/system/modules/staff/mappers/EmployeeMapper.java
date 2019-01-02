@@ -9,5 +9,5 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
 	
 	Employee selectEmployeeById(String id);
 	
-	int insetEmployee(@Param("emp")Employee emp);
+	boolean insetEmployee(@Param("emp")Employee emp);
 }

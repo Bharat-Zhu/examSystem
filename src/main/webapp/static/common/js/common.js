@@ -13,7 +13,8 @@ const PAGE_TYPE_ENUM = {
     EDIT: "edit",
     INFO: "info",
     CREATE: "create",
-    DELETE: "delete"
+    DELETE: "delete",
+    UPDATE: "update"
 };
 
 function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOverflowNotShow) {
@@ -43,6 +44,17 @@ function loadGirdData(selector, url, columnModel, pagerSelector, isHorizontalOve
     });
 }
 
+/**
+ * Ajax 请求
+ *
+ * @param url 请求地址
+ * @param success 请求成功的回调函数
+ * @param data 请求时发送的数据（默认为空）
+ * @param type 请求方式（默认POST）
+ * @param dataType 请求响应回的数据类型（默认JSON）
+ * @param async 是否异步请求（默认true 异步请求）
+ * @param error 请求失败的回调函数（默认系统提示）
+ */
 function ajaxRequest(url, success, data, type, dataType, async, error) {
     async = (async == null || async === "" || typeof(async) === undefined) ? "true" : async;
     type = (type == null || type === "" || typeof(type) === undefined) ? "post" : type;
@@ -94,4 +106,52 @@ function clearAllCookie(){
         for (var i =  keys.length; i--;)
             document.cookie=keys[i] + "=0; expire="+date.toGMTString()+"; path=/";
     }
+}
+
+/**
+ * Ajax 方式新规或更新（提交放式POST或PUT）
+ *
+ * @param url 请求地址
+ * @param data 请求时发送的数据
+ * @param isInsert 是否新规
+ */
+var ajaxInsertOrUpdate = function (url, data, isInsert) {
+    var type = "POST";
+
+    if (!isInsert) {
+        type = "PUT";
+    }
+
+    ajaxRequest(url, function(responseData) {
+        layer.alert(responseData.message, {
+            title: false,
+            closeBtn: 0
+        }, function (index) {
+            if (responseData.isSuccess) {
+                closeIFrame();
+            } else {
+                layer.close(index);
+            }
+        });
+    }, data, type);
+};
+
+/**
+ * Ajax 方式新规（提交方式POST）
+ *
+ * @param url 请求地址
+ * @param data 请求时发送的数据
+ */
+function ajaxInsert(url, data) {
+    ajaxInsertOrUpdate(url, data, true);
+}
+
+/**
+ * Ajax 方式更新（提交方式PUT）
+ *
+ * @param url 请求地址
+ * @param data 请求时发送的数据
+ */
+function ajaxUpdate(url, data) {
+    ajaxInsertOrUpdate(url, data, false);
 }

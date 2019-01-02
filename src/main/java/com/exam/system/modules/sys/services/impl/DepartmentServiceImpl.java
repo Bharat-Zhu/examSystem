@@ -22,7 +22,7 @@ public class DepartmentServiceImpl extends BaseServiceImpl<DepartmentMapper, Dep
         return baseMapper.selectById(id);
     }
 
-    public int addDepartment(Department dept) {
+    public boolean addDepartment(Department dept) {
         setCreatorUpdaterId(dept);
         return baseMapper.insertDepartment(dept);
     }
@@ -38,7 +38,8 @@ public class DepartmentServiceImpl extends BaseServiceImpl<DepartmentMapper, Dep
         return update(dept, wrapper);
     }
 
-    public int updateDepartment(Department dept) {
+    public boolean updateDepartment(Department dept) {
+        setUpdaterId(dept);
         return baseMapper.updateDepartment(dept);
     }
 }

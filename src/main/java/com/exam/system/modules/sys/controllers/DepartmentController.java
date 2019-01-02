@@ -4,6 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.exam.system.core.Common.Common;
+import com.exam.system.core.Common.OperateTypeEnum;
+import com.exam.system.core.Common.PagePathEnum;
+import com.exam.system.core.controllers.BaseController;
 import com.exam.system.core.entitys.CustomPage;
 import com.exam.system.core.entitys.FrontPage;
 import com.exam.system.core.utils.MessageUtils;
@@ -21,14 +25,14 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/sys")
-public class DepartmentController {
+public class DepartmentController extends BaseController {
 
     @Autowired
     private DepartmentService departmentService;
 
     @RequestMapping("/showDepartments")
     public String actionShowDeptList() {
-        return "modules/sys/department_list.page";
+        return setPage("department_list.page");
     }
 
     @ResponseBody
@@ -41,56 +45,66 @@ public class DepartmentController {
         return JSON.toJSONString(customPage);
     }
 
-    @RequestMapping("/dept/{operate}/{id}")
+    @RequestMapping(value = "/dept/{operate}/{id}", method = RequestMethod.GET)
     public String actionShowDeptById(@PathVariable("operate") String operate, @PathVariable("id") Integer id, Map<String, Object> map) {
-        if ("info".equals(operate)) {
-            map.put("deptFlg", "dept_info");
-        } else if ("edit".equals(operate)){
-            map.put("deptFlg", "dept_edit");
-        }
         map.put("dept", departmentService.getDepartmentById(id));
-        return "modules/sys/department_edit.action";
+
+        if (OperateTypeEnum.INFO.getName().equals(operate)) {
+            return setPage("department_info.action");
+        } else if (OperateTypeEnum.EDIT.getName().equals(operate)){
+            return setPage("department_edit.action");
+        }
+
+        return error404Page();
+    }
+
+    @RequestMapping(value = "/dept/create", method = RequestMethod.GET)
+    public ModelAndView actionCreateDept() {
+        return new ModelAndView(setPage("department_edit.action"));
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/dept/{id}", method = RequestMethod.PUT)
+    public String actionUpdate(@PathVariable("id") Integer id, Department dept) {
+        boolean isSuccess = false;
+        String message = "";
+
+        try {
+            dept.setDepartmentId(id);
+            isSuccess = departmentService.updateDepartment(dept);
+            message = MessageUtils.getMessage("validation.constrains.update.success.message");
+        } catch (Exception e) {
+            message = MessageUtils.getMessage("validation.constrains.update.fail.message");
+        }
+
+        return Common.afterExecuteToJsonString(message, isSuccess);
     }
 
     @ResponseBody
     @RequestMapping(value = "/dept/{id}", method = RequestMethod.DELETE)
-    public String actionDeleteById(@PathVariable("id") Integer id, Map<String, Object> map) {
+    public String actionDelete(@PathVariable("id") Integer id) {
         boolean isSuccess = departmentService.deleteDeptById(id);
-        map.put("isSuccess", isSuccess);
-        return JSON.toJSONString(map);
+        return Common.afterExecuteToJsonString(isSuccess);
     }
 
-    @RequestMapping("/dept/create")
-    public ModelAndView actionCreateDept(Map<String, Object> map) {
-        map.put("deptFlg", "dept_create");
-        return new ModelAndView("modules/sys/department_edit.action");
-    }
-
-    @RequestMapping("/dept/insertOrUpdate")
-    public String actionInsertOrUpdate(Department dept, Map<String, Object> map) {
-        int result = 0;
+    @ResponseBody
+    @RequestMapping(value = "/dept", method = RequestMethod.POST)
+    public String actionInsert(Department dept) {
+        boolean isSuccess = false;
         String message = "";
 
-        if (dept.getDepartmentId() != null) {
-            map.put("deptFlg", "dept_edit");
-            try {
-            	result = departmentService.updateDepartment(dept);
-            	message = MessageUtils.getMessage("validation.constrains.update.success.message", result);
-            } catch (Exception e) {
-            	message = MessageUtils.getMessage("validation.constrains.update.fail.message", result);
-			}
-        } else {
-            map.put("deptFlg", "dept_create");
-            try {
-            	result = departmentService.addDepartment(dept);
-            	message = MessageUtils.getMessage("validation.constrains.insert.success.message", result);
-            } catch (Exception e) {
-            	message = MessageUtils.getMessage("validation.constrains.insert.fail.message", result);
-			}
+        try {
+            isSuccess = departmentService.addDepartment(dept);
+            message = MessageUtils.getMessage("validation.constrains.insert.success.message");
+        } catch (Exception e) {
+            message = MessageUtils.getMessage("validation.constrains.insert.fail.message");
         }
-        map.put("message", message);
-        map.put("dept", dept);
-        map.put("result", result);
-        return "modules/sys/department_edit.action";
+
+        return Common.afterExecuteToJsonString(message, isSuccess);
+    }
+
+    @Override
+    public String setPage(String pageName) {
+        return PagePathEnum.SYS.getName() + pageName;
     }
 }

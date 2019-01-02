@@ -1,16 +1,16 @@
 package com.exam.system.modules.sys.services.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.exam.system.core.Common.Constants;
 import com.exam.system.core.services.BaseServiceImpl;
 import com.exam.system.core.utils.UserUtils;
 import com.exam.system.modules.sys.entitys.Menu;
 import com.exam.system.modules.sys.mappers.MenuMapper;
 import com.exam.system.modules.sys.services.MenuService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("menuService")
 public class MenuServiceImpl extends BaseServiceImpl<MenuMapper, Menu> implements MenuService {
@@ -40,9 +40,9 @@ public class MenuServiceImpl extends BaseServiceImpl<MenuMapper, Menu> implement
 	public boolean deleteMenuById(Integer id) {
 		Wrapper<Menu> wrapper = new EntityWrapper<Menu>();
 		wrapper.eq("id", id);
-		wrapper.eq("del_flag", "0");
+		wrapper.eq("del_flag", Constants.NOT_DELETE);
 		Menu menu = new Menu();
-		menu.setDelFlag("1");
+		menu.setDelFlag(Constants.HAVE_DELETED);
 		return update(menu, wrapper);
 	}
 

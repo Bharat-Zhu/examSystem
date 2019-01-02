@@ -1,5 +1,6 @@
 package com.exam.system.modules.staff.entitys;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.exam.system.core.entitys.User;
 import com.exam.system.modules.sys.entitys.Department;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,6 +16,7 @@ public class Employee extends User {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
 
+	@TableField(exist = false)
 	private Department department;
 
 	/**

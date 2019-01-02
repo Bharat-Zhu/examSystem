@@ -14,7 +14,8 @@ public class EmployeeServiceImpl extends BaseServiceImpl<EmployeeMapper, Employe
 		return baseMapper.selectEmployeeById(id);
 	}
 
-	public int addEmployee(Employee emp) {
+	@Override
+	public boolean addEmployee(Employee emp) {
 		PasswordService.encryptPassword(emp);
         super.setCreatorUpdaterId(emp);
 		return baseMapper.insetEmployee(emp);

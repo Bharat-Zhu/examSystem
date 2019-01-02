@@ -9,9 +9,9 @@ public interface DepartmentService extends IBaseService<Department> {
 
     Department getDepartmentById(int id);
 
-    int addDepartment(Department dept);
+    boolean addDepartment(Department dept);
 
     boolean deleteDeptById(Integer id);
 
-    int updateDepartment(Department dept);
+    boolean updateDepartment(Department dept);
 }

@@ -6,5 +6,5 @@ public interface EmployeeService {
 	
 	Employee getEmployeeById(String id);
 	
-	int addEmployee(Employee emp);
+	boolean addEmployee(Employee emp);
 }

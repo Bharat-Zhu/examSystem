@@ -27,14 +27,14 @@ public class LoginController extends BaseController {
     private MenuService menuService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(HttpServletRequest request) {
+    public ModelAndView login(HttpServletRequest request) {
         HttpSession session = request.getSession();
         Object locale = session.getAttribute("org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE");
         if (locale == null) {
             locale = request.getLocale();
         }
         session.setAttribute("LOCALE", locale);
-        return "login.action";
+        return new ModelAndView(setPage("login.action"));
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -52,20 +52,25 @@ public class LoginController extends BaseController {
             } catch (UnknownAccountException e) {
                 LogUtils.log(this).info(MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
                 map.put("loginErr", MessageUtils.getMessage("validation.constrains.login.ID.error.message"));
-                return new ModelAndView("login.action");
+                return new ModelAndView(setPage("login.action"));
             } catch (AuthenticationException e) {
                 LogUtils.log(this).info(MessageUtils.getMessage("validation.constrains.login.error.message"));
                 map.put("loginErr", MessageUtils.getMessage("validation.constrains.login.error.message"));
-                return new ModelAndView("login.action");
+                return new ModelAndView(setPage("login.action"));
             }
         }
 
-        return new ModelAndView("redirect:home");
+        return new ModelAndView(setPage("redirect:home"));
     }
 
     @RequestMapping("/home")
     public ModelAndView home() {
         UserUtils.getTreeMenusByCache();
-        return new ModelAndView("home.page");
+        return new ModelAndView(setPage("home.page"));
+    }
+
+    @Override
+    public String setPage(String pageName) {
+        return pageName;
     }
 }

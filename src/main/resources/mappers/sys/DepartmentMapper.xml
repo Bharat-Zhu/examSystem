@@ -40,10 +40,10 @@
             <if test="delFlag != null and delFlag.trim() != ''">
                 del_flag = #{delFlag},
             </if>
+            updater_id = #{updaterId},
+            update_datetime = NOW(),
         </set>
-        <where>
-            department_id = #{departmentId}
-        </where>
+        WHERE department_id = #{departmentId}
     </update>
 
     <delete id="deleteDepartment" parameterType="com.exam.system.modules.sys.entitys.Department">

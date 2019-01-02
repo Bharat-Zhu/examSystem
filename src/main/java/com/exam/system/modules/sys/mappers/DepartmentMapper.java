@@ -13,9 +13,9 @@ public interface DepartmentMapper extends BaseMapper<Department> {
 
     Department selectById(Integer id);
 
-    int insertDepartment(Department department);
+    boolean insertDepartment(Department department);
 
-    int updateDepartment(Department department);
+    boolean updateDepartment(Department department);
 
     boolean deleteDepartment(Department department);
 }
