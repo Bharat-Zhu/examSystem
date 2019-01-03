@@ -2,11 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.exam.system.modules.staff.mappers.EmployeeMapper">
 
+	<resultMap id="empMap" type="com.exam.system.modules.staff.entitys.Employee">
+		<id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="email" property="email" />
+        <result column="tel" property="phone" />
+        <result column="birth" property="birth" />
+        <result column="del_flag" property="delFlag" />
+        <result column="creator_id" property="creatorId" />
+        <result column="create_datetime" property="createDatetime" />
+        <result column="updater_id" property="updaterId" />
+        <result column="update_datetime" property="updateDatetime" />
+        <result column="dept_id" property="deptId" />
+
+        <association column="dept_id" property="department"
+                     select="com.exam.system.modules.sys.mappers.DepartmentMapper.selectById"
+                     javaType="com.exam.system.modules.sys.entitys.Department" />
+	</resultMap>
+
+    <sql id="column">
+        id, name, password, email, tel, birth, dept_id, del_flag, creator_id, create_datetime, updater_id, update_datetime
+    </sql>
+
 	<select id="selectEmployeeById" resultType="com.exam.system.modules.staff.entitys.Employee">
 		select * from tbl_employee where id = #{id}
 	</select>
-	
-	<insert id="insetEmployee" parameterType="com.exam.system.modules.staff.entitys.Employee">
+
+    <select id="selectListByWhere" resultMap="empMap">
+        SELECT
+            <include refid="column" />
+        FROM tbl_employee
+        <where>
+            ${ew.sqlSegment}
+        </where>
+    </select>
+
+    <insert id="insetEmployee" parameterType="com.exam.system.modules.staff.entitys.Employee">
 		insert into tbl_employee(id, name, password, email, tel, salt, birth, dept_id, creator_id, updater_id)
         values
         (#{emp.id}, #{emp.name}, #{emp.password}, #{emp.email}, #{emp.phone}, #{emp.salt}, #{emp.birth}, #{emp.department.departmentId}, #{emp.creatorId}, #{emp.updaterId})

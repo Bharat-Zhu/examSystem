@@ -4,20 +4,19 @@
 <script type="text/javascript">
     $(function () {
         var columnModel = [
-            {label: '姓名', name: 'name', width: 45},
-            {label: '电话', name: 'tel', width: 75},
-            {label: '出生日期', name: 'tel', width: 75},
-            {label: '部门', name: 'tel', width: 75},
-            {label: '备注', name: 'remark', sortable: false},
+            {label: '编号', name: 'id'},
+            {label: '姓名', name: 'name'},
+            {label: '电话', name: 'phone'},
+            {label: '出生日期', name: 'birth'},
+            {label: '部门', name: 'department.name'},
             {
                 label: '操作',
-                name: 'departmentId',
-                width: 45,
+                name: 'id',
                 sortable: false,
                 formatter: function (value, options, row) {
-                    var infoUrl = "${appPath}/sys/dept/info/" + value;
-                    var editUrl = "${appPath}/sys/dept/edit/" + value;
-                    var deleteUrl = "${appPath}/sys/dept/delete/" + value;
+                    var infoUrl = "${appPath}/staff/info/" + value;
+                    var editUrl = "${appPath}/staff/edit/" + value;
+                    var deleteUrl = "${appPath}/staff/" + value;
                     return '<div class="label label-info" style="display: inline-grid; width: 30px;" title="详情"><a href="javascript:void(0);" onclick="infoDeptById(\'' + infoUrl + '\');"><i class="fa fa-info" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
                         + '<div class="label label-primary" style="display: inline-grid; width: 30px;" title="编辑"><a href="javascript:void(0);" onclick="editDeptById(\'' + editUrl + '\');"><i class="fa fa-edit" style="font-size: 20px;color: white;"></i></a></div>&nbsp;'
                         + '<div class="label label-danger" style="display: inline-grid; width: 30px;" title="删除"><a href="javascript:void(0);" onclick="deleteDeptById(\'' + deleteUrl + '\');"><i class="fa fa-trash" style="font-size: 20px;color: white;"></i></a></div>';
@@ -25,7 +24,7 @@
             }
         ];
 
-        loadGirdData("#emp_list", "${appPath}/sys/showDepts", columnModel, "#emp_list_pager");
+        loadGirdData("#emp_list", "${appPath}/staff/searchEmpList", columnModel, "#emp_list_pager");
 
         $("#createEmp").on('click', function () {
             layer.open({

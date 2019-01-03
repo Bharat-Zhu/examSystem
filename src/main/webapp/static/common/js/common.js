@@ -109,6 +109,24 @@ function clearAllCookie(){
 }
 
 /**
+ * jqGrid的查询功能
+ *
+ * @param url 查询的url
+ * @param data 查询需要的参数条件（JSON格式）
+ * @param list_id_selector 列表的Id值，传入时需要带#， 例如： '#emp_list'
+ */
+function jqGridSearch(url, data, list_id_selector) {
+    //传入查询条件参数
+    $(list_id_selector).jqGrid("setGridParam", {postData: data});
+
+    //每次提出新的查询都转到第一页
+    $(list_id_selector).jqGrid("setGridParam", {page: 1});
+
+    //提交post并刷新表格
+    $(list_id_selector).jqGrid("setGridParam", {url: url}).trigger("reloadGrid");
+}
+
+/**
  * Ajax 方式新规或更新（提交放式POST或PUT）
  *
  * @param url 请求地址

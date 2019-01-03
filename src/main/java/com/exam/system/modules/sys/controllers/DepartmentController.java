@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.exam.system.core.Common.Common;
+import com.exam.system.core.Common.Constants;
 import com.exam.system.core.Common.OperateTypeEnum;
 import com.exam.system.core.Common.PagePathEnum;
 import com.exam.system.core.controllers.BaseController;
@@ -13,6 +14,7 @@ import com.exam.system.core.entitys.FrontPage;
 import com.exam.system.core.utils.MessageUtils;
 import com.exam.system.modules.sys.entitys.Department;
 import com.exam.system.modules.sys.services.DepartmentService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,12 +38,21 @@ public class DepartmentController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/showDepts", method = RequestMethod.GET)
-    public String getDeptJson(FrontPage<Department> page) {
+    @RequestMapping("/searchDepts")
+    public String actionSearchDeptList(FrontPage<Department> page, Department dept) {
         Wrapper<Department> wrapper = new EntityWrapper<Department>();
-        wrapper.eq("del_flag", "0");
-        Page<Department> pageList = departmentService.selectPage(page.getPagePlus(), wrapper);
-        CustomPage<Department> customPage = new CustomPage<Department>(pageList);
+        wrapper.eq("del_flag", Constants.NOT_DELETE);
+
+        if (StringUtils.isNotBlank(dept.getName())) {
+            wrapper.like("name", dept.getName());
+        }
+
+        if (StringUtils.isNotBlank(dept.getTel())) {
+            wrapper.eq("tel", dept.getTel());
+        }
+
+        Page<Department> employeePage = departmentService.selectPage(page.getPagePlus(), wrapper);
+        CustomPage<Department> customPage = new CustomPage<Department>(employeePage);
         return JSON.toJSONString(customPage);
     }
 

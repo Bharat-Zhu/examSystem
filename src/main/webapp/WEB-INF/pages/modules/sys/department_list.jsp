@@ -24,16 +24,43 @@
             }
         ];
 
-        loadGirdData("#dept_list", "${appPath}/sys/showDepts", columnModel, "#dept_list_pager");
+        loadGirdData("#dept_list", "${appPath}/sys/searchDepts", columnModel, "#dept_list_pager");
 
         $("#createDept").on('click', function () {
             var url = '${appPath}/sys/dept/create';
             openIFrame(PAGE_TYPE_ENUM.CREATE, url, frameSize, "#dept_list");
         });
+
+        $("#deptSearchForm").submit(function (event) {
+            event.preventDefault();
+            var data=$(this).serializeJSON();
+            var url = "${appPath}/sys/searchDepts";
+
+            jqGridSearch(url, data, "#dept_list");
+
+        });
     });
 </script>
 
 <div style="margin-top: 30px;">
+    <form id="deptSearchForm" class="form-horizontal" role="form" method="post">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">部门名称：</label>
+            <div class="col-sm-4">
+                <input class="form-control" name="name" type="text" placeholder="部门名称">
+            </div>
+            <label class="col-sm-1 control-label">电话：</label>
+            <div class="col-sm-4">
+                <input class="form-control" name="tel" type="text" placeholder="电话">
+            </div>
+            <div class="col-sm-2" style="text-align: center;">
+                <button class="btn btn-success" type="submit" >
+                    <i class="fa fa-search"></i>
+                    &nbsp;查询
+                </button>
+            </div>
+        </div>
+    </form>
     <div style="height: 50px;line-height: 50px;">
         <button id="createDept" class="btn btn-success">
             <i class="fa fa-plus"></i>
