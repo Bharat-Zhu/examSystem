@@ -25,5 +25,6 @@
     var requestFailedErrorMessage = '<spring:message code="request.failed.error.message" />';
     var requestFailedConnectTimeoutMessage = '<spring:message code="request.failed.connect.timeout.message" />';
 </script>
+<script type="text/javascript" src="${staticCommonPath}/js/jQuery.formatDate.js"></script>
 <script type="text/javascript" src="${staticCommonPath}/js/common.js"></script>
 <%@include file="js.jsp" %>

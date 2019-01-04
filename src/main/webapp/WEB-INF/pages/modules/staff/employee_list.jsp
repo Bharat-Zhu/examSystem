@@ -7,7 +7,12 @@
             {label: '编号', name: 'id'},
             {label: '姓名', name: 'name'},
             {label: '电话', name: 'phone'},
-            {label: '出生日期', name: 'birth'},
+            {label: '出生日期', name: 'birth',
+                formatter: function (value) {
+                    var date = new Date(value);
+                    return $.formatDate(date, "yyyy-MM-dd");
+                }
+            },
             {label: '部门', name: 'department.name'},
             {
                 label: '操作',
