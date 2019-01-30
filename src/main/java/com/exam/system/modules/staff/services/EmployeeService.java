@@ -10,5 +10,9 @@ public interface EmployeeService extends IBaseService<Employee> {
 	
 	boolean addEmployee(Employee emp);
 
+	boolean updateEmployee(Employee emp);
+
+	boolean deleteById(String id);
+
     Page<Employee> selectPageByWhere(Page<Employee> page, Employee emp);
 }

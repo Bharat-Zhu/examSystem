@@ -6,11 +6,13 @@
 <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/jqgrid/css/ui.jqgrid-bootstrap.css" />
 <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/zTree/css/zTreeStyle/zTreeStyle.css" />
 <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/metisMenu/css/metisMenu.css" />
+<link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" />
 <link type="text/css" rel="stylesheet" href="${staticVendorsPath}/bootstrap-cr/css/checkboxs_radios.css" />
 <link type="text/css" rel="stylesheet" href="${staticCommonPath}/css/style.css" />
 <script type="text/javascript" src="${staticVendorsPath}/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${staticVendorsPath}/jquery/jquery.serializejson.min.js"></script>
 <script type="text/javascript" src="${staticVendorsPath}/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${staticVendorsPath}/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="${staticVendorsPath}/jquery-ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${staticVendorsPath}/layer/layer.js"></script>
 <script type="text/javascript" src="${staticVendorsPath}/toastr/toastr.min.js"></script>

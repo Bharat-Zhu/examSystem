@@ -1,6 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/pages/common/taglibs.jspf" %>
 <script>
+    var tip_info = '<spring:message code="exam.common.info" />';
+    var tip_edit = '<spring:message code="exam.common.edit" />';
+    var tip_delete = '<spring:message code="exam.common.delete" />';
+
     /**
      * 弹出frame窗口
      *

@@ -25,8 +25,35 @@
         id, name, password, email, tel, birth, dept_id, del_flag, creator_id, create_datetime, updater_id, update_datetime
     </sql>
 
-	<select id="selectEmployeeById" resultType="com.exam.system.modules.staff.entitys.Employee">
-		select * from tbl_employee where id = #{id}
+    <update id="updateEmployee" parameterType="com.exam.system.modules.staff.entitys.Employee">
+        UPDATE tbl_employee
+        <set>
+            <if test="name != null and name.trim() != ''">
+                name = #{name},
+            </if>
+            <if test="phone != null and phone.trim() != ''">
+                tel = #{phone},
+            </if>
+            <if test="email != null and email.trim() != ''">
+                email = #{email},
+            </if>
+            <if test="birth != null">
+                birth = #{birth},
+            </if>
+            <if test="delFlag != null and delFlag.trim() != ''">
+                del_flag = #{delFlag},
+            </if>
+            <if test="department.departmentId != null">
+                dept_id = #{department.departmentId},
+            </if>
+            updater_id = #{updaterId},
+            update_datetime = NOW(),
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectEmployeeById" resultMap="empMap">
+		select * from tbl_employee where id = #{id} and del_flag = 0
 	</select>
 
     <select id="selectListByWhere" resultMap="empMap">

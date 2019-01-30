@@ -2,7 +2,6 @@ package com.exam.system.modules.sys.services.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.baomidou.mybatisplus.plugins.Page;
 import com.exam.system.core.Common.Constants;
 import com.exam.system.core.services.BaseServiceImpl;
 import com.exam.system.modules.sys.entitys.Department;
@@ -10,12 +9,14 @@ import com.exam.system.modules.sys.mappers.DepartmentMapper;
 import com.exam.system.modules.sys.services.DepartmentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("departmentService")
 public class DepartmentServiceImpl extends BaseServiceImpl<DepartmentMapper, Department> implements DepartmentService {
 
-    public Page<Department> getDepartmentByAll(Page<Department> page) {
-        page.setRecords(baseMapper.selectAll(page));
-        return page;
+    @Override
+    public List<Department> getAll() {
+        return baseMapper.selectAll();
     }
 
     public Department getDepartmentById(int id) {

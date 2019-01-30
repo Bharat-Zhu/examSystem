@@ -56,7 +56,7 @@
     <select id="selectAll" resultMap="MyDept">
         SELECT
         <include refid="MyColumn"/>
-        FROM tbl_department WHERE ${ew.sqlSegment}
+        FROM tbl_department WHERE del_flag = '0'
     </select>
 
     <select id="selectById" resultMap="MyDept">

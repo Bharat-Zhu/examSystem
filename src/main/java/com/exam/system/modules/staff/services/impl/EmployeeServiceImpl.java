@@ -27,6 +27,23 @@ public class EmployeeServiceImpl extends BaseServiceImpl<EmployeeMapper, Employe
 	}
 
     @Override
+    public boolean updateEmployee(Employee emp) {
+        super.setUpdaterId(emp);
+        return baseMapper.updateEmployee(emp);
+    }
+
+    @Override
+    public boolean deleteById(String id) {
+        Wrapper<Employee> wrapper = new EntityWrapper<Employee>();
+        wrapper.eq("id", id);
+        wrapper.eq("del_flag", Constants.NOT_DELETE);
+        Employee emp = new Employee();
+        emp.setDelFlag(Constants.HAVE_DELETED);
+        setUpdaterId(emp);
+        return update(emp, wrapper);
+    }
+
+    @Override
 	public Page<Employee> selectPageByWhere(Page<Employee> page, Employee emp) {
         Wrapper<Employee> wrapper = new EntityWrapper<Employee>();
         wrapper.eq("del_flag", Constants.NOT_DELETE);

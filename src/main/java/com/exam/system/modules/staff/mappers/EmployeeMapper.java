@@ -14,5 +14,7 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
 	
 	boolean insetEmployee(@Param("emp")Employee emp);
 
+	boolean updateEmployee(Employee emp);
+
     List<Employee> selectListByWhere(RowBounds rowBounds, @Param("ew") Wrapper<Employee> wrapper);
 }
