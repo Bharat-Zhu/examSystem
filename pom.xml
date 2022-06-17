@@ -26,7 +26,7 @@
 		<druid.version>1.1.10</druid.version>
 		<slf4j.version>1.7.25</slf4j.version>
 		<jackson.version>2.9.9</jackson.version>
-		<fastjson.version>1.2.47</fastjson.version>
+		<fastjson.version>1.2.83</fastjson.version>
 		<ehcache.version>2.6.11</ehcache.version>
 		<ehcache-web.version>2.0.4</ehcache-web.version>
 		<tiles.version>3.0.8</tiles.version>
